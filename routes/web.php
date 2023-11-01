@@ -16,3 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('backoffice/artisans', function () {
+    return view('backoffice.Artisans.index');
+});
