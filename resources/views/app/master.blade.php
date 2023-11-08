@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('/plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- data table -->
-    <link rel="stylesheet" href="{{asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -28,17 +24,18 @@
     <link rel="stylesheet" href="{{asset('/plugins/daterangepicker/daterangepicker.css')}}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{asset('/plugins/summernote/summernote-bs4.min.css')}}">
+        <!-- data table -->
+        <link rel="stylesheet" href="{{asset('/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+        <link rel="stylesheet" href="{{asset('/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
 <body class="sidebar-mini layout-navbar-fixed layout-footer-fixed layout-fixed">
 <div class="wrapper">
-
-    <!-- Preloader -->
-{{--    <div class="preloader flex-column justify-content-center align-items-center">--}}
-{{--        <img class="animation__wobble" src="{{assert("dist/img/AdminLTELogo.png")}}" alt="AdminLTELogo" height="60" width="60">--}}
-{{--    </div>--}}
-
+    <div class="flex-column justify-content-center align-items-center" style="height: 0px;">
+        <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60" style="display: none;">
+        </div>
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-light bg-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -54,62 +51,6 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <!-- Navbar Search -->
-
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item dropdown">
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset("dist/img/user1-128x128.jpg")}}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Brad Diesel
-                                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">Call me whenever you can...</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset('dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    John Pierce
-                                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">I got your message bro</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <!-- Message Start -->
-                        <div class="media">
-                            <img src="{{asset("dist/img/user3-128x128.jpg")}}" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                            <div class="media-body">
-                                <h3 class="dropdown-item-title">
-                                    Nora Silvester
-                                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                                </h3>
-                                <p class="text-sm">The subject goes here</p>
-                                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                            </div>
-                        </div>
-                        <!-- Message End -->
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-                </div>
-            </li>
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link" data-toggle="dropdown" href="#">
@@ -168,7 +109,6 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -192,18 +132,11 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-               @yield('content')
+                @yield('content')
             </div><!--/. container-fluid -->
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
     <footer class="main-footer">
@@ -219,29 +152,15 @@
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    // $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
 <script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
-<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js"')}}"></script>
-<script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
-<script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
-<script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
-<script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
-<script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
-<script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
-
 <!-- Sparkline -->
 <script src="{{asset('plugins/sparklines/sparkline.js')}}"></script>
 <!-- JQVMap -->
@@ -256,6 +175,22 @@
 <script src="{{asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+
+<script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{asset('plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{asset('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+
+
 <!-- overlayScrollbars -->
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -266,6 +201,8 @@
 --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
+
+@yield('script')
 </body>
 </html>
 

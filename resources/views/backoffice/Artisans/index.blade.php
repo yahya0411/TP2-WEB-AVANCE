@@ -1,6 +1,4 @@
 @extends('app.master')
-@section('title','Artisans');
-
 @section('content')
         <!-- Small boxes (Stat box) -->
         <div class="row">
@@ -69,4 +67,23 @@
         <!-- Main row -->
 
         <!-- /.row (main row) -->
+        @section('title','Artisans')
+        @section('menu')
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                    Products
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                    Commands
+                </p>
+            </a>
+        </li>
+        @endsection
 @endsection
