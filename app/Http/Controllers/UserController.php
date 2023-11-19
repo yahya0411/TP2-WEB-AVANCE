@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Consommateur;
@@ -12,10 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
-    public function showInscriptionForm()
-    {
-        return view('backoffice.Consommateurs.inscription');
-    }
+    
 
  public function handleInscription(Request $request)
 {
@@ -23,7 +21,6 @@ class UserController extends Controller
     $request->validate([
         'Email' => 'required|email|unique:users,Email',
         'mdps' => 'required|min:4',
-        
     ]);
     
    $user = User::create([
@@ -38,7 +35,6 @@ if ($request->input('Role') == 'Consommateur') {
         'nom_consommateur' => $request->input('nom_user'),
         'prénom_consommateur' => $request->input('prénom_user'),
         'téléphone' => $request->input('téléphone'),
-        'adresse' => $request->input('adresse'),
         'Email' => $request->input('Email'),
     ]);
 }
@@ -57,10 +53,10 @@ if ($request->input('Role') == 'Consommateur') {
             'nom_livreur' => $request->input('nom_user'), 
             'prénom_livreur' => $request->input('prénom_user'),
             'téléphone' => $request->input('téléphone'),
-            'adresse' => $request->input('adresse'),
             'Email' => $request->input('Email'),
         ]);
     }
+    return Redirect::route('identification.signup');
   }
 
 
