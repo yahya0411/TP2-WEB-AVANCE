@@ -6,7 +6,7 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$products}}</h3>
 
                         <p>Product</p>
                     </div>
@@ -64,26 +64,105 @@
             <!-- ./col -->
         </div>
         <!-- /.row -->
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card card-default">
+                    <div class="card-header">
+                    <h3 class="card-title">monthly commands</h3>
+                    <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                    </button>
+                    </div>
+                    </div>
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <canvas id="myChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 488px;" width="488" height="250" class="chartjs-render-monitor"></canvas>
+                    </div>
+
+                    </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card card-default">
+                    <div class="card-header">
+                    <h3 class="card-title">Products Types</h3>
+                    <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                    </button>
+                    </div>
+                    </div>
+                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <canvas id="myChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 250px%; display: block; width: 488px;" width="488" height="250" class="chartjs-render-monitor"></canvas>
+                    </div>
+
+                    </div>
+            </div>
+
+        </div>
+
         <!-- Main row -->
 
         <!-- /.row (main row) -->
+
+@section('script')
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['January', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
+        datasets: [{
+          label: '# of Command',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    new Chart(ctx2, {
+        type: 'doughnut',
+  data: {
+    labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+  },
+
+
+    });
+
+  </script>
+
+@endsection
+
         @section('title','Artisans')
         @section('menu')
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                    Products
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                    Commands
-                </p>
-            </a>
-        </li>
+        @include('backoffice.Artisans.menu')
         @endsection
+
 @endsection
