@@ -14,21 +14,23 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/main.css')}}" rel="stylesheet">
+
+    @yield('Mystyle')
 </head>
 
 <body>
@@ -72,7 +74,7 @@
 
 
 
-            
+
 
 
 
@@ -80,17 +82,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:30rem;" >
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#EAA636;" href="#" id="navbarDropdown"
+                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#EAA636;" href="{{Route('testimonial')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false" >
                                 <i class="bi bi-search text-primary me-2  " style="color:#EAA636;"></i>  <span style="color:#EAA636;">Search</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Artisan Finder</a></li>
+                                <li><a class="dropdown-item" href="{{Route('testimonial')}}">Artisan Finder</a></li>
 
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Product Seeker</a></li>
-
-
-
+                                <li><a class="dropdown-item" href="{{Route('products')}}">Product Seeker</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -223,22 +222,10 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-
-    <script>
+    <script src="{{asset('js/main.js')}}"></script>
         @yield('script')
-    </script>
-
-    <script>
-        @yield('script2')
-    </script>
 </body>
 
 </html>
