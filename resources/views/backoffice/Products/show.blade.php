@@ -8,9 +8,9 @@
 @endsection
 <div class="wrapper row">
     <div class="preview col-md-6">
-
         <div class="preview-pic tab-content">
-          <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
+
+          <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/></div>
           <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
           <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
           <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
@@ -26,7 +26,8 @@
 
     </div>
     <div class="details col-md-6">
-        <h3 class="product-title">men's shoes fashion</h3>
+        <h3 class="product-title">produit
+              </h3>
         <div class="rating">
             <div class="stars">
                 <span class="fa fa-star checked"></span>
@@ -37,9 +38,9 @@
             </div>
             <span class="review-no">41 reviews</span>
         </div>
-        <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-        <h4 class="price">current price: <span>$180</span></h4>
-        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+        <p class="product-description">Crèmes pâtissières, mousselines, crème au beurre, chiboust, chantilly, bavarois, mousses sont les principales garnitures utilisées en pâtisserie.</p>
+        <h4 class="price"> price: <span>DZ 250</span></h4>
+        
 
     </div>
 </div>

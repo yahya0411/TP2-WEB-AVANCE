@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Backer Tlm - @yield('title')</title>
+    <title>Tlemcen Testies - @yield('title')</title>
     <link rel="stylesheet" href="{{asset('/plugins/jquery-ui/jquery-ui.min.css')}}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('/plugins/fontawesome-free/css/all.min.css')}}">
@@ -78,7 +78,7 @@
         <!-- Brand Logo -->
         <a href="index3.html" class="brand-link">
             <img src="{{asset("dist/img/AdminLTELogo.png")}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-            <span class="brand-text font-weight-light">Baker Tlemcen</span>
+            <span class="brand-text font-weight-light">Tlemcen Testies</span>
         </a>
 
         <!-- Sidebar -->
