@@ -37,13 +37,14 @@ class ProductController extends Controller
         $product->quantité_minimale = $request->input('quantityproduct');
         $product->type_produit = $request->input('typeproduct');
         $product->sous_type = $request->input('subtypeproduct');
+
         $product->save();
 
         if($request->has('images'))
          {
             foreach($request->file('images') as $image)
             {
-                $imageName = $product->nom_produit . ' -image- '. $image->extension();
+                $imageName = $product->nom_produit . '-image' . $image->extension();
                 $image->move(public_path('product_image'),$imageName);
 
                 Image::create([
@@ -53,6 +54,7 @@ class ProductController extends Controller
             }
 
          }
+         $request->session()->flash('status','Inserting product');
 
         return  redirect()->route('product.index');
 
@@ -63,7 +65,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        return view('backoffice.Products.show',['product' => Product::findOrFail($id)]);
+        return view('backoffice.Products.show',['product' => Product::findOrFail($id),'images' => Image::all()]);
     }
 
     /**

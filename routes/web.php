@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ArtisanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('backoffice/artisans', function () {
-    return view('backoffice.Artisans.index');
+Route::get('/pro', function () {
+    return view('backoffice.Products.show');
 });
+Route::resource('artisan', ArtisanController::class);
+Route::resource('product', ProductController::class);

@@ -31,6 +31,13 @@
         </form>
     </div>
 </div>
+@if (session('status'))
+@section('script')
+<script>
+toastr.success('hello');
+</script>
+@endsection
+@endif
 
 @section('title','Add product')
 

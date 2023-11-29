@@ -1,48 +1,147 @@
 @extends('app.master')
 @section('content')
 @section('custum_style')
-
 <link rel="stylesheet" href="{{asset('custumStyle/product.css')}}">
-
-
 @endsection
-<div class="wrapper row">
-    <div class="preview col-md-6">
-
-        <div class="preview-pic tab-content">
-          <div class="tab-pane active" id="pic-1"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-          <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
-        </div>
-        <ul class="preview-thumbnail nav nav-tabs">
-          <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-          <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+<div class="card">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="fas fa-box mr-1"></i>
+        Details of product
+      </h3>
+      <div class="card-tools">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#revenue-chart" data-toggle="tab"> Product Information</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#sales-chart" data-toggle="tab">Product Commands</a>
+          </li>
         </ul>
+      </div>
+    </div><!-- /.card-header -->
+    <div class="card-body">
+      <div class="tab-content p-0">
+        <!-- Morris chart - Sales -->
+        <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach ($images->where('product_id','==',$product->id) as $image)
+                            <div class="col-md-4">
+                                <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
+                                <img src='{{asset("/product_image/$product->id.jpg")}}' class="img-fluid mb-2" alt="white sample">
+                                </a>
+                          </div>
+                        @endforeach
+                        </div>
 
-    </div>
-    <div class="details col-md-6">
-        <h3 class="product-title">men's shoes fashion</h3>
-        <div class="rating">
-            <div class="stars">
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
+                </div>
+                </div>
+                <div class="col-md-5">
+                   <h3 class="product-title">
+                    {{$product->nom_produit}}
+                    </h3>
+              <div class="rating">
+                  <div class="stars">
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star checked"></span>
+                      <span class="fa fa-star"></span>
+                      <span class="fa fa-star"></span>
+                  </div>
+                  <span class="review-no">41 reviews</span>
+              </div>
+              <p class="product-description">{{$product->description}}.</p>
+              <h4 class="price"> price: <span>DZ {{$product->prix_par_piéce}}</span></h4>
+
+                </div>
             </div>
-            <span class="review-no">41 reviews</span>
-        </div>
-        <p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
-        <h4 class="price">current price: <span>$180</span></h4>
-        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+         </div>
+        <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+            <div class="card">
+                <div class="card-header">
+                <h3 class="card-title">Consummers </h3>
+                </div>
 
-    </div>
-</div>
+                <div class="card-body p-0">
+                <table class="table table-striped">
+                <thead>
+                <tr>
+                <th style="width: 10px">#</th>
+                <th>Consummer</th>
+                <th>Command date</th>
+                <th>Etat</th>
+                <th>Address</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>1.</td>
+                <td>Update software</td>
+                <td>
+                25/10/2023
+                </td>
+                <td><span class="badge bg-danger">refuser</span></td>
+                <td>Tlemcen</td>
+                </tr>
+                <tr>
+                <td>2.</td>
+                <td>Clean database</td>
+                <td>
+                01/12/2023
+                </td>
+                <td><span class="badge bg-warning">non traiter</span></td>
+                <td>Tlemcen</td>
+                </tr>
+                <tr>
+                <td>3.</td>
+                <td>Cron job running</td>
+                <td>
+                12/11/2023
+                </td>
+                <td><span class="badge bg-info">Envoyer</span></td>
+                <td>Tlemcen</td>
+                </tr>
+                <tr>
+                <td>4.</td>
+                <td>Fix and squish bugs</td>
+                <td>
+                10/11/2023
+                </td>
+                <td><span class="badge bg-success">Livrer</span></td>
+                <td>Tlemcen</td>
+                </tr>
+                </tbody>
+                </table>
+                </div>
+
+                </div>
+        </div>
+      </div>
+    </div><!-- /.card-body -->
+  </div>
+  @section('script')
+
+  <script>
+    $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
+
+      $('.filter-container').filterizr({gutterPixels: 3});
+      $('.btn[data-filter]').on('click', function() {
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+      });
+    })
+  </script>
+  @endsection
+
 @section('menu')
 @include('backoffice.Artisans.menu')
 @endsection

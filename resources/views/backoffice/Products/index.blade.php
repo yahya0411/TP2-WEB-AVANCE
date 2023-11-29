@@ -1,6 +1,9 @@
 @extends('app.master')
 
 @section('content')
+@section('custum_style')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css">
+@endsection
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">List of Product</h3>
@@ -28,12 +31,12 @@
           <td>{{$product->quantité_minimale}}</td>
           <td>{{$product->type_produit}} / {{$product->sous_type}}</td>
           <td class="">
-            <a class="text-info" href=""><i class="fas fa-eye fa-sm"></i></a>
+            <a class="text-info" href="product/{{$product->id}}"><i class="fas fa-eye fa-sm"></i></a>
             <a class="text-success" href="product/{{$product->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
             <form style="display: inline" action="{{route('product.destroy',['product' => $product->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
-                <a class="text-danger" onclick="this.closest('form').submit();return false"><i class="fas fa-trash fa-sm"></i></a>
+                <a class="text-danger" style="cursor: pointer" onclick="confirm(this.closest('form'));return false"><i class="fas fa-trash fa-sm"></i></a>
              </form>
           </td>
         </tr>
@@ -47,6 +50,7 @@
     <!-- /.card-body -->
   </div>
 @section('script')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
 <script>
 $(function () {
     $("#example1").DataTable({
@@ -63,6 +67,44 @@ $(function () {
       "responsive": true,
     });
   });
+
+  function confirm(obj)
+  {
+    const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: "btn btn-success",
+    cancelButton: "btn btn-danger"
+  },
+  buttonsStyling: false
+});
+swalWithBootstrapButtons.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonText: "Yes, delete it!",
+  cancelButtonText: "No, cancel!",
+  reverseButtons: true
+}).then((result) => {
+  if (result.isConfirmed) {
+    swalWithBootstrapButtons.fire({
+      title: "Deleted!",
+      text: "Your product has been deleted.",
+      icon: "success"
+    });
+    obj.submit();
+  } else if (
+    /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel
+  ) {
+    swalWithBootstrapButtons.fire({
+      title: "Cancelled",
+      text: "Your imaginary file is safe :)",
+      icon: "error"
+    });
+  }
+});
+  }
 </script>
 @endsection
 @section('menu')
