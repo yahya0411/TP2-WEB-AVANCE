@@ -56,7 +56,7 @@
                         <div class="input-field">
                           <div class="input-select">
                             <select id="star-rating">
-                              <option placeholder="" value="">Ratings</option>
+                              <option placeholder="" value="">Rating</option>
                             <option value="1">1 star</option>
                             <option value="2">2 stars</option>
                             <option value="3">3 stars</option>
@@ -95,12 +95,11 @@
 
                       <div class="row third">
                         <div class="input-field">
-                          <div class="result-count">
-                            </div>
+<p></p>
                           <div class="group-btn">
-                            <button class="btn-delete" id="delete">Reset</button>
                             <button class="btn-search">Search</button>
                           </div>
+                          <p></p>
                         </div>
                       </div>
                     </div>
@@ -121,7 +120,7 @@
                    <span class="navbar-toggler-icon"></span>
                </button>
 
-               <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right:30px;">
+               <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-right:45px;">
                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                        <li class="nav-item dropdown ">
                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#ffffff;" href="#" id="navbarDropdown"
@@ -175,113 +174,104 @@
 
 
 
-
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
-            <img src="img/pain_choco.jpg">
-        </div>
+    <div class="containeraa "  >
+        
         <div class="details">
             <div class="content">
-                   <h2>Pain Chocó <br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
-
-                </h2>
-                <p style="color: white;">
-
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
-                </p>
-
-                <h3 >10,00 DA</h3>
-                <button>Buy Now</button>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
             <img src="img/pain_choco.jpg">
-        </div>
-        <div class="details">
-            <div class="content">
-            <h2>Pain Chocó Double Chocolat<br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
 
-                </h2>
-                <p style="color: white;">
+                   <h2 >Pain Chocó <br>                 </h2>
 
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
                 </p>
 
-                <h3>12,50 DA</h3>
-                <button>Buy Now</button>
+                <h2 >10,00 DA <br>
+                <p></p>
+                <button >Buy Now</button>
             </div>
         </div>
-    </div>
 
 
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
+        <div class="details2">
+            <div class="content2">
+            <img src="img/pain_choco.jpg">
+
+                   <h2 >Pain Chocó Double Chocolat<br>                 </h2>
+
+                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
+                </p>
+
+                <h2 >12,50 DA <br>
+                <p></p>
+                <button >Buy Now</button>
+            </div>
+        </div>
+
+
+
+        <div class="details3">
+            <div class="content3">
             <img src="img/petit_pain.jpg">
-        </div>
-        <div class="details">
-            <div class="content">
-                <h2>Pain Chocó Sucrè <br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
 
-                </h2>
-                <p style="color: white;">
+                   <h2 >Pain Chocó Sucrè<br>                 </h2>
 
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
+                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
                 </p>
 
-                <h3>15,00 DA</h3>
-                <button>Buy Now</button>
+                <h2 >15,00 DA<br>
+                <p></p>
+                <button >Buy Now</button>
             </div>
         </div>
     </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
 
     <!-- Product End -->
 

@@ -104,8 +104,8 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Profile Data</a></li>
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Order History</a></li>
-                                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Delivery Review</a></li>
+                                <li><a class="dropdown-item" href="#" >Order History</a></li>
+                                <li><a class="dropdown-item" href="#" >Delivery Review</a></li>
 
 
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Log Out</a></li>
@@ -127,7 +127,55 @@
             </div>
         </div>
     </nav>
-    <!-- Navbar End -->
+    <div class="modal fade" id="data_client"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+ 
+ <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h1 class="modal-title fs-5">Profile</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+     <form  method="post" action="">
+       <div class="modal-body">
+       <div class="input-group flex-nowrap">
+   <span class="input-group-text bi bi-person-fill"></span>
+   <input type="text" class="form-control" value="" disabled>
+ </div>
+ <div class="input-group flex-nowrap mt-3 ">
+   <span class="input-group-text  bi bi-key-fill"></span>
+   <input type="password" class="form-control" value="" disabled>
+ </div>
+ <div class="input-group flex-nowrap mt-3 ">
+   <span class="input-group-text  bi bi-envelope-at-fill">
+   <i class="bi bi-envelope-fill"></i>   </span>
+   <input type="text" class="form-control" value="" disabled>
+ </div>
+ <div class="input-group flex-nowrap mt-3 ">
+   <span class="input-group-text  bi bi-telephone-fill"></span>
+   <input type="text" class="form-control" value="" disabled>
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <!-- <button    class="btn btn-secondary" style="background-color:#e45c27;"   ><a style="  text-decoration:none; color: white; " href=""> Edit </a></button> -->
+         <button    class="btn btn-secondary"  style="background-color:#e45c27;" ><a style="  text-decoration:none; color: white;" href="{{Route('update_data')}}"> Edit </a></button>
+
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>   
+ 
+ 
+ 
+ 
+ <!-- Navbar End -->
 
 
     <!-- Carousel Start -->

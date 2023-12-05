@@ -17,9 +17,12 @@ Route::get('/', function () {
     return view('front_office/home/index');
 })->name('home');
 
-Route::get('/tt', function () {
-    return view('front_office/layouts/master');
-});
+
+
+Route::get('/update_data', function () {
+    return view('front_office/update_data');
+})->name('update_data');
+
 
 
 Route::get('/identification', function () {
