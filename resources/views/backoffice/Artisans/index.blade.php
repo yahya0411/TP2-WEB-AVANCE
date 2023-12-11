@@ -13,7 +13,7 @@
                     <div class="icon">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('product.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -68,7 +68,7 @@
             <div class="col-md-7">
                 <div class="card card-default">
                     <div class="card-header">
-                    <h3 class="card-title">monthly commands</h3>
+                    <h3 class="card-title">Monthly commands</h3>
                     <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
@@ -97,13 +97,35 @@
                     </button>
                     </div>
                     </div>
-                    <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                    <div class="card-body">
+                        <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
                     <canvas id="myChart2" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 250px%; display: block; width: 488px;" width="488" height="250" class="chartjs-render-monitor"></canvas>
                     </div>
 
                     </div>
             </div>
 
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-default">
+                    <div class="card-header">
+                            <h3 class="card-title">Monthly Earning</h3>
+                        <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                        </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas id="myChart3" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%; display: block; width: 488px;" width="488" height="250" class="chartjs-render-monitor"></canvas>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <!-- Main row -->
@@ -114,7 +136,7 @@
 <script>
     const ctx = document.getElementById('myChart');
     const ctx2 = document.getElementById('myChart2');
-
+    const ctx3 = document.getElementById('myChart3');
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -133,6 +155,7 @@
         }
       }
     });
+
     new Chart(ctx2, {
         type: 'doughnut',
   data: {
@@ -155,7 +178,26 @@
 
 
     });
-
+    new Chart(ctx3, {
+        type: 'bar',
+        data: {
+        labels: ['January', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
+        datasets: [{
+          label: '# dz',
+          data: [12, 19, 3, 5, 2, 3],
+          backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(255, 159, 64, 0.2)',
+      'rgba(255, 205, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(201, 203, 207, 0.2)'
+    ],
+          borderWidth: 1
+        }]
+      },
+    });
   </script>
 
 @endsection
