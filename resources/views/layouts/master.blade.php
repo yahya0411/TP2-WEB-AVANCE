@@ -45,15 +45,15 @@
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
-        <a href="{{Route('home')}}" class="navbar-brand ms-4 ms-lg-0">
-            <h1 class="text-primary m-0">Tlemcen Testies</h1>
+        <a href="{{Route('index')}}" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="text-primary m-0"style="color:#EAA636;" >Tlemcen Testies</h1>
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav mx-auto p-4 p-lg-0">
-                <a href="{{Route('home')}}" class="nav-item nav-link ">Home</a>
+                <a href="{{Route('index')}}" class="nav-item nav-link ">Home</a>
                 <a href="{{Route('about')}}" class="nav-item nav-link">About</a>
                 <a href="{{Route('serivices')}}" class="nav-item nav-link">Services</a>
                 <a href="{{Route('products')}}" class="nav-item nav-link">Products</a>
@@ -62,7 +62,6 @@
                     <div class="dropdown-menu m-0">
                         <a href="{{Route('team')}}" class="dropdown-item">Our Team</a>
                         <a href="{{Route('testimonial')}}" class="dropdown-item">Testimonial</a>
-                        <a href="{{Route('404')}}" class="dropdown-item">404 Page</a>
                     </div>
                 </div>
                 <a href="{{Route('contact')}}" class="nav-item nav-link">Contact</a>
@@ -82,9 +81,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left:30rem;" >
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#EAA636;" href="{{Route('testimonial')}}" id="navbarDropdown"
+                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#ffffff;" href="{{Route('testimonial')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                                <i class="bi bi-search text-primary me-2  " style="color:#EAA636;"></i>  <span style="color:#EAA636;">Search</span>
+                                <i class="bi bi-search text-primary me-2  " style="color:#ffffff;"></i>  <span style="color:#ffffff;">Search</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
                                 <li><a class="dropdown-item" href="{{Route('testimonial')}}">Artisan Finder</a></li>
@@ -98,14 +97,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#EAA636;" href="#" id="navbarDropdown"
+                            <a class="nav-link dropdown-toggle second-text fw-bold " style="color:#ffffff;" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                                <i class="bi bi-person-fill me-2" style="color:#EAA636;"></i>   <span style="color:#EAA636;">Account</span>
+                                <i class="bi bi-person-fill me-2" style="color:#ffffff;"></i>   <span style="color:#ffffff;">Account</span>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Profile Data</a></li>
-                                <li><a class="dropdown-item" href="#" >Order History</a></li>
-                                <li><a class="dropdown-item" href="#" >Delivery Review</a></li>
+                                <li><a class="dropdown-item" href="{{Route('history')}}" >Order History</a></li>
+                                <!-- <li><a class="dropdown-item" href="#" >Delivery Review</a></li> -->
 
 
                                 <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Log Out</a></li>
@@ -135,25 +134,25 @@
          <h1 class="modal-title fs-5">Profile</h1>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
-     <form  method="post" action="">
+     <form  method="" action="">
        <div class="modal-body">
-       <div class="input-group flex-nowrap">
-   <span class="input-group-text bi bi-person-fill"></span>
-   <input type="text" class="form-control" value="" disabled>
- </div>
- <div class="input-group flex-nowrap mt-3 ">
-   <span class="input-group-text  bi bi-key-fill"></span>
-   <input type="password" class="form-control" value="" disabled>
- </div>
- <div class="input-group flex-nowrap mt-3 ">
-   <span class="input-group-text  bi bi-envelope-at-fill">
-   <i class="bi bi-envelope-fill"></i>   </span>
-   <input type="text" class="form-control" value="" disabled>
- </div>
- <div class="input-group flex-nowrap mt-3 ">
-   <span class="input-group-text  bi bi-telephone-fill"></span>
-   <input type="text" class="form-control" value="" disabled>
- </div>
+                <div class="input-group flex-nowrap">
+            <span class="input-group-text bi bi-person-fill"></span>
+            <input type="text" class="form-control" value="" disabled>
+            </div>
+            <div class="input-group flex-nowrap mt-3 ">
+            <span class="input-group-text  bi bi-key-fill"></span>
+            <input type="password" class="form-control" value="" disabled>
+            </div>
+            <div class="input-group flex-nowrap mt-3 ">
+            <span class="input-group-text  bi bi-envelope-at-fill">
+            <i class="bi bi-envelope-fill"></i>   </span>
+            <input type="text" class="form-control" value="" disabled>
+            </div>
+            <div class="input-group flex-nowrap mt-3 ">
+            <span class="input-group-text  bi bi-telephone-fill"></span>
+            <input type="text" class="form-control" value="" disabled>
+            </div>
  
  
  
@@ -165,9 +164,9 @@
          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
          <!-- <button    class="btn btn-secondary" style="background-color:#e45c27;"   ><a style="  text-decoration:none; color: white; " href=""> Edit </a></button> -->
          <button    class="btn btn-secondary"  style="background-color:#e45c27;" ><a style="  text-decoration:none; color: white;" href="{{Route('update_data')}}"> Edit </a></button>
+         </div>
 
          </form>
-       </div>
      </div>
    </div>
  </div>   
@@ -190,7 +189,7 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-light mb-4">Office Address</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>01 November Ave, Tlemcen, Algeria</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                     <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                     <div class="d-flex pt-2">
@@ -250,13 +249,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                    &copy; <a href="#">Tlemcen Testies </a>, All Right Reserved.
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                    <br>Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                </div>
+
             </div>
         </div>
     </div>

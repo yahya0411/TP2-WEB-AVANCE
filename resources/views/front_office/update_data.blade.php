@@ -18,13 +18,13 @@
 <body>
 
 <nav class="nav">
-        <a class="logo" href="{{Route('home')}}">Tlemcen Testies</a>
+        <a class="logo" href="{{Route('index')}}">Tlemcen Testies</a>
 
     </nav>
 
 
 
-    <form method="POST" >
+    <form method="" >
 
         <fieldset>
             

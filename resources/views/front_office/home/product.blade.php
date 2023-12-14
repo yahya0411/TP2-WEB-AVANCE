@@ -3,6 +3,8 @@
 @section('Mystyle')
 
 <link href="{{asset('css/product.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 @endsection
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
@@ -182,8 +184,7 @@
 
                    <h2 >Pain Chocó <br>                 </h2>
 
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+                   <br> 
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -197,7 +198,7 @@
 
                 <h2 >10,00 DA <br>
                 <p></p>
-                <button >Buy Now</button>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
             </div>
         </div>
 
@@ -207,8 +208,7 @@
             <img src="img/pain_choco.jpg">
 
                    <h2 >Pain Chocó Double Chocolat<br>                 </h2>
-
-                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                   <br> 
 
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -223,7 +223,7 @@
 
                 <h2 >12,50 DA <br>
                 <p></p>
-                <button >Buy Now</button>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
             </div>
         </div>
 
@@ -234,8 +234,7 @@
             <img src="img/petit_pain.jpg">
 
                    <h2 >Pain Chocó Sucrè<br>                 </h2>
-
-                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                   <br> 
 
                         <span class="fa fa-star checked"></span>
                         <span class="fa fa-star checked"></span>
@@ -250,7 +249,7 @@
 
                 <h2 >15,00 DA<br>
                 <p></p>
-                <button >Buy Now</button>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
             </div>
         </div>
     </div>

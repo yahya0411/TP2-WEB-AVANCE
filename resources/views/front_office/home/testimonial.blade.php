@@ -170,7 +170,8 @@
                                               <p></p>
                                               <h6 class="mb-1" >Type of Product : Sweety</h5>
                                               <p></p>
-                                              <button class="btn btn-primary btn-sm"  >View Profile</button>
+                                              <button class="btn btn-primary btn-sm"  onclick="window.location='{{ route('profile') }}'" >View Profile </button>
+
 
                                           </div>
 
@@ -215,7 +216,7 @@
                                               <p></p>
                                               <h6 class="mb-1" >Type of Product : Salty</h5>
                                               <p></p>
-                                              <button class="btn btn-primary btn-sm"  >View Profile</button>
+                                              <button class="btn btn-primary btn-sm"  onclick="window.location='{{ route('profile') }}'" >View Profile </button>
 
                                           </div>
 
@@ -264,7 +265,7 @@
                                               <p></p>
                                               <h6 class="mb-1" >Type of Product : Sweety</h5>
                                               <p></p>
-                                              <button class="btn btn-primary btn-sm"  >View Profile</button>
+                                              <button class="btn btn-primary btn-sm"  onclick="window.location='{{ route('profile') }}'" >View Profile </button>
 
                                           </div>
 
