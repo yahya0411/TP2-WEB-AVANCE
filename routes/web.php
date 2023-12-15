@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\AuthController;
 
 
 /*
@@ -22,5 +23,11 @@ Route::get('/', function () {
 Route::get('/pro', function () {
     return view('backoffice.Products.show');
 });
+Route::get('/register', [AuthController::class ,'register'])->name('register');
+Route::post('/register', [AuthController::class ,'registerpost'])->name('register');
+Route::get('/login', [AuthController::class ,'login'])->name('login');
+Route::post('/login', [AuthController::class ,'loginPost'])->name('login');
+Route::post('/login', [AuthController::class ,'logout'])->name('logout');
+
 Route::resource('artisan', ArtisanController::class);
 Route::resource('product', ProductController::class);
