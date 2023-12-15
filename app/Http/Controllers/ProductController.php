@@ -44,12 +44,12 @@ class ProductController extends Controller
          {
             foreach($request->file('images') as $image)
             {
-                $imageName = $product->nom_produit . '-image' . $image->extension();
+                $imageName = $product->nom_produit . '-image' . time() . rand(1,1000).'.' . $image->extension();
                 $image->move(public_path('product_image'),$imageName);
 
                 Image::create([
                     'product_id' => $product->id,
-                    'image' => $imageName
+                    'name' => $imageName
                 ]);
             }
 
@@ -64,8 +64,10 @@ class ProductController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        return view('backoffice.Products.show',['product' => Product::findOrFail($id),'images' => Image::all()]);
+    {           $product = Product::findOrFail($id);
+                $images = $product->images;
+
+        return view('backoffice.Products.show',compact('product','images'));
     }
 
     /**
@@ -103,5 +105,9 @@ class ProductController extends Controller
         return  redirect()->route('product.index');
 
 
+    }
+    public function images($id)
+    {
+        $product = Product::findOrFail($id);
     }
 }

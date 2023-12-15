@@ -16,18 +16,16 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleSelectBorder">Type </label>
-            <select class="form-control" value="{{old('typeproduct',optional($product ?? null)->type_produit)}}" id="exampleSelectBorder" name="typeproduct">
-              <option>Sucré</option>
-              <option>Salé</option>
+            <select class="form-control" value="{{old('typeproduct',optional($product ?? null)->type_produit)}}" id="select1" name="typeproduct">
+                <option value="">Select Type</option>
             </select>
           </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleSelectBorder">Sub type </label>
-            <select class="form-control" value="{{old('subtypeproduct',optional($product ?? null)->sous_type)}}" id="exampleSelectBorder" name="subtypeproduct">
-              <option>Sucré</option>
-              <option>Salé</option>
+            <select class="form-control" value="{{old('subtypeproduct',optional($product ?? null)->sous_type)}}" id="select2" name="subtypeproduct">
+
             </select>
           </div>
     </div>
@@ -66,9 +64,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="">Description</label>
-              <textarea name="descriptionproduct" class="form-control" rows="3" placeholder="Enter description of product" data-lt-tmp-id="lt-685507" spellcheck="false" data-gramm="false">
-                {{old('descriptionproduct',optional($product ?? null)->description)}}
-              </textarea>
+              <textarea name="descriptionproduct" class="form-control" rows="3" placeholder="Enter description of product" data-lt-tmp-id="lt-685507" spellcheck="false" data-gramm="false">{{old('descriptionproduct',optional($product ?? null)->description)}}</textarea>
             </div>
 
     </div>

@@ -28,11 +28,10 @@
                 <div class="col-md-7">
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($images->where('product_id','==',$product->id) as $image)
+                            @foreach ($images as $image)
                             <div class="col-md-4">
-                                <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white" data-gallery="gallery">
-                                <img src='{{asset("/product_image/$product->id.jpg")}}' class="img-fluid mb-2" alt="white sample">
-                                </a>
+                                <img src='{{asset("/product_image/$image->name")}}' class="img-fluid mb-2" alt="white sample"/>
+
                           </div>
                         @endforeach
                         </div>
@@ -54,7 +53,7 @@
                   <span class="review-no">41 reviews</span>
               </div>
               <p class="product-description">{{$product->description}}.</p>
-              <h4 class="price"> price: <span>DZ {{$product->prix_par_piéce}}</span></h4>
+              <h4 class="price"> unite price: <span>DZ {{$product->prix_par_piéce}}</span></h4>
 
                 </div>
             </div>

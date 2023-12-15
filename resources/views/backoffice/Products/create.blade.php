@@ -31,6 +31,45 @@
         </form>
     </div>
 </div>
+@section('script')
+<script>
+    let opt = ['sucre','salle'];
+    let sucre = ['patisserie','viennoiserie'];
+    let salle = ['mini-pizza','bourak','petit four'];
+
+    let selt1 = document.getElementById('select1');
+    let selt2 = document.getElementById('select2');
+
+opt.forEach(function addItem(Item){
+   let option = document.createElement("option");
+   option.text = Item;
+   option.value = Item;
+   selt1.appendChild(option);
+});
+
+function addtoSelt2(arr) {
+    arr.forEach(function (Item){
+    let option = document.createElement("option");
+         option.text = Item;
+   option.value = Item;
+   selt2.appendChild(option);
+
+    });
+   }
+
+selt1.onchange = function(){
+   selt2.innerHTML = "<option></option>";
+   if(this.value == "sucre")
+    {
+        addtoSelt2(sucre)
+    }
+    if(this.value == "salle")
+    {
+        addtoSelt2(salle);
+    }
+}
+</script>
+@endsection
 @if (session('status'))
 @section('script')
 <script>
