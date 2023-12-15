@@ -18,7 +18,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
 <div class="login-logo">
-<a href="../../index2.html"><b>Admin</b>LTE</a>
+<a href="{{route('login')}}"><b>TLemcen</b>Testies</a>
 </div>
 
 <div class="card">
@@ -44,12 +44,6 @@
 </div>
 <div class="row">
 <div class="col-8">
-<div class="icheck-primary">
-<input type="checkbox" id="remember">
-<label for="remember">
-Remember Me
-</label>
-</div>
 </div>
 
 <div class="col-4">

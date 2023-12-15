@@ -23,11 +23,12 @@ Route::get('/', function () {
 Route::get('/pro', function () {
     return view('backoffice.Products.show');
 });
+Route::resource('artisan', ArtisanController::class)->middleware('auth');
+Route::resource('product', ProductController::class)->middleware('auth');
+
 Route::get('/register', [AuthController::class ,'register'])->name('register');
 Route::post('/register', [AuthController::class ,'registerpost'])->name('register');
 Route::get('/login', [AuthController::class ,'login'])->name('login');
 Route::post('/login', [AuthController::class ,'loginPost'])->name('login');
-Route::post('/login', [AuthController::class ,'logout'])->name('logout');
+Route::delete('/logout', [AuthController::class ,'logout'])->name('logout');
 
-Route::resource('artisan', ArtisanController::class);
-Route::resource('product', ProductController::class);
