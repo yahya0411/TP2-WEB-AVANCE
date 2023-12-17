@@ -28,4 +28,17 @@ class User extends Model
      {
         return $this->hasOne(Livreur::class, 'ID_User');
       }
+      public function isArtisan()
+      {
+          return $this->Role === 'Artisan';
+      }
+      public function isConsommateur()
+      {
+          return $this->Role === 'Consommateur';
+      }
+      public function isLivreur()
+      {
+          return $this->Role === 'Livreur';
+      }
+      
 }

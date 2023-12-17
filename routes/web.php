@@ -1,26 +1,24 @@
 <?php
 
-use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\ProduitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
-
+use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front_office/home/index');
+})->name('home');
+
+
+
+Route::get('/tt', function () {
+    return view('front_office/layouts/master');
 });
 
-use App\Http\Controllers\ConsommateurController;
-use App\Models\User;
 
-/*Route::group(['prefix' => 'backoffice/Consommateurs'], function () {
-    
-  //  Route::post('inscription', [UserController::class, 'handleInscription'])->name('consommateur.inscription.handle');
 
-    Route::get('formulaire-recherche',[ArtisanController::class, 'afficherForm'])->name('consommateur.recheche.form');;
 
-    Route::get('recherche-artisans', [ArtisanController::class, 'rechercheArtisans'])->name('recherche.artisans');
-});*/
 
 
 Route::get('backoffice/artisans', function () {
@@ -41,7 +39,6 @@ Route::get('/identification', function () {
 })->name('formular');
 
 Route::get('identification/signup', [UserController::class, 'handleInscription'])->name('identification.signup');
-
 
 Route::get('/aboutt', function () {
     return view('front_office/home/about');

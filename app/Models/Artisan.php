@@ -12,4 +12,9 @@ class Artisan extends Model
         'téléphone',
         'Email', 
     ];
+    protected $primaryKey = 'id_artisan';
+    public function produits()
+{
+    return $this->hasMany(Produit::class, 'id_artisan');
+}
 }
