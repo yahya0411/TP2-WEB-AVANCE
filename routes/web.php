@@ -40,6 +40,7 @@ Route::get('/profile_consult/profile', function () {
     return view('front_office/home/artisanprof');
 })->name('profile');
 
+Route::get('/profile_consult/profile', [ArtisanController::class, 'ProfilArtisan'])->name('profile');
 
 Route::get('/history', function () {
     return view('front_office/history');
@@ -50,6 +51,10 @@ Route::get('/identification', function () {
 })->name('formular');
 
 Route::get('identification/signup', [UserController::class, 'handleInscription'])->name('identification.signup');
+Route::get('identification/signup', [UserController::class, 'handleInscription'])->name('identification.signup');
+Route::get('identification/signin',[AuthController::class, 'login'])->name('login');
+Route::post('identification/signin',[AuthController::class, 'loginPost'])->name('login');
+Route::get('/logout',[AuthController::class, 'logout'])->name('logout');
 
 Route::get('/aboutt', function () {
     return view('front_office/home/about');
@@ -58,9 +63,14 @@ Route::get('/aboutt', function () {
 Route::get('/serivice', function () {
     return view('front_office/home/service');
 })->name('serivices');
-Route::get('/product', function () {
-    return view('front_office/home/product');
-})->name('products');
+
+
+Route::get('/product', [ProduitController::class, 'index'])->name('products');
+
+Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
+
+Route::get('/Testimonial', [ArtisanController::class, 'index'])->name('testimonial');
+Route::get('/Testimonial', [ArtisanController::class, 'searchArtisans'])->name('testimonial');
 
 Route::get('/Team', function () {
     return view('front_office/home/team');
