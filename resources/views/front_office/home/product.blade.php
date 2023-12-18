@@ -3,9 +3,9 @@
 @section('Mystyle')
 
 <link href="{{asset('css/product.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 @endsection
-
-
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center pt-5 pb-3">
@@ -54,11 +54,11 @@
                             </select>
                           </div>
                         </div>
-                     
+
                         <div class="input-field">
                           <div class="input-select">
-                            <select id="star-rating" name="stars">
-                              <option placeholder="" value="">Stars</option>
+                            <select id="star-rating">
+                              <option placeholder="" value="">Rating</option>
                             <option value="1">1 star</option>
                             <option value="2">2 stars</option>
                             <option value="3">3 stars</option>
@@ -67,12 +67,12 @@
                           </select>
                         </div>
                       </div>
-          
-          
+
+
                       </div>
-                      
+
                       <div class="row second">
-          
+
                                     <div class="card">
                                       <div class="price-content">
                                         <div>
@@ -94,15 +94,14 @@
                                       </div>
                                     </div>
                       </div>
-                      
+
                       <div class="row third">
                         <div class="input-field">
-                          <div class="result-count">
-                            </div>
+<p></p>
                           <div class="group-btn">
-                            <button class="btn-delete" id="delete">Reset</button>
                             <button class="btn-search">Search</button>
                           </div>
+                          <p></p>
                         </div>
                       </div>
                     </div>
@@ -170,11 +169,11 @@
                             </div>
                             <span></span>
                         </h2>
-                        <p style="color: red;">
+                        <p style="visibility:hidden;">
                             {{ $product->description }}
                         </p>
                         <h3>{{ $product->prix_par_piéce }} DA</h3>
-                        <button onclick="window.location=''">See Product</button>
+                        <a href="{{ route('profile', ['artisan' => $artisan->nom_artisan]) }}"><button onclick="window.location=''">See Product</button></a>
                     </div>
                 </div>
                 @endforeach
@@ -304,6 +303,134 @@
 
 
     <script src="js/choices.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="containeraa "  >
+        
+        <div class="details">
+            <div class="content">
+            <img src="img/pain_choco.jpg">
+
+                   <h2 >Pain Chocó <br>                 </h2>
+
+                   <br> 
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
+                </p>
+
+                <h2 >10,00 DA <br>
+                <p></p>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
+            </div>
+        </div>
+
+
+        <div class="details2">
+            <div class="content2">
+            <img src="img/pain_choco.jpg">
+
+                   <h2 >Pain Chocó Double Chocolat<br>                 </h2>
+                   <br> 
+
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
+                </p>
+
+                <h2 >12,50 DA <br>
+                <p></p>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
+            </div>
+        </div>
+
+
+
+        <div class="details3">
+            <div class="content3">
+            <img src="img/petit_pain.jpg">
+
+                   <h2 >Pain Chocó Sucrè<br>                 </h2>
+                   <br> 
+
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+
+                <p style="visibility:hidden;">
+
+                    Cushioned Comfort
+                </p>
+
+                <h2 >15,00 DA<br>
+                <p></p>
+                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <!-- Product End -->
+
+
+
+@section('script')
+
+    <script src="{{asset('js/choices.js')}}"></script>
     <script>
 
 const minPriceSlider = document.getElementById('min-price-slider');
