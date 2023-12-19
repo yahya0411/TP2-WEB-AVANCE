@@ -34,9 +34,7 @@
             
             <br>
             <h2>
-                <legend>
-                        <p>Personal Info</p>
-                </legend>
+                        <p style="text-align:center;">Personal Info</p>
             </h2>
 
             <br>

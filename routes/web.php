@@ -33,6 +33,9 @@ Route::get('/product_consult/artisan_rev', function () {
     return view('front_office/home/review_artisan');
 })->name('artisan_re');
 
+Route::get('/product_consult/cart', function () {
+    return view('front_office/home/cart');
+})->name('cart');
 
 
 
