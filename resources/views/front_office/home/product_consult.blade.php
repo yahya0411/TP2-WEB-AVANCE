@@ -85,7 +85,7 @@
                   <br>
 
 
-                  <button onclick="window.location='{{ route('cart') }}'">Buy Now</button>        
+                  <button onclick="window.location='{{ route('cart') }}'">Add to Cart</button>        
 
                   
             </div>

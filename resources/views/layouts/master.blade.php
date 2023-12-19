@@ -29,7 +29,6 @@
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
-
     @yield('Mystyle')
 </head>
 
@@ -158,12 +157,10 @@
  
  
  
- 
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-         <!-- <button    class="btn btn-secondary" style="background-color:#e45c27;"   ><a style="  text-decoration:none; color: white; " href=""> Edit </a></button> -->
-         <button    class="btn btn-secondary"  style="background-color:#e45c27;" ><a style="  text-decoration:none; color: white;" href="{{Route('update_data')}}"> Edit </a></button>
+         <button    class="btn btn-primary"  style="background-color:#e45c27;" ><a style="  text-decoration:none; color: white;" href="{{Route('update_data')}}"> Edit </a></button>
          </div>
 
          </form>
@@ -219,22 +216,26 @@
                     <h4 class="text-light mb-4">Photo Gallery</h4>
                     <div class="row g-2">
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-1.jpg" alt="Image">
+
+
+                            
+
+                            <img class="img-fluid bg-light rounded p-1" src="   {{asset('img/product-1.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-2.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-2.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-3.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-3.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-2.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-2.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-3.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-3.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-1.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-1.jpg')}}" alt="Image">
                         </div>
                     </div>
                 </div>
