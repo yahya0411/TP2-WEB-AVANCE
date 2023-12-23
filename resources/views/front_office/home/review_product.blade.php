@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link href="{{asset('css/review.css')}}" rel="stylesheet"/>
 
-   
   </head>
   <body>
     <div class="container">
@@ -36,22 +35,33 @@
       </div>
     </div>
     <script>
-  const btn = document.querySelector("button");
-  const post = document.querySelector(".post");
-  const widget = document.querySelector(".star-widget");
-  const editBtn = document.querySelector(".edit");
-  btn.onclick = () => {
+const btn = document.querySelector("button");
+const post = document.querySelector(".post"); 
+const widget = document.querySelector(".star-widget");
+
+let submitted = false; 
+
+btn.onclick = (e) => {
+
+  e.preventDefault();
+
+  if (!submitted) {
+    submitted = true;
     widget.style.display = "none";
     post.style.display = "block";
-    editBtn.onclick = () => {
-      widget.style.display = "block";
-      post.style.display = "none";
-    }
     setTimeout(function(){
       window.location='{{ route('product_consult') }}';
-    }, 5000); // 5000 milliseconds = 5 seconds
-  }
+    }, 3000);
+
+  } else {
+    setTimeout(function(){
+      window.location='{{ route('product_consult') }}';
+    }, 3000);  }
+
+}
 </script>
 
   </body>
 </html>
+
+
