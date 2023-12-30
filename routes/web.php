@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ConsumerController;
 
 
 
@@ -12,8 +13,11 @@ Route::get('/index', function () {
     return view('front_office/home/index');
 })->name('index');
 
-Route::get('/update_data', function () {
-    return view('front_office/update_data');
+
+Route::resource('consommateur',ConsumerController::class);
+
+Route::get('/update', function () {
+    return view('front_office/edit');
 })->name('update_data');
 
 
@@ -34,7 +38,9 @@ Route::get('/product_consult/artisan_rev', function () {
 })->name('artisan_re');
 
 
-
+Route::get('/product_consult/cart', function () {
+    return view('front_office/home/cart');
+})->name('cart');
 
 Route::get('/profile_consult/profile', function () {
     return view('front_office/home/artisanprof');
@@ -64,10 +70,21 @@ Route::get('/serivice', function () {
     return view('front_office/home/service');
 })->name('serivices');
 
+Route::get('/checkout', function () {
+    return view('front_office/home/checkout');
+})->name('checkout');
+
+Route::get('/product_consult', function () {
+    return view('front_office/home/product_consult');
+})->name('product_consult');
+
+Route::get('/product_consult', [ProduitController::class, 'ProductDetails'])->name('product_consult');
 
 Route::get('/product', [ProduitController::class, 'index'])->name('products');
 
 Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
+
+Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');
 
 Route::get('/Testimonial', [ArtisanController::class, 'index'])->name('testimonial');
 Route::get('/Testimonial', [ArtisanController::class, 'searchArtisans'])->name('testimonial');

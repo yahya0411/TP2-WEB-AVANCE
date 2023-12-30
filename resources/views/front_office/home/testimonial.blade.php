@@ -157,15 +157,9 @@
 
 
 
-                            <span></span>
-                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                      <span></span>
+                            @for ($i = 1; $i <= 5; $i++)
+                  <span class="fa fa-star{{ $i <= $artisan->avg_rating ? ' checked' : '' }}"></span>
+                         @endfor
 
                             <h6 class="mb-1" style="margin-top:8px;">Common: {{$artisan->commune}}</h5>
 

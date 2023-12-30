@@ -1,39 +1,39 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  .booking-history {
-    position: absolute;
-    top: 9%;
-    left: 1.5%;
-    width: 99%;
-    margin: 0 auto;
-  }
-  .booking-history h1 {
-    text-align: center;
-    text-align: left;
-    margin-bottom: 30px;
-  }
-  .booking-history table {
-    position: relative;
-    border-collapse: collapse;
-    width: 98%;
-    right: 1%;
+  font-family: Arial, sans-serif;
+}
+.booking-history {
+  position: absolute;
+  top: 9%;
+  left: 1.5%;
+  width: 99%;
+  margin: 0 auto;
+}
+.booking-history h1 {
+  text-align: center;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.booking-history table {
+  position: relative;
+  border-collapse: collapse;
+  width: 98%;
+  right: 1%;
 
-  }
-
-
-  .booking-history th,
-  .booking-history td {
-    border: 1px solid #ffffff;
-    text-align: left;
-    padding: 8px;
-  }
-  .booking-history tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+}
 
 
-  body {
+.booking-history th,
+.booking-history td {
+  border: 1px solid #ffffff;
+  text-align: left;
+  padding: 8px;
+}
+.booking-history tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+body {
 background-color: rgb(255,255,255);
 }
 

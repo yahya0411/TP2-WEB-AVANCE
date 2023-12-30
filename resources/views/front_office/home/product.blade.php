@@ -3,9 +3,9 @@
 @section('Mystyle')
 
 <link href="{{asset('css/product.css')}}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 @endsection
+
+
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
         <div class="container text-center pt-5 pb-3">
@@ -54,11 +54,11 @@
                             </select>
                           </div>
                         </div>
-
+                     
                         <div class="input-field">
                           <div class="input-select">
-                            <select id="star-rating">
-                              <option placeholder="" value="">Rating</option>
+                            <select id="star-rating" name="stars">
+                              <option placeholder="" value="">Stars</option>
                             <option value="1">1 star</option>
                             <option value="2">2 stars</option>
                             <option value="3">3 stars</option>
@@ -67,12 +67,12 @@
                           </select>
                         </div>
                       </div>
-
-
+          
+          
                       </div>
-
+                      
                       <div class="row second">
-
+          
                                     <div class="card">
                                       <div class="price-content">
                                         <div>
@@ -94,14 +94,15 @@
                                       </div>
                                     </div>
                       </div>
-
+                      
                       <div class="row third">
                         <div class="input-field">
-<p></p>
+                          <div class="result-count">
+                            </div>
                           <div class="group-btn">
+                            <button class="btn-delete" id="delete">Reset</button>
                             <button class="btn-search">Search</button>
                           </div>
-                          <p></p>
                         </div>
                       </div>
                     </div>
@@ -130,10 +131,10 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
 
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Price : Low To High</a></li>
+                <li><a class="dropdown-item" href="{{ route('products', ['sortType' => 'price_low_high']) }}">Price : Low To High</a></li>
 
-                <li><a class="dropdown-item" href=""  >Price : High To Low</a></li>
-                <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#data_client">Avg. Customer Review</a></li>
+                <li><a class="dropdown-item" href="{{ route('products', ['sortType' => 'price_high_low']) }}"  >Price : High To Low</a></li>
+                <li><a class="dropdown-item" href="{{ route('products', ['sortType' => 'rating_high_low']) }}">Avg. Customer Review</a></li>
 
 
             </ul>
@@ -142,44 +143,38 @@
 </div>
 </nav>
    
-    <div class="search-results">
+    
     @if(isset($products))
             <div class="containeraa">
             @foreach ($products as $product)
             
-            <div class="imgBx">
-            <img src="img/pain_choco.jpg">
-        </div>
                 <div class="details">
 
                     <div class="content">
-                        <h2>{{ $product->nom_produit }} <br>
-                            <span></span>
-                            <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                            <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                            </div>
-                            <span></span>
-                        </h2>
+                    @foreach ($product->images as $image)
+                    <img src="{{ asset('img/' . $image->URL) }}">
+                        <h2>{{ $product->nom_produit }}  <br> </h2>
+                          <br>
+                  @endforeach
+                            @foreach($product->evaluations as $evaluation )
+                              @for ($i = 1; $i <= 5; $i++)
+                 <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
+                 
+                     @endfor
+                     @endforeach
+                            
+              
                         <p style="visibility:hidden;">
                             {{ $product->description }}
                         </p>
-                        <h3>{{ $product->prix_par_piéce }} DA</h3>
-                        <a href="{{ route('profile', ['artisan' => $artisan->nom_artisan]) }}"><button onclick="window.location=''">See Product</button></a>
+                        <h2>{{ $product->prix_par_piéce }} DA</h3>
+                        <a href="{{ route('product_consult', ['produit' => $product->nom_produit]) }}"><button onclick="window.location='{{ route('product_consult') }}'">See Product</button></a>
                     </div>
                 </div>
                 @endforeach
             </div>
             @endif
-    </div>
+
     <!-- Page Header End -->
 
 
@@ -188,114 +183,8 @@
 
 
 
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
-            <img src="img/pain_choco.jpg">
-        </div>
-        <div class="details">
-            <div class="content">
-                <h2>Jordan Proto-Lyte <br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
-
-                </h2>
-                <p style="color: white;">
-                 
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
-                </p>
-              
-                <h3 >10,00 DA</h3>
-                <button>Buy Now</button>
-            </div>
-        </div>
-    </div>
     
-
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
-            <img src="img/pain_choco.jpg">
-        </div>
-        <div class="details">
-            <div class="content">
-                <h2>Jordan Proto-Lyte <br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
-
-                </h2>
-                <p style="color: white;">
-                 
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
-                </p>
-              
-                <h3>12,50 DA</h3>
-                <button>Buy Now</button>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="containeraa " style="margin-right: 300xp;">
-        <div class="imgBx">
-            <img src="img/petit_pain.jpg">
-        </div>
-        <div class="details">
-            <div class="content">
-                <h2>Jordan Proto-Lyte <br>
-                    <span></span>
-                    <div class="rate" style="margin-top: 20px; margin-bottom: 20px;">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                      </div>
-                      <span></span>
-
-                </h2>
-                <p style="color: white;">
-                 
-                    Cushioned Comfort: A full-length foam midsole delivers lightweight, plush cushioning.
-                    Secure Traction: Exaggerated herringbone-pattern outsole offers traction on a variety of surfaces.
-                </p>
-              
-                <h3>15,00 DA</h3>
-                <button>Buy Now</button>
-            </div>
-        </div>
-    </div>
-    -->
-    <!-- Product End -->
+    Product End -->
     @section('script')
 
 
@@ -303,134 +192,6 @@
 
 
     <script src="js/choices.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="containeraa "  >
-        
-        <div class="details">
-            <div class="content">
-            <img src="img/pain_choco.jpg">
-
-                   <h2 >Pain Chocó <br>                 </h2>
-
-                   <br> 
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-
-                <p style="visibility:hidden;">
-
-                    Cushioned Comfort
-                </p>
-
-                <h2 >10,00 DA <br>
-                <p></p>
-                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
-            </div>
-        </div>
-
-
-        <div class="details2">
-            <div class="content2">
-            <img src="img/pain_choco.jpg">
-
-                   <h2 >Pain Chocó Double Chocolat<br>                 </h2>
-                   <br> 
-
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-
-                <p style="visibility:hidden;">
-
-                    Cushioned Comfort
-                </p>
-
-                <h2 >12,50 DA <br>
-                <p></p>
-                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
-            </div>
-        </div>
-
-
-
-        <div class="details3">
-            <div class="content3">
-            <img src="img/petit_pain.jpg">
-
-                   <h2 >Pain Chocó Sucrè<br>                 </h2>
-                   <br> 
-
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-
-                <p style="visibility:hidden;">
-
-                    Cushioned Comfort
-                </p>
-
-                <h2 >15,00 DA<br>
-                <p></p>
-                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
-            </div>
-        </div>
-    </div>
-
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-    <!-- Product End -->
-
-
-
-@section('script')
-
-    <script src="{{asset('js/choices.js')}}"></script>
     <script>
 
 const minPriceSlider = document.getElementById('min-price-slider');

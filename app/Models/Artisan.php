@@ -14,7 +14,11 @@ class Artisan extends Model
     ];
     protected $primaryKey = 'id_artisan';
     public function produits()
-{
+      {
     return $this->hasMany(Produit::class, 'id_artisan');
-}
+      }
+public function evaluations()
+  {
+    return $this->hasMany(Evaluation::class , 'Id_Evaluation ');
+  }
 }

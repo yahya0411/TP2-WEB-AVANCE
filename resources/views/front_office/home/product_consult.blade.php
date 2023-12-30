@@ -30,19 +30,19 @@
         <div class="item-info-parent">
             <!-- main info -->
             <div class="main-info">
-                <h2>Pain Chocó Double Chocolat</h2>
-                <h6><a href="">Craftsman: Bake_house</a></h6>
-
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span > (13 reviews)</span>
+            
+                <h2>{{$produit->nom_produit}}</h2>
+                <h6><a href="">{{ strtoupper($produit->artisan->nom_artisan) }}</a></h6>
+                @foreach($produit->evaluations as $evaluation )
+                @for ($i = 1; $i <= 5; $i++)
+                 <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
+                     @endfor
+                     @endforeach
+                <span > {{count($produit->evaluations)}} Reviews</span>
 
             </div>
   <br>
-            <p>Price: <span id="price">12,50 DA</span></p>
+            <p>Price: <span id="price">{{$produit->prix_par_piéce}} DA</span></p>
 
           
             <div class="change-color">
@@ -84,8 +84,8 @@
                   </div>
                   <br>
 
-
-                  <button onclick="window.location='{{ route('checkout') }}'">Buy Now</button>        
+                  
+                  <button onclick="window.location='{{ route('cart') }}'">Add to Cart</button>        
 
                   
             </div>
@@ -97,57 +97,35 @@
 </h3>
 
 <br>
+
         <div class="card" style="width: 100%; padding-left:30px;">
+        @if($produit->evaluations && count($produit->evaluations) > 0)
+        @foreach($produit->evaluations as $evaluation)
+        
   <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+  <h5 class="card-title">
+  @foreach($evaluation->faires as $faire)
+    
+     {{$faire->consommateur->nom_consommateur}} 
+      {{$faire->consommateur->prénom_consommateur}}
+  
+  @endforeach
+  </h5>
+    
+    @for ($i = 1; $i <= 5; $i++)
+    <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
+@endfor
+
                         <br>
-    <p class="card-text">comment</p>
+    <p class="card-text">{{$evaluation->commentaire}}</p>
 
   </div>
+  
+  @endforeach
+  @else
+        <h3>No evaluations available.</h3>
+   @endif
 </div>
-
-
-
-
-<div class="card" style="width: 100%; padding-left:30px;">
-  <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <br>
-    <p class="card-text">comment</p>
-
-  </div>
-</div>
-
-
-
-<div class="card" style="width: 100%; padding-left:30px;">
-  <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <br>
-    <p class="card-text">comment</p>
-
-  </div>
-</div>
-
-
-
-
-
 
 
 

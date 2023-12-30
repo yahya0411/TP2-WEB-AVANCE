@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Artisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\DB;
 class ArtisanController extends Controller
 {
     /*
@@ -57,19 +58,21 @@ class ArtisanController extends Controller
         else if ($commune) {
             $query->where('commune', 'like', '%' .$commune . '%');
         }
-
+        $query->leftJoin('evaluations', 'artisans.id_artisan', '=', 'evaluations.id_artisan')
+                ->select('artisans.*', DB::raw('AVG(evaluations.Note) as avg_rating'))
+                ->groupBy('artisans.id_artisan');
         $artisans = $query->get();
 
-        // Retourner les résultats à la vue
        return view('front_office/home/testimonial', ['artisans' => $artisans]);
       
     }
     
     public function ProfilArtisan(Request $request)
     {
-        $artisan = $request->input('artisan');
-        
+        $param = $request->input('artisan');
+        $artisan = Artisan::where('nom_artisan', $param)->first();
 
+        $products = $artisan->produits;
         return view('front_office/home/artisanprof', ['artisan'=> $artisan]); 
     }
 
