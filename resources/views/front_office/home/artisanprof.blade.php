@@ -5,8 +5,10 @@
 @section('content')
 @section('Mystyle')
 
-<link href="{{asset('css/product_consult.css')}}" rel="stylesheet">
+<link href="{{asset('css/product_list.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 
 @endsection
 
@@ -23,7 +25,7 @@
 
 
             </div>
-            <div class="item-image-main" style="width: fit-content;height:fit-content; "  >
+            <div class="item-image-main"   >
             <img src="../img/homme.png">
             </div>
         </div>
@@ -48,30 +50,72 @@
   <div class="change-color">
   <h3 >Our Products:</h3> 
 
-                    <div class="thumb-box">
-                        <img src="../img/pain_choco.jpg" alt="thumbnail" />
-                    </div>
-                    <div class="thumb-box">
-                        <img src="../img/petit_pain.jpg" alt="thumbnail" />
-                    </div>
-
-                    <div class="thumb-box">
-                        <img src="../img/pain_choco.jpg" alt="thumbnail" />
+                <div class="accordion-wrapper">
+  <div class="accordion">
+    <input type="radio" name="radio-a" id="check1" checked>
+    <label class="accordion-label" for="check1">Pain Chocó</label>
+    <div class="accordion-content">
+    <div class="thumb-box">
+    <img src="{{asset('img/pain_choco.jpg')}}" alt="hhh"/>
                     </div>
 
+      <h3 >Description:</h3> 
 
-                </div>
+      <ul>
+                        <li>It is a pastry made with croissant dough.</li>
+                        <li>The pastry is rolled with pure Belcolade chocolate.</li>
+                        <li>Pain Chocó Double Chocolat is topped or filled with a layer of dark chocolate.</li>
+                        <li>The pastry is known for its crispy exterior and fluffy interior.</li>
+                    </ul>    </div>
+  </div>
+  <div class="accordion">
+    <input type="radio" name="radio-a" id="check2">
+    <label class="accordion-label" for="check2">Pain Chocó Double Chocolat</label>
+    <div class="accordion-content">
 
-                    <div class="description">
-                   <h3 >Description:</h3> 
+    <div class="thumb-box">
+    <img src="{{asset('img/pain_choco.jpg')}}" alt="hhh"/>
+                    </div>
 
-                    <ul>
+      <h3 >Description:</h3> 
+
+      <ul>
                         <li>It is a pastry made with croissant dough.</li>
                         <li>The pastry is rolled with pure Belcolade chocolate.</li>
                         <li>Pain Chocó Double Chocolat is topped or filled with a layer of dark chocolate.</li>
                         <li>The pastry is known for its crispy exterior and fluffy interior.</li>
                     </ul>
+    
+
+
+
+
+    </div>
+  </div>
+  <div class="accordion">
+    <input type="radio" name="radio-a" id="check3">
+    <label class="accordion-label" for="check3">Pain Chocó Sucrè</label>
+    <div class="accordion-content">
+    <div class="thumb-box">
+    <img src="{{asset('img/petit_pain.jpg')}}" alt="hhh"/>
+                    </div>
+
+      <h3 >Description:</h3> 
+
+      <ul>
+                        <li>It is a pastry made with croissant dough.</li>
+                        <li>The pastry is rolled with pure Belcolade chocolate.</li>
+                        <li>Pain Chocó Double Chocolat is topped or filled with a layer of dark chocolate.</li>
+                        <li>The pastry is known for its crispy exterior and fluffy interior.</li>
+                    </ul>
+    </div>
+  </div>
+</div>
+
+
                 </div>
+
+           
     
 
                   

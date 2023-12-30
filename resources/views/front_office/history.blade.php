@@ -10,6 +10,43 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+  <style>
+	.img-size{
+/* 	padding: 0;
+	margin: 0; */
+	height: 450px;
+	width: fit-content;
+	background-size: cover;
+	overflow: hidden;
+}
+.modal-content {
+   width: 700px;
+  border:none;
+  margin:0 30px;
+}
+.modal-body {
+   padding: 0;
+   margin:0 30px 50px;
+
+}
+
+.carousel-control-prev-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+	width: 30px;
+	height: 48px;
+  margin:0px 60px 150px 0px;
+  t
+}
+.carousel-control-next-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009be1' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+	width: 30px;
+	height: 48px;
+  margin:0px 0px 150px 60px;
+
+}
+</style>
 
   </head>
   <body>
@@ -92,48 +129,131 @@
 
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">More Options Of Order</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-                <div class="input-group flex-nowrap">
-            <span class="input-group-text" style="color:black;width: 130px; padding-left:20px">Item Name :</span>
-            <input type="text" class="form-control" value="" disabled>
-            </div>
-            
-            <div class="input-group flex-nowrap mt-3 ">
-            <span class="input-group-text  " style="color:black;width: 130px; padding-left:20px">Item Price :
-            <i class="bi bi-envelope-fill"></i>   </span>
-            <input type="text" class="form-control" value="" disabled>
-            </div>
+      <div class="container">
+  
+	
+  
+	<!-- modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-body">
+			 <!-- carousel -->
+			<div
+				 id='carouselExampleIndicators'
+				 class='carousel slide'
+				 data-ride='carousel'
+				 >
+			  <ol class='carousel-indicators'>
+				<li
+					data-target='#carouselExampleIndicators'
+					data-slide-to='0'
+					class='active'
+					></li>
+				<li
+					data-target='#carouselExampleIndicators'
+					data-slide-to='1'
+					></li>
+				<li
+					data-target='#carouselExampleIndicators'
+					data-slide-to='2'
+					></li>
+			  </ol>
+			  <div class='carousel-inner'>
+				<div class='carousel-item active'>
+				  <img class='img-size' src='{{asset('img/pain_choco.jpg')}}' alt='First slide' />
+				  <div class="input-group flex-nowrap">
+					<span class="input-group-text" style="color:black;width: 130px; padding-left:20px">Item Name :</span>
+					<input type="text" class="form-control" value="" disabled>
+				</div>
+			
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text  " style="color:black;width: 130px; padding-left:20px">Item Price :
+						<i class="bi bi-envelope-fill"></i>   </span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
 
-            <div class="input-group flex-nowrap mt-3 ">
-            <span class="input-group-text " style="color:black;width: 130px;">Item Quantity :</span>
-            <input type="password" class="form-control" value="" disabled>
-            </div>
-            <div class="input-group flex-nowrap mt-3 ">
-            <span class="input-group-text " style="color:black;width: 150px;">Shipping Details :</span>
-            <input type="text" class="form-control" value="" disabled>
-            </div>
- 
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 130px;">Item Quantity :</span>
+						<input type="password" class="form-control" value="" disabled>
+				</div>
 
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 150px;">Shipping Details :</span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
+				  
+				</div>
+				<div class='carousel-item'>
+				  <img class='img-size' src='{{asset('img/petit_pain.jpg')}}' alt='Second slide' />
+				  <div class="input-group flex-nowrap">
+					<span class="input-group-text" style="color:black;width: 130px; padding-left:20px">Item Name :</span>
+					<input type="text" class="form-control" value="" disabled>
+				</div>
+			
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text  " style="color:black;width: 130px; padding-left:20px">Item Price :
+						<i class="bi bi-envelope-fill"></i>   </span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
 
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 130px;">Item Quantity :</span>
+						<input type="password" class="form-control" value="" disabled>
+				</div>
 
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 150px;">Shipping Details :</span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
+				</div>
+				<div class='carousel-item'>
+				  <img class='img-size' src='{{asset('img/pain_choco.jpg')}}' alt='Second slide' />
+				  <div class="input-group flex-nowrap">
+					<span class="input-group-text" style="color:black;width: 130px; padding-left:20px">Item Name :</span>
+					<input type="text" class="form-control" value="" disabled>
+				</div>
+			
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text  " style="color:black;width: 130px; padding-left:20px">Item Price :
+						<i class="bi bi-envelope-fill"></i>   </span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
 
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 130px;">Item Quantity :</span>
+						<input type="password" class="form-control" value="" disabled>
+				</div>
 
-
-
-
-     
- 
- 
-       </div>
+				<div class="input-group flex-nowrap mt-3 ">
+						<span class="input-group-text " style="color:black;width: 150px;">Shipping Details :</span>
+						<input type="text" class="form-control" value="" disabled>
+				</div>
+				</div>
+			  </div>
+			  <a
+				 class='carousel-control-prev'
+				 href='#carouselExampleIndicators'
+				 role='button'
+				 data-slide='prev'
+				 >
+				<span class='carousel-control-prev-icon'
+					  aria-hidden='true'
+					  ></span>
+			  </a>
+			  <a
+				 class='carousel-control-next'
+				 href='#carouselExampleIndicators'
+				 role='button'
+				 data-slide='next'
+				 >
+				<span
+					  class='carousel-control-next-icon'
+					  aria-hidden='true'
+					  ></span>
+			  </a>
+			</div>
+		  </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" color:white;" >Close</button>
 
@@ -141,9 +261,9 @@
 
 
       </div>
-    </div>
-  </div>
-</div>
+		</div>
+	  </div>
+	</div>
 
 
 
