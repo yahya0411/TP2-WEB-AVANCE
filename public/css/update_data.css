@@ -72,7 +72,7 @@ input {
     font-weight: 400;
     font-size: larger;
     text-align: center;
-    height: 40px;
+    height: 45px;
     border-radius: 15px;
     left: 33%;
 }
@@ -130,9 +130,3 @@ label {
         height:600px;
         
     }
-
-
-
-input{
-    border-radius:5px;
-}
