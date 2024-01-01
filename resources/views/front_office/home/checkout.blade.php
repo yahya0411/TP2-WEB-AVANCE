@@ -10,6 +10,115 @@
     <link href="{{asset('css/checkout.css')}}" rel="stylesheet">
     <link href="{{asset('css/order_history.css')}}" rel="stylesheet">
 
+    <style>
+
+
+:root {
+  --color-gray: #737888;
+  --color-lighter-gray: #e3e5ed;
+  --color-light-gray: #f7f7fa;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+
+body {
+  margin: 0;
+}
+
+h1 ,p {
+  margin-bottom: 1rem;
+  font-weight: 900;
+
+}
+
+p {
+  color: var(--color-gray);
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-light-gray);
+  border: 0;
+  margin: 2rem 0;
+}
+
+.container {
+  max-width: 40rem;
+  padding: 10vw 2rem 0;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.form {
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-lighter-gray);
+  padding: .5rem;
+  border-radius: .25rem;
+}
+
+.field__label {
+  color: var(--color-gray);
+  font-size: 0.6rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem
+}
+
+.field__input {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  font-weight: bold;
+  font-size: 1rem;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+}
+.field:focus-within {
+  border-color: #000;
+}
+
+.fields {
+  display: grid;
+  grid-gap: 1rem;
+}
+.fields--2 {
+  grid-template-columns: 1fr 1fr;
+}
+.fields--3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+hr {
+  height: 1px;
+  width: 90%;
+  background-color:#737888;
+  border: 0;
+margin:2rem 20px  2rem  ;
+}
+
+
+
+
+</style>
+
+
+
   </head>
   <body>
 
@@ -21,112 +130,57 @@
 
 
 
-
-
-
-<br>
-
-<div class="all">
-    <header class="header">
-      
-
-
-<br>
-
-
-  
-    <form action="{{Route('index')}}" class="form" method="">
-
-      <div>
-      <fieldset>       <h1 style="text-align:center;">Checkout</h1>
-</fieldset>
-        <h2>Address</h2>
-  
-        <div class="card">
-          <address>
-            Mohammed Smail<br />
-            Street: 01 Nov 1954 Ave. <br>
-            City: Tlemcen, 13000.<br />
-            Algeria
-          </address>
-        </div>
-      </div>
-  
-      <fieldset>
-        <legend>Payment Method</legend>
-  
-        <div class="form__radios">
-
-        <div class="form__radio">
-            <label for="edahabia"><img class="icon" src="img/edahabia.png"/>
-                EDAHABIA Card</label>
-            <input id="edahabia" name="payment-method" type="radio" />
-          </div>
-  
-
-          <div class="form__radio">
-            <label for="CIB"><img class="icon" src="img/cib.png"/>
-              CIB Card</label>
-            <input checked id="CIB" name="payment-method" type="radio" />
-          </div>
-  
-       
-
-        </div>
-      </fieldset>
-  
-      <div>
-        <h2>Shopping Bill</h2>
-  
-        <table>
-  <tbody>
-    <td>Price Total</td>
-    <td align="right"><span id="price">13.50</span> Da</td>  
-  </tr>
-  <tr>
-    <td>Quantity</td> 
-    <td align="right"><span id="quantity">1</span></td>
-  </tr>
-  
-  </tbody>
-
-  <tfoot>
-    <tr>
-      <td>Total</td>
-      <td align="right"><span id="total"></span></td>
-    </tr>
-  </tfoot>
-</table>
-      </div>
-  
-      <div>
+    <div class="container">
+	<h1>Shipping</h1>
+	<p>Please enter your shipping details.</p>
+  <hr>
+	<div class="form">
+	  
+	<div class="fields fields--2">
+	  <label class="field">
+		<span class="field__label" for="firstname">First name</span>
+		<input class="field__input" type="text" id="firstname" value="" />
+	  </label>
+	  <label class="field">
+		<span class="field__label" for="lastname">Last name</span>
+		<input class="field__input" type="text" id="lastname" value="" />
+	  </label>
+	</div>
+	<label class="field">
+	  <span class="field__label" for="address">Address</span>
+	  <input class="field__input" type="text" id="address" />
+	</label>
+	<label class="field">
+	  <span class="field__label" for="country">Country</span>
+	  <select class="field__input" id="country">
+		<option value=""></option>
+		<option value="unitedstates">United States</option>
+	  </select>
+	</label>
+	<div class="fields fields--3">
+	  <label class="field">
+		<span class="field__label" for="zipcode">Zip code</span>
+		<input class="field__input" type="text" id="zipcode" />
+	  </label>
+	  <label class="field">
+		<span class="field__label" for="city">City</span>
+		<input class="field__input" type="text" id="city" />
+	  </label>
+	  <label class="field">
+		<span class="field__label" for="state">State</span>
+		<select class="field__input" id="state">
+		  <option value=""></option>
+		</select>
+	  </label>
+	</div>
+	</div>
+	<hr>
+  <div>
 <button class="button button--full" type="submit" onclick="window.location='{{ route('index') }}'" ><svg class="icon">
   <use xlink:href="#icon-shopping-bag" />
 </svg>Buy Now</button>
       </div>
-    </form>
   </div>
-  
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-  
-    <symbol id="icon-shopping-bag" viewBox="0 0 24 24">
-      <path d="M20 7h-4v-3c0-2.209-1.791-4-4-4s-4 1.791-4 4v3h-4l-2 17h20l-2-17zm-11-3c0-1.654 1.346-3 3-3s3 1.346 3 3v3h-6v-3zm-4.751 18l1.529-13h2.222v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h2.222l1.529 13h-15.502z" />
-    </symbol>
-  
-
-  </svg>
-
-  <script>
-  // Get values  
-  var price = parseFloat(document.getElementById("price").innerHTML);
-  var quantity = parseFloat(document.getElementById("quantity").innerHTML);
-
-  // Calculate & display total
-  document.getElementById("total").innerHTML = price * quantity;  
-</script>
+ 
 
 
-
-
-
-</body>

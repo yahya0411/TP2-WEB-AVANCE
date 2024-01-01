@@ -6,7 +6,10 @@
 @section('Mystyle')
 
 <link href="{{asset('css/product_consult.css')}}" rel="stylesheet">
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="{{asset('css/css/style2.css')}}" rel="stylesheet">
 
 @endsection
 
@@ -30,8 +33,8 @@
         <div class="item-info-parent">
             <!-- main info -->
             <div class="main-info">
-                <h2>Pain Chocó Double Chocolat</h2>
-                <h6><a href="">Craftsman: Bake_house</a></h6>
+                <h2 style="margin: 30px 0px;" >Pain Chocó Double Chocolat</h2>
+                <h6 style="margin: 20px 0px;" ><a href="">Craftsman: Bake_house</a></h6>
 
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
@@ -72,26 +75,79 @@
                         <li>The pastry is known for its crispy exterior and fluffy interior.</li>
                     </ul>
                 </div>
-                <div class="change-size">
-                    <label>
-                      <h3 style="display: inline;">Quantity:</h3>
-                    </label>
 
-
-                    <input type="number" min="1"  name="qte" id="quantityInput">
-              
-                    <button id="sumButton">+</button>
-                  </div>
                   <br>
 
 
-                  <button onclick="window.location='{{ route('cart') }}'">Add to Cart</button>        
+
+
+
+
+
+    <button> 
+      <a href="#0" class="cd-add-to-cart js-cd-add-to-cart" data-price="12.50">Add To Cart</a>  </button>  
+    </p>
+
+
 
                   
             </div>
             
         </div>
         </section>
+
+
+
+
+
+        <div class="cd-cart cd-cart--empty js-cd-cart">
+	<a href="#0" class="cd-cart__trigger text-replace">
+		Cart
+		<ul class="cd-cart__count"> <!-- cart items count -->
+			<li>0</li>
+			<li>0</li>
+		</ul> <!-- .cd-cart__count -->
+	</a>
+
+	<div class="cd-cart__content">
+		<div class="cd-cart__layout">
+			<header class="cd-cart__header">
+				<h2>Cart</h2>
+				<span class="cd-cart__undo">Item removed. <a href="#0">Undo</a></span>
+			</header>
+			
+			<div class="cd-cart__body">
+				<ul>
+					<!-- products added to the cart will be inserted here using JavaScript -->
+				</ul>
+			</div>
+
+			<footer class="cd-cart__footer">
+
+				<a href="{{Route('checkout')}}" class="cd-cart__checkout">
+        <em>Checkout: <span>0</span> DA
+        
+            <svg class="icon icon--sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><line stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"/><polyline stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15,6 21,12 15,18 "/></g>
+            </svg>
+          </em>
+        </a>
+			</footer>
+		</div>
+	</div> <!-- .cd-cart__content -->
+</div> <!-- cd-cart -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      <button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button>        
 </h3>
@@ -169,35 +225,9 @@ thumbnails.forEach(thumbnail => {
 
 </script>
 
+<script src="js/assets/util.js"></script> 
+<script src="js/assets/main.js"></script> 
 
-
-<script>
-    const qtyInput = document.getElementById('quantityInput');
-    const incButton = document.getElementById('sumButton');
-    
-    // Click handler
-    incButton.addEventListener('click', function() {
-    
-      // Get current value
-      let value = Number(qtyInput.value);
-      
-      // Validate
-      if(isNaN(value) || value < 1) {
-        value = 1;
-      } else {
-        value++;  
-      }
-    
-      // Set input
-      qtyInput.value = value;
-    
-    });
-    
-    // On load set default
-    window.onload = function() {
-      qtyInput.value = 1; 
-    }
-          </script>
           @endsection
           @endsection
 
