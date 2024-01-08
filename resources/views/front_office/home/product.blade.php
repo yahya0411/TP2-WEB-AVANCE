@@ -38,19 +38,19 @@
                           <div class="input-select">
                             <select data-trigger="" name="category">
                               <option placeholder="" value="">Category</option>
-                              <option value="Salty">Salty</option>
-                              <option value="Sweet">Sweet</option>
-                              <option value="Salty Sweet">Salty Sweet</option>
+                              @foreach ($products as $product)
+                              <option value="{{$product->Type_produit}}">{{$product->Type_produit}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
                         <div class="input-field">
                           <div class="input-select">
-                            <select data-trigger="" name="">
+                            <select data-trigger="" name="sous_category">
                               <option placeholder="" value="">Sub Category</option>
-                              <option>Sub Category A</option>
-                              <option>Sub Category B</option>
-                              <option>Sub Category C</option>
+                              @foreach ($products as $product)
+                              <option value="{{$product->sous_type}}">{{$product->sous_type}}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
@@ -77,7 +77,7 @@
                                       <div class="price-content">
                                         <div>
                                           <p id="min-price">Min Price: DA</p>
-                                          <input type="range" min="0" max="1000" name="min_price"  id="min-price-slider">
+                                          <input type="range" min="50" max="500" name="min_price"  id="min-price-slider">
                                         </div>
                                         
                                       </div>
@@ -89,7 +89,7 @@
                                       
                                         <div>
                                           <p id="max-price">Max Price: Da</p>
-                                          <input type="range" min="500" max="10000" name="max_price"  id="max-price-slider">
+                                          <input type="range" min="500" max="1000" name="max_price"  id="max-price-slider">
                                         </div>
                                       </div>
                                     </div>
@@ -151,28 +151,37 @@
                 <div class="details">
 
                     <div class="content">
-                    @foreach ($product->images as $image)
-                    <img src="{{ asset('img/' . $image->URL) }}">
+                   
+                    <img src="{{ asset('img/' . $product->images[0]->URL) }}">
                         <h2>{{ $product->nom_produit }}  <br> </h2>
                           <br>
-                  @endforeach
-                            @foreach($product->evaluations as $evaluation )
+                  
+                  @php
+           $totalRating = 0;
+         $numberOfEvaluations = count($product->evaluations);
+       foreach ($product->evaluations as $evaluation)
+       {  $totalRating += $evaluation->Note; }
+    $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
+            @endphp
+                  
+
+                            
                               @for ($i = 1; $i <= 5; $i++)
-                 <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
-                 
-                     @endfor
-                     @endforeach
+                         <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
+                        @endfor
+                    
                             
               
                         <p style="visibility:hidden;">
                             {{ $product->description }}
                         </p>
                         <h2>{{ $product->prix_par_piéce }} DA</h3>
-                        <a href="{{ route('product_consult', ['produit' => $product->nom_produit]) }}"><button onclick="window.location='{{ route('product_consult') }}'">See Product</button></a>
+                        <a href="{{ route('product_consult', ['produit' => $product->Id_Produit]) }}"><button onclick="window.location='{{ route('product_consult') }}'">See Product</button></a>
                     </div>
                 </div>
                 @endforeach
             </div>
+           
             @endif
 
     <!-- Page Header End -->

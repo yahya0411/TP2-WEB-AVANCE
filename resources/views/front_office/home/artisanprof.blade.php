@@ -5,7 +5,7 @@
 @section('content')
 @section('Mystyle')
 
-<link href="{{asset('css/product_consult.css')}}" rel="stylesheet">
+<link href="{{asset('css/product_list.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @endsection
@@ -31,14 +31,23 @@
         <div class="item-info-parent" style="margin-top:50px;">
             <!-- main info -->
             <div class="main-info">
-                <h2><a href="">{{strtoupper($artisan)}}</a></h2>
+                <h2><a href="">{{strtoupper($artisan->nom_artisan)}}</a></h2>
 
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span > (13 reviews)</span>
+                @php
+           $totalRating = 0;
+         $numberOfEvaluations = count($artisan->evaluations);
+       foreach ($artisan->evaluations as $evaluation)
+       {  $totalRating += $evaluation->Note; }
+    $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
+            @endphp
+                  
+
+                            
+                              @for ($i = 1; $i <= 5; $i++)
+                         <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
+                        @endfor
+                     
+                <span > ({{count($artisan->evaluations)}} reviews)</span>
 
             </div>
   <br>
@@ -48,88 +57,73 @@
   <div class="change-color">
   <h3 >Our Products:</h3> 
 
-                    <div class="thumb-box">
-                        <img src="../img/pain_choco.jpg" alt="thumbnail" />
+  <div class="accordion-wrapper">
+
+    @foreach($artisan->produits as $prod)
+  <div class="accordion">
+    <input type="radio" name="radio-a" id="check1" checked>
+    <label class="accordion-label" for="check1">{{$prod->nom_produit}}</label>
+    <div class="accordion-content">
+    <div class="thumb-box">
+    <img src="{{ asset('img/' . $prod->images[0]->URL) }}" alt="hhh"/>
                     </div>
-                    <div class="thumb-box">
-                        <img src="../img/petit_pain.jpg" alt="thumbnail" />
-                    </div>
 
-                    <div class="thumb-box">
-                        <img src="../img/pain_choco.jpg" alt="thumbnail" />
-                    </div>
+      <h3 >Description:</h3> 
 
-
-                </div>
-
-                    <div class="description">
-                   <h3 >Description:</h3> 
-
-                    <ul>
+      <ul>
+                        <li>{{$prod->description}}</li>
                         <li>It is a pastry made with croissant dough.</li>
                         <li>The pastry is rolled with pure Belcolade chocolate.</li>
                         <li>Pain Chocó Double Chocolat is topped or filled with a layer of dark chocolate.</li>
                         <li>The pastry is known for its crispy exterior and fluffy interior.</li>
-                    </ul>
-                </div>
-    
+                </ul>    </div>
+  </div>
+  @endforeach
+ 
+  
+</div>
 
-                  
+
+                </div>
+  
             </div>
             
         </div>
         </section>
 
-        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      <button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('artisan_re') }}'">Leave a Review</button>        
+        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      <a href="{{ route('artisan_re',['nom_artisan' => $artisan->nom_artisan]) }}"><button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('artisan_re') }}'">Leave a Review</button> </a>     
 </h3>
 
 <br>
         <div class="card" style="width: 100%; padding-left:30px;">
-  <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <br>
-    <p class="card-text">comment</p>
+        @if ($artisan->evaluations->count())
 
-  </div>
+@foreach ($artisan->evaluations as $evaluation)
+    <div class="card-body">
+        <h5 class="card-title">
+        @if ($evaluation->consommateur)
+            {{ $evaluation->consommateur->nom_consommateur }} 
+            {{ $evaluation->consommateur->prénom_consommateur }}
+        @endif
+        </h5>
+       
+        @for ($i = 1; $i <= 5; $i++)
+            <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
+        @endfor
+
+        <br>
+        <p class="card-text">{{ $evaluation->commentaire }}</p>
+    </div>
+@endforeach
+@else
+<h3>No evaluations available.</h3>
+@endif
 </div>
 
 
 
 
-<div class="card" style="width: 100%; padding-left:30px;">
-  <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <br>
-    <p class="card-text">comment</p>
 
-  </div>
-</div>
-
-
-
-<div class="card" style="width: 100%; padding-left:30px;">
-  <div class="card-body">
-    <h5 class="card-title">Full Name</h5>
-    <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                        <br>
-    <p class="card-text">comment</p>
-
-  </div>
-</div>
 
 
 

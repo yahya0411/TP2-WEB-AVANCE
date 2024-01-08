@@ -13,21 +13,30 @@
         <div class="edit"></div>
       </div>
       <div class="star-widget">
-        <input type="radio" name="rate" id="rate-5">
+        <input type="radio" name="rate" id="rate-5" value="5">
         <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
+        <input type="radio" name="rate" id="rate-4" value="4">
         <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
+        <input type="radio" name="rate" id="rate-3" value="3">
         <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
+        <input type="radio" name="rate" id="rate-2" value="2">
         <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
+        <input type="radio" name="rate" id="rate-1" value="1">
         <label for="rate-1" class="fas fa-star"></label>
-        <form action="#">
+        <form method="post" action="{{route('review_delivery_send')}}">
+          @csrf
           <header></header>
           <div class="textarea">
-            <textarea cols="30" placeholder="Describe your experience.."></textarea>
+            <textarea cols="30" placeholder="Describe your experience.." name="comment"></textarea>
           </div>
+          <input type="hidden" id="rating" name="rate" value="">
+          <input type="hidden" value="livreur" name="type_evaluation">
+
+          <input type="hidden" value="{{ session('review_id_livreur') }}" name="id_livreur">
+          
+          @if(Session::has('consumer'))
+      <input type="hidden" value="{{Session::get('consumer')->Id_Consommateur}}" name="id_consumer">
+        @endif
           <div class="btn">
             <button type="submit">Share</button>
           </div>
@@ -35,24 +44,38 @@
       </div>
     </div>
     <script>
-  const btn = document.querySelector("button");
-  const post = document.querySelector(".post");
-  const widget = document.querySelector(".star-widget");
-  const editBtn = document.querySelector(".edit");
-  btn.onclick = () => {
+      /*
+const btn = document.querySelector("button");
+const post = document.querySelector(".post"); 
+const widget = document.querySelector(".star-widget");
+
+let submitted = false; 
+
+btn.onclick = (e) => {
+
+  e.preventDefault();
+
+  if (!submitted) {
+    submitted = true;
     widget.style.display = "none";
     post.style.display = "block";
-    editBtn.onclick = () => {
-      widget.style.display = "block";
-      post.style.display = "none";
-
-      
-    }
     setTimeout(function(){
       window.location='{{ route('history') }}';
-    }, 5000); // 5000 milliseconds = 5 seconds
-  }
+    }, 3000);
+
+  } else {
+    setTimeout(function(){
+      window.location='{{ route('history') }}';
+    }, 3000);  }
+
+}*/
+document.querySelectorAll('.star-widget input[type="radio"]').forEach((radio) => {
+        radio.addEventListener('change', function () {
+            document.getElementById('rating').value = this.value;
+        });
+    });
 </script>
+
 
   </body>
 </html>

@@ -103,10 +103,7 @@ tfoot {
   transition: 0.3s;
 }
 
-.button:focus,
-.button:hover {
-  background-color: #e96363;
-}
+
 
 .button--full {
   inline-size: 100%;

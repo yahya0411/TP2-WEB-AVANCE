@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Produit;
 use App\Models\Image;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 class ProduitController extends Controller
 {
     public function index()
@@ -122,9 +123,11 @@ class ProduitController extends Controller
             $query->where('sous_type', $subCategory);
         }
 
-       else if ($stars) {
-            $query->where('stars', $stars);
-        }
+        else if ($stars) {
+            $query->leftJoin('evaluations', 'produits.Id_Produit', '=', 'evaluations.Id_Produit')
+            ->where('evaluations.Note', $stars);
+        
+            }
 
         else if ($minPrice) {
             $query->where('prix_par_piéce', '>=', $minPrice);
@@ -139,5 +142,47 @@ class ProduitController extends Controller
         // Retourner les résultats à la vue
        return view('front_office/home/product', ['products' => $products]);
       
+    }
+    public function sortProducts( $sortType = null)
+    {
+       
+        $query = Produit::query();
+        switch ($sortType) {
+            case 'price_low_high':
+                $query->orderBy('prix_par_piéce');
+                break;
+    
+            case 'price_high_low':
+                $query->orderByDesc('prix_par_piéce');
+                break;
+    
+            case 'rating_high_low':
+                $query->leftJoin('evaluations', 'produits.Id_Produit', '=', 'evaluations.Id_Produit')
+                ->select('produits.*', DB::raw('AVG(evaluations.Note) as avg_rating'))
+                ->groupBy('produits.Id_Produit')
+                ->orderBy('avg_rating', 'desc');
+                break;
+    
+        }
+        $products = $query->get();
+        $products->load('images');
+        return view('front_office/home/product', ['products' => $products]);
+    }
+    public function ProductDetails(Request $request)
+    {
+        if(Session::has('consumer')){
+            $param = $request->input('produit');
+            Session::put('id_produit',$param);
+            $prod = Produit::with('evaluations.consommateur','artisan')->where('Id_Produit', $param)->first();
+           //$prod->load('artisan', 'evaluations.consommateur');
+            return view('front_office/home/product_consult', ['produit'=> $prod]); 
+        }
+        else{
+          echo " <script>alert('you need to rigster or connect'); window.location.href='/identification';</script>";
+        }
+        /*$param = $request->input('produit');
+        $prod = Produit::with('evaluations.consommateur')->where('Id_Produit', $param)->first();
+        $prod->load('artisan', 'evaluations.consommateur');
+        return view('front_office/home/product_consult', ['produit'=> $prod]); */
     }
 }

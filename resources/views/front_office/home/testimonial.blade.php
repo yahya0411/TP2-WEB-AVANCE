@@ -2,7 +2,7 @@
 @section('content')
 @section('Mystyle')
 <link href="{{asset('css/artisan.css')}}" rel="stylesheet">
-
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
 
 @endsection
     <!-- Page Header Start -->
@@ -29,7 +29,7 @@
                                                         
                                                             <div class="input-field second-wrap">
                                                               
-                                                                <input   type="text" placeholder="Common" name="commune" />
+                                                                <input type="text" placeholder="Common" name="commune" />
                                                             
                                                             </div>
                                                         
@@ -39,17 +39,17 @@
                                                             <div class="input-field fouth-wrap">
 
                                                                   <select data-trigger="" name="type" >
-                                                                    <option placeholder="">Type</option>
-                                                                    <option value="sweety">Sweety</option>
-                                                                    <option value="salty">Salty</option>
-                                                                    <option value="Both">(Both)</option>
+                                                                    <option placeholder="" value="">Type</option>
+                                                                    @foreach ($artisans as $artisan)
+                                                          <option value="{{$artisan->catégorie}}">{{$artisan->catégorie}}</option>
+                                                           @endforeach
                                                                   </select>
                                                             </div>
                                                         
                                                         
                                                             <div class="input-field fouth-wrap">
 
-                                                          <select id="star-rating" name="star_artisan">
+                                                          <select id="star-rating" name="rating">
                                                             <option placeholder="" value="">Rating</option>
                                                             <option value="1">1 star</option>
                                                             <option value="2">2 stars</option>
@@ -79,59 +79,7 @@
                                       <div class="s003" style="visibility:hidden;">
 
 
-<form class="s002">
 
-<div class="inner-form">
-            <div class="input-field first-wrap">
-
-              <input id="text" type="text" placeholder="Artisan's full name" />
-            
-            </div>
-        
-        
-            <div class="input-field second-wrap">
-              
-                <input   type="text" placeholder="Common" />
-            
-            </div>
-        
-        
-
-        
-            <div class="input-field fouth-wrap">
-
-                  <select data-trigger="" name="choices-single-defaul">
-                    <option placeholder="">Type</option>
-                    <option>Sweety</option>
-                    <option>Salty</option>
-                    <option>Sweety && Salty (Both)</option>
-                  </select>
-            </div>
-        
-        
-            <div class="input-field fouth-wrap">
-
-          <select id="star-rating">
-            <option placeholder="" value="">Rating</option>
-            <option value="1">1 star</option>
-            <option value="2">2 stars</option>
-            <option value="3">3 stars</option>
-            <option value="4">4 stars</option>
-            <option value="5">5 stars</option>
-          </select>
-        </div>
-
-            <div class="input-field fifth-wrap">
-
-                  <button class="btn-search" type="button">SEARCH</button>
-                  
-            </div>
-
-
-</div>
-
-
-</form>
 </div>
                     </div>
     <!-- Page Header End -->
@@ -147,21 +95,34 @@
                 <h1 class="display-6 mb-4"  >Our Artisans</h1>
 
             </div>
+            <hr></hr>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s" >
             @foreach ($artisans as $artisan)
             <div class="testimonial-item bg-white rounded p-4"  >
                     <div class="d-flex align-items-center mb-4" style="margin-left:100px">
                         <img class="flex-shrink-0 rounded-circle border p-1" src="img/testimonial-2.jpg" alt="">
                         <div class="ms-4">
-                            <h4 class="mb-1" style="margin-left:15px">{{$artisan->nom_artisan}}</h5>
+                            <h4 class="mb-1" style="margin-left:15px">{{strtoupper($artisan->nom_artisan)}}</h5>
 
 
 
-                            @for ($i = 1; $i <= 5; $i++)
-                  <span class="fa fa-star{{ $i <= $artisan->avg_rating ? ' checked' : '' }}"></span>
-                         @endfor
+                            @php
+           $totalRating = 0;
+         $numberOfEvaluations = count($artisan->evaluations);
+       foreach ($artisan->evaluations as $evaluation)
+       {  $totalRating += $evaluation->Note; }
+    $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
+            @endphp
+                  
 
-                            <h6 class="mb-1" style="margin-top:8px;">Common: {{$artisan->commune}}</h5>
+            
+                              @for ($i = 1; $i <= 5; $i++)
+                         <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
+                        @endfor
+          
+                     
+
+                            <h6 class="mb-1" style="margin-top:8px;">Common: {{$artisan->commune}} </h5>
 
 
                             <h6 class="mb-1" style="margin-top:20px;">Type of Product : {{$artisan->catégorie}}</h5>
@@ -174,14 +135,14 @@
 
                     </div>
                 </div>
+                <hr></hr>
                 @endforeach
 
    
 
             </div>
-            <div class="bg-primary text-light rounded-top p-5 my-6 mb-0 wow fadeInUp" data-wow-delay="0.1s">
-
-            </div>
+            
+            
         </div>
     </div>
     <!-- Testimonial End -->

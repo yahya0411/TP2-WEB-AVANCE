@@ -22,7 +22,7 @@
 		
 		<div class="container-fluid breadcrumbBox text-center">
 			<ol class="breadcrumb">
-				<li><a href="#">Review</a></li>
+				<li><a href="{{route('products')}}">Add Other Products</a></li>
 				<li class="active"><a href="#">Order</a></li>
 				<li><a href="#">Checkout
 				</a></li>
@@ -44,24 +44,17 @@
 						<span>ITEM</span>
 						<span>Price</span>
 					</li>
-					<li class="row">
-						<span class="quantity" id="quantity" >1</span>
-						<span class="itemName">Pain Chocó</span>
-						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price" id="price">10.00</span>
-					</li>
-					<li class="row">
-						<span class="quantity" id="quantity">50</span>
-						<span class="itemName">Pain Chocó Double Chocolat</span>
-						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price" id="price">12.50</span>
-					</li>
-					<li class="row">
-						<span class="quantity" id="quantity">20</span>
-						<span class="itemName">Pain Chocó Sucrè</span>
-						<span class="popbtn"><a class="arrow"></a></span>
-						<span class="price" id="price">15.00</span>				
-					</li>
+					@foreach($cart as $product)
+                <li class="row">
+					
+        			<span class="quantity" id="quantity">{{ $product[0]['quantity'] }}</span>
+					@if(isset($product[0]['name']))
+					<span class="itemName">{{ $product[0]['name'] }}</span>
+					@endif
+        			<span class="popbtn"><a class="arrow"></a></span>
+        			<span class="price" id="price">{{ $product[0]['price'] }} DA</span>
+    			</li>
+				@endforeach
 
 
 					<li class="row totals">

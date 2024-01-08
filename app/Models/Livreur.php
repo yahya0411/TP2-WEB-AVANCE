@@ -14,4 +14,5 @@ class Livreur extends Model
         'adresse',
         'Email',
     ];
+    protected $primaryKey = 'Id_Livreur';
 }

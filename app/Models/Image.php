@@ -9,6 +9,13 @@ class Image extends Model
 {
     use HasFactory;
     
-    protected $primaryKey = 'Id_image';
-    protected $fillable = ['Id_Produit'];
+    protected $fillable = [
+        'URL',
+        'Id_Produit',
+    ];
+
+    public function produit()
+    {
+        return $this->belongsTo(Produit::class);
+    }
 }

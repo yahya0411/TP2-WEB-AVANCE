@@ -15,10 +15,15 @@ class Produit extends Model
     }
     public function images()
     {
-        return $this->HasMany(Image::class , 'Id_image');
+        return $this->hasMany(Image::class , 'Id_Produit');
     }
     public function evaluations()
     {
-        return $this->HasMany(Evaluation::class , 'Id_Evaluation');
+        return $this->hasMany(Evaluation::class , 'Id_Produit');
+    }
+    public function commandes()
+    {
+        return $this->belongsToMany(Commande::class, 'quantite_produits', 'Id_Produit', 'Id_Commande')
+                    ->withPivot('quantité_demande');
     }
 }

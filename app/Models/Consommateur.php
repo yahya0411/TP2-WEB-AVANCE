@@ -15,9 +15,9 @@ class Consommateur extends Model
         'Email',
         
     ];
-    public function faires()
+    public function evaluations()
     {
-        return $this->hasMany(Faire::class, 'Id_Consommateur');
+        return $this->hasMany(Evaluation::class , 'Id_Consommateur');
     }
 
 }

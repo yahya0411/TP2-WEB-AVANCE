@@ -32,13 +32,12 @@ class ArtisanController extends Controller
     public function  searchArtisans(Request $request)
     {
         
-        // Récupérer les critères de recherche depuis la requête
+    
         $name_artisan = $request->input('artisan_name'); 
         $category = $request->input('type');
         $commune = $request->input('commune');
-        $stars = $request->input('stars');
-
-        // Logique de recherche en fonction des critères
+        $stars = $request->input('rating');
+        
         $query = Artisan::query();
          
         if ($name_artisan) {
@@ -49,19 +48,17 @@ class ArtisanController extends Controller
             $query->where('catégorie', $category);
         }
 
-       
+        else if ($commune) {
+            $query->where('commune', $commune);
+        }
 
        else if ($stars) {
-            $query->where('stars', $stars);
+        $query->leftJoin('evaluations', 'artisans.id_artisan', '=', 'evaluations.id_artisan')
+        ->where('evaluations.Note', $stars);
         }
 
-        else if ($commune) {
-            $query->where('commune', 'like', '%' .$commune . '%');
-        }
-        $query->leftJoin('evaluations', 'artisans.id_artisan', '=', 'evaluations.id_artisan')
-                ->select('artisans.*', DB::raw('AVG(evaluations.Note) as avg_rating'))
-                ->groupBy('artisans.id_artisan');
         $artisans = $query->get();
+    
 
        return view('front_office/home/testimonial', ['artisans' => $artisans]);
       
@@ -70,9 +67,9 @@ class ArtisanController extends Controller
     public function ProfilArtisan(Request $request)
     {
         $param = $request->input('artisan');
-        $artisan = Artisan::where('nom_artisan', $param)->first();
-
-        $products = $artisan->produits;
+        $artisan = Artisan::with('evaluations.consommateur')->where('nom_artisan', $param)->first();
+        Session::put('id_artisan',$artisan->id_artisan);
+        $artisan->load('evaluations.consommateur','produits');
         return view('front_office/home/artisanprof', ['artisan'=> $artisan]); 
     }
 

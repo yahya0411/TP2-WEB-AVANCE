@@ -47,9 +47,11 @@ class AuthController extends Controller
             
         }
     }
-        else{
-          echo 'Email or password incorrect';
-        }
+    else{
+        echo "
+        <script>alert('Email or Password incorrect'); window.location.href='/identification';</script>
+        ";
+      }
     }
     public function logout()
     {
