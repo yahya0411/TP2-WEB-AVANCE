@@ -697,6 +697,10 @@ legend {
   will-change: scroll-position;
 }
 
+.checked {
+  color: orange;
+}
+
 .choices__list--dropdown .choices__item {
   position: relative;
   padding: 10px;
