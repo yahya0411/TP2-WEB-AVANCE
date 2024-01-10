@@ -164,7 +164,3 @@ margin:2rem 20px  2rem  ;
 </script>
 
 
-
-
-
-</body>

@@ -6,9 +6,14 @@
 @section('Mystyle')
 
 <link href="{{asset('css/product_consult.css')}}" rel="stylesheet">
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{{asset('css/css/style2.css')}}" rel="stylesheet">
+<<<<<<< HEAD
 
+=======
+>>>>>>> be6ecb75a7c22129f0ab954b8ee79f33219a0fd0
 
 @endsection
 
@@ -136,8 +141,23 @@
 
 
 
+<<<<<<< HEAD
         <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      
         <a href="{{ route('review_product',['id_produit' => $produit->Id_Produit]) }}"><button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button> </a>  
+=======
+
+
+
+
+
+
+
+
+
+
+
+        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      <button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button>        
+>>>>>>> be6ecb75a7c22129f0ab954b8ee79f33219a0fd0
 </h3>
 
 <br>
@@ -192,6 +212,8 @@ thumbnails.forEach(thumbnail => {
 
 </script>
 
+<script src="js/assets/util.js"></script> 
+<script src="js/assets/main.js"></script> 
 
 
 <script>

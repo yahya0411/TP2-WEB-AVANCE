@@ -45,7 +45,10 @@
       </div>
     </div>
     <script>
+<<<<<<< HEAD
       /*
+=======
+>>>>>>> be6ecb75a7c22129f0ab954b8ee79f33219a0fd0
 const btn = document.querySelector("button");
 const post = document.querySelector(".post"); 
 const widget = document.querySelector(".star-widget");

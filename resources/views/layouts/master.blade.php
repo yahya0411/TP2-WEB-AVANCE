@@ -29,7 +29,6 @@
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/main.css')}}" rel="stylesheet">
-
     @yield('Mystyle')
 </head>
 
@@ -159,7 +158,6 @@
  
  
  
- 
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -217,22 +215,26 @@
                     <h4 class="text-light mb-4">Photo Gallery</h4>
                     <div class="row g-2">
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-1.jpg" alt="Image">
+
+
+                            
+
+                            <img class="img-fluid bg-light rounded p-1" src="   {{asset('img/product-1.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-2.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-2.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-3.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-3.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-2.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-2.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-3.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-3.jpg')}}" alt="Image">
                         </div>
                         <div class="col-4">
-                            <img class="img-fluid bg-light rounded p-1" src="img/product-1.jpg" alt="Image">
+                            <img class="img-fluid bg-light rounded p-1" src="{{asset('img/product-1.jpg')}}" alt="Image">
                         </div>
                     </div>
                 </div>
@@ -261,7 +263,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a> -->
 
 
     <!-- JavaScript Libraries -->

@@ -8,6 +8,8 @@
 <link href="{{asset('css/product_list.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+
 @endsection
 
 
@@ -23,7 +25,7 @@
 
 
             </div>
-            <div class="item-image-main" style="width: fit-content;height:fit-content; "  >
+            <div class="item-image-main"   >
             <img src="../img/homme.png">
             </div>
         </div>
