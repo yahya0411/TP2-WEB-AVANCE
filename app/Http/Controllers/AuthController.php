@@ -36,7 +36,9 @@ class AuthController extends Controller
                     break;
                 case 'Consommateur':
                     $consumer = Consommateur::where('Email' , '=' ,$request->Email)->first();
+                    $password = $user->mdps;
                     Session::put('consumer',$consumer);
+                    Session::put('password',$password);
                     return Redirect::route('home')->with('success', 'Login successful');
                     break;
                 case 'Livreur':
