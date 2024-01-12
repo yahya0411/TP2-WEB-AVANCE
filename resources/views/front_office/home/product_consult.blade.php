@@ -10,10 +10,6 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="{{asset('css/css/style2.css')}}" rel="stylesheet">
-<<<<<<< HEAD
-
-=======
->>>>>>> be6ecb75a7c22129f0ab954b8ee79f33219a0fd0
 
 @endsection
 
