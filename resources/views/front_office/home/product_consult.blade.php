@@ -137,23 +137,8 @@
 
 
 
-<<<<<<< HEAD
         <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      
         <a href="{{ route('review_product',['id_produit' => $produit->Id_Produit]) }}"><button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button> </a>  
-=======
-
-
-
-
-
-
-
-
-
-
-
-        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      <button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button>        
->>>>>>> be6ecb75a7c22129f0ab954b8ee79f33219a0fd0
 </h3>
 
 <br>
