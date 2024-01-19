@@ -32,7 +32,7 @@ class AuthController extends Controller
                 case 'Artisan':
                     $artisan = Artisan::where('Email' , '=' ,$request->Email)->first();
                     Session::put('artisan',$artisan);
-                    echo "Artisan DashBoard";
+                    return Redirect::route('artisan.index')->with('success','Login successful');
                     break;
                 case 'Consommateur':
                     $consumer = Consommateur::where('Email' , '=' ,$request->Email)->first();
