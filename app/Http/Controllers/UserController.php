@@ -13,16 +13,16 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
-    
+
 
  public function handleInscription(Request $request)
 {
-    
+
     $request->validate([
         'Email' => 'required|email|unique:users,Email',
         'mdps' => 'required|min:4',
     ]);
-    
+
    $user = User::create([
         'Email' => $request->input('Email'),
         'mdps' => $request->input('mdps'),
@@ -39,7 +39,7 @@ if ($request->input('Role') == 'Consommateur') {
     ]);
 }
 
-    
+
     elseif ($request->input('Role') == 'Artisan') {
         $user->artisan()->create([
             'nom_artisan' => $request->input('nom_user'),
@@ -47,10 +47,10 @@ if ($request->input('Role') == 'Consommateur') {
             'Email' => $request->input('Email'),
         ]);
     }
-    
+
     elseif($request->input('Role') == 'Livreur'){
         $user->livreur()->create([
-            'nom_livreur' => $request->input('nom_user'), 
+            'nom_livreur' => $request->input('nom_user'),
             'prénom_livreur' => $request->input('prénom_user'),
             'téléphone' => $request->input('téléphone'),
             'Email' => $request->input('Email'),

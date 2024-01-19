@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Artisan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 class ArtisanController extends Controller
 {
     /*
@@ -24,22 +25,22 @@ class ArtisanController extends Controller
         return view('backoffice.Consommateurs.recherche-artisans', ['artisans' => $artisans]);
     }*/
 
-    public function index()
+    public function index2()
     {
         $artisans = Artisan::all();
         return view('front_office/home/testimonial',['artisans'=> $artisans ]);
     }
     public function  searchArtisans(Request $request)
     {
-        
-    
-        $name_artisan = $request->input('artisan_name'); 
+
+
+        $name_artisan = $request->input('artisan_name');
         $category = $request->input('type');
         $commune = $request->input('commune');
         $stars = $request->input('rating');
-        
+
         $query = Artisan::query();
-         
+
         if ($name_artisan) {
             $query->where('nom_artisan', 'like', '%' .$name_artisan . '%');
         }
@@ -58,20 +59,76 @@ class ArtisanController extends Controller
         }
 
         $artisans = $query->get();
-    
+
 
        return view('front_office/home/testimonial', ['artisans' => $artisans]);
-      
+
     }
-    
+
     public function ProfilArtisan(Request $request)
     {
         $param = $request->input('artisan');
         $artisan = Artisan::with('evaluations.consommateur')->where('nom_artisan', $param)->first();
         Session::put('id_artisan',$artisan->id_artisan);
         $artisan->load('evaluations.consommateur','produits');
-        return view('front_office/home/artisanprof', ['artisan'=> $artisan]); 
+        return view('front_office/home/artisanprof', ['artisan'=> $artisan]);
     }
 
-    
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+        return view('backoffice.Artisans.index',['products' => Product::all()->count()]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }

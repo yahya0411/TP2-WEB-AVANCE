@@ -10,7 +10,7 @@ use App\Models\Consommateur;
 use App\Models\Artisan;
 use App\Models\Livreur;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -28,7 +28,7 @@ class AuthController extends Controller
         if($user && $request->mdps == $user->mdps)
         {
             switch ($user->Role) {
-                
+
                 case 'Artisan':
                     $artisan = Artisan::where('Email' , '=' ,$request->Email)->first();
                     Session::put('artisan',$artisan);
@@ -46,7 +46,7 @@ class AuthController extends Controller
                     Session::put('livreur',$livreur);
                     echo "Livreur DashBoard";
                     break;
-            
+
         }
     }
     else{
