@@ -17,7 +17,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form action="{{route('product.update', ['product' => $product->id])}}" method="POST">
+        <form action="{{route('productt.update', ['product' => $product->Id_Produit])}}" method="POST">
             @csrf
             @method('PUT')
         @include('backoffice.Products.form')

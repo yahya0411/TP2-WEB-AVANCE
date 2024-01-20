@@ -5,7 +5,7 @@ use App\Models\Artisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-use App\Models\Product;
+use App\Models\Produit;
 class ArtisanController extends Controller
 {
     /*
@@ -81,7 +81,7 @@ class ArtisanController extends Controller
     public function index()
     {
         //
-        return view('backoffice.Artisans.index',['products' => Product::all()->count()]);
+        return view('backoffice.Artisans.index',['products' => Produit::all()->count()]);
     }
 
     /**

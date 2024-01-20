@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Produit;
 use App\Models\Image;
 
 class ProductController extends Controller
@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
 
-        return view('backoffice.Products.index',['products'=> Product::all()]);
+        return view('backoffice.Products.index',['products'=> Produit::all()]);
     }
 
     /**
@@ -30,13 +30,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->nom_produit = $request->input('nameproduct');
-        $product->description = $request->input('descriptionproduct');
-        $product->prix_par_piéce = $request->input('priceproduct');
-        $product->quantité_minimale = $request->input('quantityproduct');
-        $product->type_produit = $request->input('typeproduct');
-        $product->sous_type = $request->input('subtypeproduct');
+        $product = new Produit();
+        $product->nom_produit = $request->input('nom_produit');
+        $product->description = $request->input('description');
+        $product->prix_par_piéce = $request->input('prix_par_piéce');
+        $product->quantité_minimale = $request->input('quantité_minimale');
+        $product->type_produit = $request->input('Type_produit');
+        $product->sous_type = $request->input('sous_type');
 
         $product->save();
 
@@ -44,27 +44,27 @@ class ProductController extends Controller
          {
             foreach($request->file('images') as $image)
             {
-                $imageName = $product->nom_produit . '-image' . time() . rand(1,1000).'.' . $image->extension();
-                $image->move(public_path('product_image'),$imageName);
+                $imageName = $product->nom_produit . '.'. $image->extension();
+                $image->move(public_path('img'),$imageName);
 
                 Image::create([
-                    'product_id' => $product->id,
-                    'name' => $imageName
+                    'Id_Produit' => $product->Id_Produit,
+                    'URL' => $imageName
                 ]);
             }
 
          }
          $request->session()->flash('status','Inserting product');
 
-        return  redirect()->route('product.index');
+        return  redirect()->route('productt.index');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {           $product = Product::findOrFail($id);
+    public function show(string $Id_Produit)
+    {           $product = Produit::findOrFail($Id_Produit);
                 $images = $product->images;
 
         return view('backoffice.Products.show',compact('product','images'));
@@ -73,41 +73,41 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-         return view('backoffice.Products.edit', ['product' => Product::findOrFail($id)]);
+    public function edit(string $Id_Produit)
+    {   $product = Produit::findOrFail($Id_Produit);
+         return view('backoffice.Products.edit', ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $Id_Produit)
     {
-        $product = Product::findOrFail($id);
-        $product->nom_produit = $request->input('nameproduct');
-        $product->description = $request->input('descriptionproduct');
-        $product->prix_par_piéce = $request->input('priceproduct');
-        $product->quantité_minimale = $request->input('quantityproduct');
-        $product->type_produit = $request->input('typeproduct');
-        $product->sous_type = $request->input('subtypeproduct');
+        $product = Produit::findOrFail($Id_Produit);
+        $product->nom_produit = $request->input('nom_produit');
+        $product->description = $request->input('description');
+        $product->prix_par_piéce = $request->input('prix_par_piéce');
+        $product->quantité_minimale = $request->input('quantité_minimale');
+        $product->type_produit = $request->input('Type_produit');
+        $product->sous_type = $request->input('sous_type');
         $product->save();
-        return  redirect()->route('product.index');
+        return  redirect()->route('productt.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $Id_Produit)
     {
-        $product = Product::findOrFail($id);
+        $product = Produit::findOrFail($Id_Produit);
         $product->delete();
 
-        return  redirect()->route('product.index');
+        return  redirect()->route('productt.index');
 
 
     }
-    public function images($id)
+    public function images($Id_Produit)
     {
-        $product = Product::findOrFail($id);
+        $product = Produit::findOrFail($Id_Produit);
     }
 }

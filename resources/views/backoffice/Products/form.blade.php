@@ -2,13 +2,13 @@
     <div class="col-md-6">
         <div class="form-group">
           <label>Name </label>
-          <input type="text" name="nameproduct" value="{{old('nameproduct',optional($product ?? null)->nom_produit)}}" class="form-control" placeholder="Enter Name of product">
+          <input type="text" name="nom_produit" value="{{old('nom_produit',optional($product ?? null)->nom_produit)}}" class="form-control" placeholder="Enter Name of product">
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
           <label>Quantity </label>
-          <input type="number" name="quantityproduct" value="{{old('quantityproduct',optional($product ?? null)->quantité_minimale)}}" class="form-control" placeholder="Enter Number of quantity">
+          <input type="number" name="quantité_minimale" value="{{old('quantité_minimale',optional($product ?? null)->quantité_minimale)}}" class="form-control" placeholder="Enter Number of quantity">
          </div>
      </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleSelectBorder">Type </label>
-            <select class="form-control" value="{{old('typeproduct',optional($product ?? null)->type_produit)}}" id="select1" name="typeproduct">
+            <select class="form-control" value="{{old('Type_produit',optional($product ?? null)->type_produit)}}" id="select1" name="Type_produit">
                 <option value="">Select Type</option>
             </select>
           </div>
@@ -24,7 +24,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="exampleSelectBorder">Sub type </label>
-            <select class="form-control" value="{{old('subtypeproduct',optional($product ?? null)->sous_type)}}" id="select2" name="subtypeproduct">
+            <select class="form-control" value="{{old('sous_type',optional($product ?? null)->sous_type)}}" id="select2" name="sous_type">
 
             </select>
           </div>
@@ -50,7 +50,7 @@
                 <div class="input-group-prepend">
                 <span class="input-group-text">DZD</span>
                 </div>
-                <input type="text" class="form-control" value="{{old('priceproduct',optional(optional($product ?? null))->prix_par_piéce)}}" name="priceproduct">
+                <input type="text" class="form-control" value="{{old('prix_par_piéce',optional(optional($product ?? null))->prix_par_piéce)}}" name="prix_par_piéce">
                 <div class="input-group-append">
                 <span class="input-group-text">.00</span>
                 </div>
@@ -64,7 +64,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="">Description</label>
-              <textarea name="descriptionproduct" class="form-control" rows="3" placeholder="Enter description of product" data-lt-tmp-id="lt-685507" spellcheck="false" data-gramm="false">{{old('descriptionproduct',optional($product ?? null)->description)}}</textarea>
+              <textarea name="description" class="form-control" rows="3" placeholder="Enter description of product" data-lt-tmp-id="lt-685507" spellcheck="false" data-gramm="false">{{old('description',optional($product ?? null)->description)}}</textarea>
             </div>
 
     </div>

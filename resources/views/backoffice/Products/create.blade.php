@@ -17,7 +17,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('productt.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
         @include('backoffice.Products.form')
         <div class="col-md-6">

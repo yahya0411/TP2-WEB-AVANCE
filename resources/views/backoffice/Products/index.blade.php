@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-header">
       <h3 class="card-title">List of Product</h3>
-      <a class="text-primary float-right" href="{{route('product.create')}}"><i class="fas fa-plus"></i> Add product</a>
+      <a class="text-primary float-right" href="{{route('productt.create')}}"><i class="fas fa-plus"></i> Add product</a>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -31,13 +31,9 @@
           <td>{{$product->quantité_minimale}}</td>
           <td>{{$product->type_produit}} / {{$product->sous_type}}</td>
           <td class="">
-            <a class="text-info" href="product/{{$product->id}}"><i class="fas fa-eye fa-sm"></i></a>
-            <a class="text-success" href="product/{{$product->id}}/edit"><i class="fas fa-edit fa-sm"></i></a>
-            <form style="display: inline" action="{{route('product.destroy',['product' => $product->id])}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <a class="text-danger" style="cursor: pointer" onclick="confirm(this.closest('form'));return false"><i class="fas fa-trash fa-sm"></i></a>
-             </form>
+            <a class="text-info" href="productt/{{$product->Id_Produit}}"><i class="fas fa-eye fa-sm"></i></a>
+            <a class="text-success" href="productt/{{$product->Id_Produit}}/edit"><i class="fas fa-edit fa-sm"></i></a>
+
           </td>
         </tr>
         @endforeach

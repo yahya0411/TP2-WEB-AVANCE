@@ -79,8 +79,8 @@ Route::get('/history', [HistoriqueCommandeController::class, 'order_history'])->
 Route::get('/pro', function () {
     return view('backoffice.Products.show');
 });
-Route::resource('artisan', ArtisanController::class)->middleware('auth');
-Route::resource('product', ProductController::class)->middleware('auth');
+Route::resource('artisan', ArtisanController::class);
+Route::resource('productt', ProductController::class);
 
 Route::get('/register', [AuthController::class ,'register'])->name('register');
 Route::post('/register', [AuthController::class ,'registerpost'])->name('register');
@@ -123,20 +123,20 @@ Route::get('/product_consult', function () {
 
 Route::get('/product_consult', [ProduitController::class, 'ProductDetails'])->name('product_consult');
 
-/*Route::get('/product', function () {
+Route::get('/product', function () {
     return view('front_office/home/product');
 })->name('product');
 
 Route::get('/product', [ProduitController::class, 'index'])->name('products');
 
-Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
+/*Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
 
-Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');
+Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');*/
 
 
-/*Route::get('/Testimonial', function () {
+Route::get('/Testimonial', function () {
     return view('front_office/home/testimonial');
-})->name('testimonial');*/
+})->name('testimonial');
 Route::get('/Testimonial', [ArtisanController::class, 'index'])->name('testimonial');
 Route::get('/Testimonial', [ArtisanController::class, 'searchArtisans'])->name('testimonial');
 
@@ -145,9 +145,9 @@ Route::get('/Testimonial', [ArtisanController::class, 'searchArtisans'])->name('
 Route::get('/update_data', function () {
     return view('front_office/update_data');
 })->name('update_data');
-Route::get('/product', function () {
+/*Route::get('/product', function () {
     return view('front_office/home/product');
-})->name('products');
+})->name('products');*/
 
 Route::get('/Team', function () {
     return view('front_office/home/team');

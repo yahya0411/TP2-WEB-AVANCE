@@ -19,7 +19,7 @@
             </nav> -->
             <div class="s008">
                 <form   method="get">
-             
+
                   <div class="inner-form">
                     <div class="basic-search">
                       <div class="input-field">
@@ -54,7 +54,7 @@
                             </select>
                           </div>
                         </div>
-                     
+
                         <div class="input-field">
                           <div class="input-select">
                             <select id="star-rating" name="stars">
@@ -67,26 +67,26 @@
                           </select>
                         </div>
                       </div>
-          
-          
+
+
                       </div>
-                      
+
                       <div class="row second">
-          
+
                                     <div class="card">
                                       <div class="price-content">
                                         <div>
                                           <p id="min-price">Min Price: DA</p>
                                           <input type="range" min="50" max="500" name="min_price"  id="min-price-slider">
                                         </div>
-                                        
+
                                       </div>
                                     </div>
-          
-          
+
+
                                     <div class="card">
                                       <div class="price-content">
-                                      
+
                                         <div>
                                           <p id="max-price">Max Price: Da</p>
                                           <input type="range" min="500" max="1000" name="max_price"  id="max-price-slider">
@@ -94,7 +94,7 @@
                                       </div>
                                     </div>
                       </div>
-                      
+
                       <div class="row third">
                         <div class="input-field">
                           <div class="result-count">
@@ -142,20 +142,20 @@
     </ul>
 </div>
 </nav>
-   
-    
+
+
     @if(isset($products))
             <div class="containeraa">
             @foreach ($products as $product)
-            
+
                 <div class="details">
 
                     <div class="content">
-                   
+
                     <img src="{{ asset('img/' . $product->images[0]->URL) }}">
                         <h2>{{ $product->nom_produit }}  <br> </h2>
                           <br>
-                  
+
                   @php
            $totalRating = 0;
          $numberOfEvaluations = count($product->evaluations);
@@ -163,15 +163,15 @@
        {  $totalRating += $evaluation->Note; }
     $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
             @endphp
-                  
 
-                            
+
+
                               @for ($i = 1; $i <= 5; $i++)
                          <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
                         @endfor
-                    
-                            
-              
+
+
+
                         <p style="visibility:hidden;">
                             {{ $product->description }}
                         </p>
@@ -181,18 +181,18 @@
                 </div>
                 @endforeach
             </div>
-           
+
             @endif
 
     <!-- Page Header End -->
 
 
-    <!-- Product Start 
+    <!-- Product Start
 
 
 
 
-    
+
     Product End -->
     @section('script')
 
