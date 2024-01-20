@@ -21,8 +21,10 @@
             @csrf
         @include('backoffice.Products.form')
         <div class="col-md-6">
-            <label> </label>
-
+            <label> @php
+                
+            @endphp</label>
+                <input type="hidden" value="">
             <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Add product</button>
             </div>

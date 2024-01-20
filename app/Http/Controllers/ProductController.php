@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Image;
-
+use Illuminate\Support\Facades\Session;
 class ProductController extends Controller
 {
     /**
@@ -30,14 +30,16 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $id_artisan = Session::get('artisan')->id_artisan;
         $product = new Produit();
+
         $product->nom_produit = $request->input('nom_produit');
         $product->description = $request->input('description');
         $product->prix_par_piéce = $request->input('prix_par_piéce');
         $product->quantité_minimale = $request->input('quantité_minimale');
         $product->type_produit = $request->input('Type_produit');
         $product->sous_type = $request->input('sous_type');
-
+        $product->id_artisan = $id_artisan;
         $product->save();
 
         if($request->has('images'))
@@ -64,6 +66,7 @@ class ProductController extends Controller
      * Display the specified resource.
      */
     public function show(string $Id_Produit)
+
     {           $product = Produit::findOrFail($Id_Produit);
                 $images = $product->images;
 
@@ -73,17 +76,18 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $Id_Produit)
-    {   $product = Produit::findOrFail($Id_Produit);
-         return view('backoffice.Products.edit', ['product' => $product]);
+    public function edit(string $id)
+    {
+
+         return view('backoffice.Products.edit', ['pr' => Produit::findOrFail($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $Id_Produit)
+    public function update(Request $request, string $id)
     {
-        $product = Produit::findOrFail($Id_Produit);
+        $product = Produit::firstOrFail($id);
         $product->nom_produit = $request->input('nom_produit');
         $product->description = $request->input('description');
         $product->prix_par_piéce = $request->input('prix_par_piéce');

@@ -7,6 +7,7 @@ use App\Models\Commande;
 use App\Models\Produit;
 use App\Models\Quantite_produits;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CommandeController extends Controller
 {
@@ -23,17 +24,17 @@ class CommandeController extends Controller
 
         if ($produits->count() > 0) {
           $id_artisan = $produits[0]->id_artisan;
-      
+
           for ($i = 1; $i < count($produits); $i++) {
               if ($produits[$i]->id_artisan != $id_artisan) {
-            
+
                   break;
               }
           }
-      
+
           $artisan = $produits[0]->artisan->id_artisan;
       }
-      
+
       $commande = Commande::create([
         'date_commande' => DB::raw('CURRENT_TIMESTAMP'),
         'adresse_livraison' => $request->input('address_livraison'),
@@ -49,7 +50,7 @@ class CommandeController extends Controller
         // Aucune commande n'a été trouvée
         dd('Aucune commande trouvée.');
     }
-      
+
       $quantities = $request->input('quantities');
       for ($i = 0; $i < count($id_produits); $i++) {
         Quantite_produits::create([
@@ -58,7 +59,7 @@ class CommandeController extends Controller
             'quantité_demande' => $quantities[$i],
         ]);
     }
-    echo "<script> alert('order send to artisan') window.location.href='/'; </script>";
+    return Redirect::route('history');
     }
 
 }

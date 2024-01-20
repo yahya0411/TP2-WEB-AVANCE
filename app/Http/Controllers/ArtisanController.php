@@ -25,7 +25,7 @@ class ArtisanController extends Controller
         return view('backoffice.Consommateurs.recherche-artisans', ['artisans' => $artisans]);
     }*/
 
-    public function index2()
+    public function index()
     {
         $artisans = Artisan::all();
         return view('front_office/home/testimonial',['artisans'=> $artisans ]);
@@ -78,11 +78,11 @@ class ArtisanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+   /* public function index()
     {
         //
         return view('backoffice.Artisans.index',['products' => Produit::all()->count()]);
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.

@@ -26,14 +26,14 @@
 
             </div>
             <div class="item-image-main">
-                <img src="img/pain_choco.jpg" alt="default" />
+                <img src="{{ asset('img/' . $produit->images[0]->URL) }}">
             </div>
         </div>
 
         <div class="item-info-parent">
             <!-- main info -->
             <div class="main-info">
-            
+
                 <h2>{{$produit->nom_produit}}</h2>
                 <h6><a href="">{{ strtoupper($produit->artisan->nom_artisan) }}</a></h6>
 
@@ -45,7 +45,7 @@
                 {  $totalRating += $evaluation->Note; }
             $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
             @endphp
-                      
+
                               @for ($i = 1; $i <= 5; $i++)
                          <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
                         @endfor
@@ -55,13 +55,13 @@
   <br>
             <p>Price: <span id="price">{{$produit->prix_par_piéce}} DA</span></p>
 
-          
+
             <div class="change-color">
             @foreach ($produit->images as $image)
                     <div class="thumb-box">
                     <img src="{{ asset('img/' . $image->URL) }}">
                     </div>
-                   
+
           @endforeach
 
                 </div>
@@ -69,7 +69,7 @@
 
 
                 <div class="description">
-                   <h3 >Description:</h3> 
+                   <h3 >Description:</h3>
 
                     <ul>
                         <li>{{ $produit->description }}</li>
@@ -82,20 +82,20 @@
                       <h3 style="display: inline;">Quantity:</h3>
                     </label>
 
-                  
+
                     <input type="number" min="1"  name="qte" id="quantityInput">
-              
-                  
+
+
                   </div>
                   <input type="hidden" value="{{$produit->Id_Produit}}" name="id_produit">
                   <input type="hidden" value="{{$produit->nom_produit}}" name="nom_produit">
                   <input type="hidden" value="{{$produit->prix_par_piéce}}" name="prixPiece">
                   <br>
-                  <button type="submit" >Add to Cart</button>        
+                  <button type="submit" >Add to Cart</button>
               </form>
-                  
+
             </div>
-            
+
         </div>
         </section>
 
@@ -114,7 +114,7 @@
 				<h2>Cart</h2>
 				<span class="cd-cart__undo">Item removed. <a href="#0">Undo</a></span>
 			</header>
-			
+
 			<div class="cd-cart__body">
 				<ul>
 					<!-- products added to the cart will be inserted here using JavaScript -->
@@ -125,7 +125,7 @@
 
 				<a href="{{Route('checkout')}}" class="cd-cart__checkout">
         <em>Checkout: <span>0</span> DA
-        
+
             <svg class="icon icon--sm" viewBox="0 0 24 24"><g fill="none" stroke="currentColor"><line stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x1="3" y1="12" x2="21" y2="12"/><polyline stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="15,6 21,12 15,18 "/></g>
             </svg>
           </em>
@@ -137,8 +137,8 @@
 
 
 
-        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>      
-        <a href="{{ route('review_product',['id_produit' => $produit->Id_Produit]) }}"><button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button> </a>  
+        <h3 style="margin-left:35px;"> <span> Customer Reviews   </span>
+        <a href="{{ route('review_product',['id_produit' => $produit->Id_Produit]) }}"><button  style="background-color: #e45c27;     margin-left:10px;" onclick="window.location='{{ route('review_product') }}'">Leave a Review</button> </a>
 </h3>
 
 <br>
@@ -151,11 +151,11 @@
         <div class="card-body">
             <h5 class="card-title">
             @if ($evaluation->consommateur)
-                {{ $evaluation->consommateur->nom_consommateur }} 
+                {{ $evaluation->consommateur->nom_consommateur }}
                 {{ $evaluation->consommateur->prénom_consommateur }}
             @endif
             </h5>
-           
+
             @for ($i = 1; $i <= 5; $i++)
                 <span class="fa fa-star{{ $i <= $evaluation->Note ? ' checked' : '' }}"></span>
             @endfor
@@ -193,41 +193,41 @@ thumbnails.forEach(thumbnail => {
 
 </script>
 
-<script src="js/assets/util.js"></script> 
-<script src="js/assets/main.js"></script> 
+<script src="js/assets/util.js"></script>
+<script src="js/assets/main.js"></script>
 
 
 <script>
     const qtyInput = document.getElementById('quantityInput');
     const incButton = document.getElementById('sumButton');
-    
+
     // Click handler
     incButton.addEventListener('click', function() {
-    
+
       // Get current value
       let value = Number(qtyInput.value);
-      
+
       // Validate
       if(isNaN(value) || value < 1) {
         value = 1;
       } else {
-        value++;  
+        value++;
       }
-    
+
       // Set input
       qtyInput.value = value;
-    
+
     });
-    
+
     // On load set default
     window.onload = function() {
-      qtyInput.value = 1; 
+      qtyInput.value = 1;
     }
           </script>
-      <!--<script src="js/assets/util.js"></script> 
+      <!--<script src="js/assets/util.js"></script>
     <script src="js/assets/main.js"></script> -->
-    
-   
+
+
 
           @endsection
           @endsection

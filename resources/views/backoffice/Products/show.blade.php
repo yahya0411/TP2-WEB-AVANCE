@@ -30,7 +30,7 @@
                         <div class="row">
                             @foreach ($images as $image)
                             <div class="col-md-4">
-                                <img src='{{asset("/img/$image->name")}}' class="img-fluid mb-2" alt="white sample"/>
+                                <img src='{{asset("/img/$image->URL")}}' class="img-fluid mb-2" alt="white sample"/>
 
                           </div>
                         @endforeach

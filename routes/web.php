@@ -134,10 +134,12 @@ Route::get('/product', [ProduitController::class, 'index'])->name('products');
 Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');*/
 
 
-Route::get('/Testimonial', function () {
+/*Route::get('/Testimonial', function () {
     return view('front_office/home/testimonial');
-})->name('testimonial');
+})->name('testimonial');*/
+
 Route::get('/Testimonial', [ArtisanController::class, 'index'])->name('testimonial');
+
 Route::get('/Testimonial', [ArtisanController::class, 'searchArtisans'])->name('testimonial');
 
 
@@ -154,9 +156,6 @@ Route::get('/Team', function () {
 })->name('team');
 
 
-Route::get('/Testimonial', function () {
-    return view('front_office/home/testimonial');
-})->name('testimonial');
 
 Route::get('/4044', function () {
     return view('front_office/home/404');

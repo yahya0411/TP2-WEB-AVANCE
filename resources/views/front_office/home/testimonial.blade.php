@@ -23,30 +23,31 @@
                                                             <div class="input-field first-wrap">
 
                                                               <input id="text" type="text" placeholder="Artisan's full name" name="artisan_name" />
-                                                            
-                                                            </div>
-                                                        
-                                                        
-                                                            <div class="input-field second-wrap">
-                                                              
-                                                                <input type="text" placeholder="Common" name="commune" />
-                                                            
-                                                            </div>
-                                                        
-                                                        
 
-                                                        
+                                                            </div>
+
+
+                                                            <div class="input-field second-wrap">
+
+                                                                <input type="text" placeholder="Common" name="commune" />
+
+                                                            </div>
+
+
+
+
                                                             <div class="input-field fouth-wrap">
 
                                                                   <select data-trigger="" name="type" >
                                                                     <option placeholder="" value="">Type</option>
+
                                                                     @foreach ($artisans as $artisan)
                                                           <option value="{{$artisan->catégorie}}">{{$artisan->catégorie}}</option>
                                                            @endforeach
                                                                   </select>
                                                             </div>
-                                                        
-                                                        
+
+
                                                             <div class="input-field fouth-wrap">
 
                                                           <select id="star-rating" name="rating">
@@ -62,7 +63,7 @@
                                                             <div class="input-field fifth-wrap">
 
                                                                   <button class="btn-search" type="submit">SEARCH</button>
-                                                                  
+
                                                             </div>
 
 
@@ -113,14 +114,14 @@
        {  $totalRating += $evaluation->Note; }
     $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
             @endphp
-                  
 
-            
+
+
                               @for ($i = 1; $i <= 5; $i++)
                          <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
                         @endfor
-          
-                     
+
+
 
                             <h6 class="mb-1" style="margin-top:8px;">Common: {{$artisan->commune}} </h5>
 
@@ -138,11 +139,11 @@
                 <hr></hr>
                 @endforeach
 
-   
+
 
             </div>
-            
-            
+
+
         </div>
     </div>
     <!-- Testimonial End -->
