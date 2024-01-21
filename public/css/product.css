@@ -1,15 +1,23 @@
 .containeraa {
-    display: flex;
-    justify-content: space-between;
-    width: 25%; 
     background: #fff;
     margin-top:12%;
+    overflow: hidden;
+    height: fit-content;
     
-    /* margin-right: auto;
-    margin-left: auto; */
+
 }
 
+.containeraa div{
+float: left;
+width: calc(100%-12%/2);
+margin-left: 6%;
+margin-right: 6%;
+margin-top: 2%;
 
+}
+.clear{
+    clear: both;
+}
 
   .content,.conten2,.content3{
     text-align:center;

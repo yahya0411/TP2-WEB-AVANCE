@@ -229,30 +229,36 @@
 
 
 
-        <div class="details3">
-            <div class="content3">
-            <img src="img/petit_pain.jpg">
+              <div class="details3">
+                  <div class="content3">
+                  <img src="img/petit_pain.jpg">
 
-                   <h2 >Pain Chocó Sucrè<br>                 </h2>
-                   <br> 
+                        <h2 >Pain Chocó Sucrè<br>                 </h2>
+                        <br> 
 
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star checked"></span>
+                              <span class="fa fa-star"></span>
+                              <span class="fa fa-star"></span>
 
-                <p style="visibility:hidden;">
+                      <p style="visibility:hidden;">
 
-                    Cushioned Comfort
-                </p>
+                          Cushioned Comfort
+                      </p>
 
-                <h2 >15,00 DA<br>
-                <p></p>
-                <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
-            </div>
-        </div>
-    </div>
+                      <h2 >15,00 DA<br>
+                      <p></p>
+                      <button onclick="window.location='{{ route('product_consult') }}'">See Product</button>        
+                  </div>
+              </div>
+
+              <p class="clear"></p>
+
+          </div>
+
+
+
 
 
     </div>
