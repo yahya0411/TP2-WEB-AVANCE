@@ -253,7 +253,7 @@
                   </div>
               </div>
 
-              <p class="clear"></p>
+              <span class="clear"></p>
 
           </div>
 

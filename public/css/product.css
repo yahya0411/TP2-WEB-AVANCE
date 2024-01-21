@@ -25,12 +25,12 @@ margin-top: 2%;
     }
 
 
-    .containeraa img{
-        width: 580px;
+    .containeraa div div img{
+        width: 100%;
 
     }
 
-.containeraa  h2{
+.containeraa  div div h2{
 
     margin-left: auto;
 margin-right: auto;
@@ -41,20 +41,20 @@ margin-right: auto;
 
 
 
-.containeraa  p {
+.containeraa  div div p {
     max-width: 85%;
     color: #333;
     font-size: 15px;
 }
 
-.containeraa  h3 {
+.containeraa div div h3 {
     margin: 0;
     padding: 0;
     font-size: 2.5em;
     color: #a2a2a2;
     float: left;
 }
-.containeraa button {
+.containeraa div div button {
     background: #000;
     color: #fff;
     border: none;
