@@ -24,15 +24,23 @@
                               #
                           </th>
                           <th style="width: 15%">
-                              Product Name
+                              Consumer
                           </th>
 
                           <th>
-                            Product Progress
+                            Command date
+                          </th>
+                          <th>
+                            Product
+                          </th>
+
+
+                          <th>
+                            Quantity
                           </th>
                           <th style="width: 8%" class="text-center">
-                              Status
-                          </th>
+                            Status
+                        </th>
                           <th style="width: 30%">
                           </th>
                       </tr>
@@ -52,14 +60,8 @@
                               </small>
                           </td>
 
-                          <td class="project_progress">
-                              <div class="progress progress-sm">
-                                  <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                  </div>
-                              </div>
-                              <small>
-                                  57% Complete
-                              </small>
+                          <td>
+                                22/1/2024
                           </td>
                           <td class="project-state">
                               <span class="badge badge-success">Success</span>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Produit;
+use App\Models\Commande;
 use App\Models\User;
 class ArtisanController extends Controller
 {
@@ -148,5 +149,14 @@ class ArtisanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function command()
+    {
+        $id = Session::get('artisan')->id_artisan;
+        $artisan = Artisan::findOrFail($id);
+        $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('nom_artisan','artisan','commands'));
     }
 }

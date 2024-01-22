@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $id = Session::get('artisan')->id_artisan;
-        $product = Produit::where('id_artisan' ,'=', 7)->get();
+        $product = Produit::where('id_artisan' ,'=', $id)->get();
         //dd($id);
         return view('backoffice.Products.index',['id'=>$id,'nom_artisan' => $nom_artisan,'products'=> $product]);
     }
