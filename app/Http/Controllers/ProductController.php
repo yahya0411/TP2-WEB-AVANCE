@@ -15,8 +15,9 @@ class ProductController extends Controller
     {
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $id = Session::get('artisan')->id_artisan;
-
-        return view('backoffice.Products.index',['id'=>$id,'nom_artisan' => $nom_artisan,'products'=> Produit::all()]);
+        $product = Produit::where('id_artisan' ,'=', 7)->get();
+        //dd($id);
+        return view('backoffice.Products.index',['id'=>$id,'nom_artisan' => $nom_artisan,'products'=> $product]);
     }
 
     /**
