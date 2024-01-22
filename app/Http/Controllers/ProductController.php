@@ -79,7 +79,7 @@ class ProductController extends Controller
     public function edit(string $id)
     {
 
-         return view('backoffice.Products.edit', ['pr' => Produit::findOrFail($id)]);
+         return view('backoffice.Products.edit', ['product' => Produit::findOrFail($id)]);
     }
 
     /**
@@ -87,7 +87,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $product = Produit::firstOrFail($id);
+        $product = Produit::findOrFail($id);
         $product->nom_produit = $request->input('nom_produit');
         $product->description = $request->input('description');
         $product->prix_par_piéce = $request->input('prix_par_piéce');

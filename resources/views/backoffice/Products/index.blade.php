@@ -33,7 +33,11 @@
           <td class="">
             <a class="text-info" href="productt/{{$product->Id_Produit}}"><i class="fas fa-eye fa-sm"></i></a>
             <a class="text-success" href="productt/{{$product->Id_Produit}}/edit"><i class="fas fa-edit fa-sm"></i></a>
-
+            <form style="display: inline" action="{{route('productt.destroy',['productt' => $product->Id_Produit])}}" method="POST">
+                @csrf
+                @method('DELETE')
+                <a class="text-danger" style="cursor: pointer" onclick="confirm(this.closest('form'));return false"><i class="fas fa-trash fa-sm"></i></a>
+             </form>
           </td>
         </tr>
         @endforeach
