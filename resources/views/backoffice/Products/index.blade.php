@@ -29,7 +29,7 @@
           <td>{{$product->description}}</td>
           <td>{{$product->prix_par_piéce}}</td>
           <td>{{$product->quantité_minimale}}</td>
-          <td>{{$product->type_produit}} / {{$product->sous_type}}</td>
+          <td>{{$product->Type_produit}} / {{$product->sous_type}}</td>
           <td class="">
             <a class="text-info" href="productt/{{$product->Id_Produit}}"><i class="fas fa-eye fa-sm"></i></a>
             <a class="text-success" href="productt/{{$product->Id_Produit}}/edit"><i class="fas fa-edit fa-sm"></i></a>

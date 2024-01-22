@@ -13,8 +13,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $id = Session::get('artisan')->id_artisan;
 
-        return view('backoffice.Products.index',['products'=> Produit::all()]);
+        return view('backoffice.Products.index',['id'=>$id,'nom_artisan' => $nom_artisan,'products'=> Produit::all()]);
     }
 
     /**
@@ -22,7 +24,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backoffice.Products.create');
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $id = Session::get('artisan')->id_artisan;
+        return view('backoffice.Products.create',compact('id','nom_artisan'));
     }
 
     /**
@@ -69,17 +73,21 @@ class ProductController extends Controller
 
     {           $product = Produit::findOrFail($Id_Produit);
                 $images = $product->images;
+                $nom_artisan = Session::get('artisan')->nom_artisan;
+                $id = Session::get('artisan')->id_artisan;
 
-        return view('backoffice.Products.show',compact('product','images'));
+        return view('backoffice.Products.show',compact('product','images','id','nom_artisan'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $idp)
     {
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $id = Session::get('artisan')->id_artisan;
 
-         return view('backoffice.Products.edit', ['product' => Produit::findOrFail($id)]);
+         return view('backoffice.Products.edit', ['product' => Produit::findOrFail($idp),'id'=>$id,'nom_artisan'=>$nom_artisan]);
     }
 
     /**
