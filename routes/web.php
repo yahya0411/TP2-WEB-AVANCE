@@ -81,7 +81,7 @@ Route::get('/pro', function () {
 });
 Route::resource('artisan', ArtisanController::class);
 Route::resource('productt', ProductController::class);
-Route::get('/command_artisan',[ArtisanController::class,'command']);
+Route::get('/command_artisan',[CommandeController::class,'commandsArtisan'])->name('command_artisan');
 
 Route::get('/register', [AuthController::class ,'register'])->name('register');
 Route::post('/register', [AuthController::class ,'registerpost'])->name('register');

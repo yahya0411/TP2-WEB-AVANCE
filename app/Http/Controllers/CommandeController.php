@@ -8,6 +8,9 @@ use App\Models\Produit;
 use App\Models\Quantite_produits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Artisan;
+use Illuminate\Support\Facades\Session;
+use App\Models\User;
 
 class CommandeController extends Controller
 {
@@ -60,6 +63,16 @@ class CommandeController extends Controller
         ]);
     }
     return Redirect::route('history');
+    }
+
+    public function commandsArtisan()
+    {
+        $id = Session::get('artisan')->id_artisan;
+        $artisan = Artisan::findOrFail($id);
+        $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom_artisan','artisan','commands'));
     }
 
 }

@@ -156,7 +156,7 @@ class ArtisanController extends Controller
         $artisan = Artisan::findOrFail($id);
         $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
         $nom_artisan = Session::get('artisan')->nom_artisan;
-
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('nom_artisan','artisan','commands'));
+        
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom_artisan','artisan','commands'));
     }
 }
