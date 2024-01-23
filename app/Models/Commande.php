@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'Id_Commande';
+
     protected $fillable = [
-        'date_commande', 
+       
+        'date_commande',
         'adresse_livraison',
         'état_commande',
         'Id_Consommateur',
         'id_artisan',
         'Id_Livreur',
-        
+
     ];
     public function produits()
     {

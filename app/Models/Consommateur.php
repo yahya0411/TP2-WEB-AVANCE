@@ -7,14 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consommateur extends Model
 {
-    protected $primaryKey = 'Id_Consommateur';
+ //   protected $primaryKey = 'Id_Consommateur';
     protected $fillable = [
-        'nom_consommateur', 
+        'Id_Consommateur',
+        'nom_consommateur',
         'prénom_consommateur',
         'téléphone',
         'adresse',
         'Email',
-        
+
     ];
     public function evaluations()
     {

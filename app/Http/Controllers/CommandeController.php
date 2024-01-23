@@ -9,6 +9,7 @@ use App\Models\Quantite_produits;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Artisan;
+use App\Models\Consommateur;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
@@ -70,9 +71,24 @@ class CommandeController extends Controller
         $id = Session::get('artisan')->id_artisan;
         $artisan = Artisan::findOrFail($id);
         $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
+        $consumers = Consommateur::all();
+      //  dd($commands->Id_Consommateur);
         $nom_artisan = Session::get('artisan')->nom_artisan;
 
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom_artisan','artisan','commands'));
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','consumers','nom_artisan','artisan','commands'));
+    }
+    public function edit(string $Id_Commande)
+    {
+      $comm = Commande::findOrFail($Id_Commande);
+   
+        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $idp = Session::get('artisan')->id_artisan;
+
+         return view('backoffice.Artisans.CommandsArtisan.edit', ['commandsArtisan' => $comm,'id'=>$idp,'nom_artisan'=>$nom_artisan]);
+    }
+    public function store(Request $request ,string $id)
+    {
+
     }
 
 }

@@ -48,6 +48,7 @@
                       </tr>
                   </thead>
                   <tbody>
+
                     @foreach ($commands as $command)
 
 
@@ -57,7 +58,7 @@
                           </td>
                           <td>
                               <a>
-                                {{$command->date_commande}}
+
                               </a>
                               <br/>
                               <small>
@@ -78,12 +79,7 @@
                           <span class="badge badge-success">Success</span>
                       </td>
                         <td class="project-actions text-right">
-                          <a class="btn btn-primary btn-sm" href="#">
-                          <i class="fas fa-folder">
-                          </i>
-                          View
-                          </a>
-                          <a class="btn btn-info btn-sm" href="#">
+                          <a class="btn btn-info btn-sm" href="mycommand/{{$command->Id_Commande}}/edit">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
@@ -96,6 +92,7 @@
                           </td>
                       </tr>
                       @endforeach
+
                   </tbody>
               </table>
             </div>
