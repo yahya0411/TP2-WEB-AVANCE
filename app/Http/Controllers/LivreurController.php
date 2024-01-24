@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Artisan;
+use App\Models\Livreur;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
@@ -10,41 +10,22 @@ use App\Models\Commande;
 use App\Models\User;
 class LivreurController extends Controller
 {
-    /*
-    public function afficherForm()
-    {
-        return view('backoffice.Consommateurs.formulaire-recherche');
-    }
-    public function rechercheArtisans(Request $request)
-    {
-        $nom = $request->input('nom');
-        $typeProduit = $request->input('type_produit');
 
-        $artisans = Artisan::where('nom_artisan', 'like', "%$nom%")
-                             ->where('catégorie', 'like', "%$typeProduit%")
-                          ->get();
 
-        return view('backoffice.Consommateurs.recherche-artisans', ['artisans' => $artisans]);
-    }*/
-
-    public function index2()
-    {
-        $artisans = Artisan::all();
-        return view('front_office/home/testimonial',['artisans'=> $artisans ]);
-    }
-    public function  searchArtisans(Request $request)
+/*
+    public function  searchLivreurs(Request $request)
     {
 
 
-        $name_artisan = $request->input('artisan_name');
+        $name_Livreur = $request->input('Livreur_name');
         $category = $request->input('type');
         $commune = $request->input('commune');
         $stars = $request->input('rating');
 
-        $query = Artisan::query();
+        $query = Livreur::query();
 
-        if ($name_artisan) {
-            $query->where('nom_artisan', 'like', '%' .$name_artisan . '%');
+        if ($name_Livreur) {
+            $query->where('nom_Livreur', 'like', '%' .$name_Livreur . '%');
         }
 
        else if ($category) {
@@ -56,26 +37,26 @@ class LivreurController extends Controller
         }
 
        else if ($stars) {
-        $query->leftJoin('evaluations', 'artisans.id_artisan', '=', 'evaluations.id_artisan')
+        $query->leftJoin('evaluations', 'Livreurs.id_Livreur', '=', 'evaluations.id_Livreur')
         ->where('evaluations.Note', $stars);
         }
 
-        $artisans = $query->get();
+        $livreurs = $query->get();
 
 
-       return view('front_office/home/testimonial', ['artisans' => $artisans]);
+       return view('front_office/home/testimonial', ['Livreurs' => $livreurs]);
 
     }
 
-    public function ProfilArtisan(Request $request)
+    public function ProfilLivreur(Request $request)
     {
-        $param = $request->input('artisan');
-        $artisan = Artisan::with('evaluations.consommateur')->where('nom_artisan', $param)->first();
-        Session::put('id_artisan',$artisan->id_artisan);
-        $artisan->load('evaluations.consommateur','produits');
-        return view('front_office/home/artisanprof', ['artisan'=> $artisan]);
+        $param = $request->input('Livreur');
+        $livreur = Livreur::with('evaluations.consommateur')->where('nom_Livreur', $param)->first();
+        Session::put('id_Livreur',$livreur->id_Livreur);
+        $livreur->load('evaluations.consommateur','produits');
+        return view('front_office/home/Livreurprof', ['Livreur'=> $livreur]);
     }
-
+*/
 
     /**
      * Display a listing of the resource.
@@ -84,9 +65,10 @@ class LivreurController extends Controller
     public function index()
     {
         //
-                $nom_artisan = Session::get('artisan')->nom_artisan;
-                $id_artisan = Session::get('artisan')->id_artisan;
-        return view('backoffice.Artisans.index',['id'=>$id_artisan,'nom_artisan'=>$nom_artisan,'products' => Produit::all()->count()]);
+
+                $nom = Session::get('Livreur')->nom_livreur;
+                $id_Livreur = Session::get('Livreur')->id_Livreur;
+        return view('backoffice.Livreurs.index',['id'=>$id_Livreur,'nom'=>$nom,'products' => Produit::all()->count()]);
     }
 
     /**
@@ -118,13 +100,13 @@ class LivreurController extends Controller
      */
     public function edit(string $id)
     {
-        $artisan = Artisan::findOrFail($id);
-        $user = User::findOrFail($artisan->ID_User);
-        $id = Session::get('artisan')->id_artisan;
-        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $livreur = Livreur::findOrFail($id);
+        $user = User::findOrFail($livreur->ID_User);
+        $id = Session::get('Livreur')->id_Livreur;
+        $nom = Session::get('Livreur')->nom_Livreur;
 
       //  dd($user);
-        return view('backoffice.Artisans.edit', compact('nom_artisan','id','artisan','user'));
+        return view('backoffice.Livreurs.edit', compact('nom','id','livreur','user'));
     }
 
     /**
@@ -132,15 +114,15 @@ class LivreurController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $artisan = Artisan::findOrFail($id);
-        $user = User::findOrFail($artisan->ID_User);
-      $artisan->nom_artisan = $request->input('nom_artisan');
-        $artisan->Email = $request->input('Email');
+        $livreur = Livreur::findOrFail($id);
+        $user = User::findOrFail($livreur->ID_User);
+      $livreur->nom_Livreur = $request->input('nom_livreur');
+        $livreur->Email = $request->input('Email');
         $user->Email = $request->input('Email');
         $user->mdps = $request->input('mdps');
-        $artisan->save();
+        $livreur->save();
         $user->save();
-        return  redirect()->route('artisan.index');
+        return  redirect()->route('livreur.index');
     }
 
     /**
@@ -150,13 +132,5 @@ class LivreurController extends Controller
     {
         //
     }
-    public function command()
-    {
-        $id = Session::get('artisan')->id_artisan;
-        $artisan = Artisan::findOrFail($id);
-        $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
-        $nom_artisan = Session::get('artisan')->nom_artisan;
 
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom_artisan','artisan','commands'));
-    }
 }

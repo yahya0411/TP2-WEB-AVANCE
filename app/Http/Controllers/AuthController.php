@@ -43,8 +43,8 @@ class AuthController extends Controller
                     break;
                 case 'Livreur':
                     $livreur = Livreur::where('Email' , '=' ,$request->Email)->first();
-                    Session::put('livreur',$livreur);
-                    echo "Livreur DashBoard";
+                    Session::put('Livreur',$livreur);
+                    return Redirect::route('livreur.index')->with('success', 'Login successful');
                     break;
 
         }

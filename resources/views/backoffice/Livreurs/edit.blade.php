@@ -8,11 +8,11 @@
 
     <div class="card">
       <div class="card-body register-card-body">
-        <form action="{{route('artisan.update',['artisan' => $artisan->id_artisan])}}" method="post">
+        <form action="{{route('livreur.update',['livreur' => $livreur->Id_Livreur])}}" method="post">
             @csrf
             @method('PUT')
           <div class="input-group mb-3">
-            <input type="text" name="nom_artisan" value="{{old('nom_artisan',optional($artisan ?? null)->nom_artisan)}}" class="form-control" placeholder="Full name">
+            <input type="text" name="nom_livreur" value="{{old('nom_livreur',optional($livreur ?? null)->nom_livreur)}}" class="form-control" placeholder="Full name">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="email" name="Email" value="{{old('Email',optional($artisan ?? null)->Email)}}" class="form-control" placeholder="Email">
+            <input type="email" name="Email" value="{{old('Email',optional($livreur ?? null)->Email)}}" class="form-control" placeholder="Email">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -53,6 +53,6 @@
   </div>
 </div>
   @section('menu')
-  @include('backoffice.Artisans.menu')
+  @include('backoffice.Livreurs.menu')
   @endsection
 @endsection

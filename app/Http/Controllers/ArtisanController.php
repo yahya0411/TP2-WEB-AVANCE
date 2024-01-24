@@ -86,7 +86,7 @@ class ArtisanController extends Controller
         //
                 $nom_artisan = Session::get('artisan')->nom_artisan;
                 $id_artisan = Session::get('artisan')->id_artisan;
-        return view('backoffice.Artisans.index',['id'=>$id_artisan,'nom_artisan'=>$nom_artisan,'products' => Produit::all()->count()]);
+        return view('backoffice.Artisans.index',['id'=>$id_artisan,'nom'=>$nom_artisan,'products' => Produit::all()->count()]);
     }
 
     /**
@@ -121,10 +121,10 @@ class ArtisanController extends Controller
         $artisan = Artisan::findOrFail($id);
         $user = User::findOrFail($artisan->ID_User);
         $id = Session::get('artisan')->id_artisan;
-        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $nom = Session::get('artisan')->nom_artisan;
 
       //  dd($user);
-        return view('backoffice.Artisans.edit', compact('nom_artisan','id','artisan','user'));
+        return view('backoffice.Artisans.edit', compact('nom','id','artisan','user'));
     }
 
     /**
@@ -155,8 +155,8 @@ class ArtisanController extends Controller
         $id = Session::get('artisan')->id_artisan;
         $artisan = Artisan::findOrFail($id);
         $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
-        $nom_artisan = Session::get('artisan')->nom_artisan;
-        
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom_artisan','artisan','commands'));
+        $nom = Session::get('artisan')->nom_artisan;
+
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','nom','artisan','commands'));
     }
 }
