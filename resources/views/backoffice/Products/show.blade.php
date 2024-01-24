@@ -68,50 +68,24 @@
                 <table class="table table-striped">
                 <thead>
                 <tr>
-                <th style="width: 10px">#</th>
-                <th>Consummer</th>
                 <th>Command date</th>
                 <th>Etat</th>
                 <th>Address</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                <td>1.</td>
-                <td>Update software</td>
-                <td>
-                25/10/2023
-                </td>
-                <td><span class="badge bg-danger">refuser</span></td>
-                <td>Tlemcen</td>
-                </tr>
-                <tr>
-                <td>2.</td>
-                <td>Clean database</td>
-                <td>
-                01/12/2023
-                </td>
-                <td><span class="badge bg-warning">non traiter</span></td>
-                <td>Tlemcen</td>
-                </tr>
-                <tr>
-                <td>3.</td>
-                <td>Cron job running</td>
-                <td>
-                12/11/2023
-                </td>
-                <td><span class="badge bg-info">Envoyer</span></td>
-                <td>Tlemcen</td>
-                </tr>
-                <tr>
-                <td>4.</td>
-                <td>Fix and squish bugs</td>
-                <td>
-                10/11/2023
-                </td>
-                <td><span class="badge bg-success">Livrer</span></td>
-                <td>Tlemcen</td>
-                </tr>
+                @foreach ($commands as $command )
+                @foreach ($Quantite_produits as $Quantite_produit )
+
+                @if($command->Id_Commande == $Quantite_produit->Id_Commande)
+                {
+                    <td>{{$command->date_commande}}</td>
+                    <td>{{$command->adresse_livraison}}</td>
+                    <td> <span class="badge @if($command->état_commande == 'Refuse') badge-danger @elseif ($command->état_commande == 'Acceptée') badge-success @elseif ($command->état_commande == 'Affecter') badge-primary @elseif ($command->état_commande == 'Livrer') badge-info @else badge-secondary @endif ">{{$command->état_commande}}</span></td>
+                }
+                @endif
+                @endforeach
+                @endforeach
                 </tbody>
                 </table>
                 </div>

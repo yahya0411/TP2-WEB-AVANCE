@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Artisan;
 use App\Models\Consommateur;
+use App\Models\Livreur;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
@@ -72,19 +73,33 @@ class CommandeController extends Controller
         $artisan = Artisan::findOrFail($id);
         $commands = Commande::where('id_artisan','=',$artisan->id_artisan)->get();
         $consumers = Consommateur::all();
+        $products = Produit::all();
+        $quantite_produits = Quantite_produits::all();
       //  dd($commands->Id_Consommateur);
         $nom_artisan = Session::get('artisan')->nom_artisan;
 
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','consumers','nom_artisan','artisan','commands'));
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','consumers','products','nom_artisan','artisan','commands','quantite_produits'));
     }
     public function edit(string $Id_Commande)
-    {
-      $comm = Commande::findOrFail($Id_Commande);
-   
+    {           $products = Produit::all();
+        $quantite_produits = Quantite_produits::all();
+        $comm = Commande::findOrFail($Id_Commande);
+        $Livreurs = Livreur::all();
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $idp = Session::get('artisan')->id_artisan;
 
-         return view('backoffice.Artisans.CommandsArtisan.edit', ['commandsArtisan' => $comm,'id'=>$idp,'nom_artisan'=>$nom_artisan]);
+         return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom_artisan'=>$nom_artisan]);
+    }
+    public function update(Request $request, string $id)
+    {
+        $ida = Session::get('artisan')->id_artisan;
+        $comm = Commande::findOrFail($id);
+   //     $user = User::findOrFail($artisan->ID_User);
+        $comm->id_artisan = $ida;
+        $comm->Id_Livreur = $request->input('livreur');
+        $comm->état_commande = $request->input('etatc');
+        $comm->save();
+        return  redirect()->route('command_artisan');
     }
     public function store(Request $request ,string $id)
     {

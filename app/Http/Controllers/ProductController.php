@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Image;
 use Illuminate\Support\Facades\Session;
+use App\Models\Commande;
+use App\Models\Quantite_produits;
 class ProductController extends Controller
 {
     /**
@@ -76,8 +78,11 @@ class ProductController extends Controller
                 $images = $product->images;
                 $nom_artisan = Session::get('artisan')->nom_artisan;
                 $id = Session::get('artisan')->id_artisan;
+                $Quantite_produits = Quantite_produits::where('id_produit','=',$Id_Produit)->get();
+            
+                $commands = Commande::all();
 
-        return view('backoffice.Products.show',compact('product','images','id','nom_artisan'));
+        return view('backoffice.Products.show',compact('product','images','id','nom_artisan','Quantite_produits','commands'));
     }
 
     /**

@@ -70,17 +70,33 @@
                                 {{$command->adresse_livraison}}
                           </td>
 
-
                           <td>
-                            ka3k
+                            @foreach ($products as $product)
+                            @foreach ($quantite_produits as $quantite_produit)
+
+                                    @if ($product->Id_Produit == $quantite_produit->Id_Produit)
+                                            {{$product->nom_produit}}
+                                            @break
+                                    @endif
+                                 @endforeach
+                        @endforeach
+
+                          </td>
+                          <td>
+                            @foreach ($quantite_produits as $quantite_produit)
+                                @if ($quantite_produit->Id_Commande == $command->Id_Commande)
+                                        {{$quantite_produit->quantité_demande}}
+                                        @break
+                                @endif
+                            @endforeach
                         </td>
-                        <td>20</td>
+
                         <td class="project-state">
-                          <span class="badge badge-success">Success</span>
+                          <span class="badge @if($command->état_commande == 'Refuse') badge-danger @elseif ($command->état_commande == 'Acceptée') badge-success @elseif ($command->état_commande == 'Affecter') badge-primary @elseif ($command->état_commande == 'Livrer') badge-info @else badge-secondary @endif ">{{$command->état_commande}}</span>
                       </td>
                         <td class="project-actions text-right">
                           <a class="btn btn-info btn-sm" href="mycommand/{{$command->Id_Commande}}/edit">
-                          <i class="fas fa-pencil-alt">
+                          <i class="fas fa-eye">
                           </i>
                           Edit
                           </a>
