@@ -11,7 +11,7 @@ use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HistoriqueCommandeController;
 use App\Http\Controllers\ProductController;
-
+use App\Http\Controllers\LivreurController;
 
 
 Route::get('/', function () {
@@ -80,6 +80,7 @@ Route::get('/pro', function () {
     return view('backoffice.Products.show');
 });
 Route::resource('artisan', ArtisanController::class);
+Route::resource('livreur', LivreurController::class);
 Route::resource('productt', ProductController::class);
 Route::resource('mycommand', CommandeController::class);
 
