@@ -204,7 +204,7 @@
 
         @section('title','Artisans')
         @section('menu')
-        @include('backoffice.Artisans.menu')
+        @include('backoffice.Livreurs.menu')
         @endsection
 
 @endsection

@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a href="{{route('artisan.index')}}" class="nav-link">
+    <a href="{{route('livreur.index')}}" class="nav-link">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
             Dashboard
@@ -10,15 +10,15 @@
     <a href="{{route('productt.index')}}" class="nav-link">
         <i class="nav-icon fas fa-book"></i>
         <p>
-            Products
+            Commands
         </p>
     </a>
 </li>
 <li class="nav-item">
-    <a href="{{route('command_artisan')}}" class="nav-link">
-        <i class="nav-icon fas fa-th"></i>
+    <a href="{{route('productt.index')}}" class="nav-link">
+        <i class="nav-icon fas fa-book"></i>
         <p>
-            Commands
+            Consummers
         </p>
     </a>
 </li>

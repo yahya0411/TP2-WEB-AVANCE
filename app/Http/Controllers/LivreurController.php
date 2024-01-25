@@ -12,62 +12,14 @@ class LivreurController extends Controller
 {
 
 
-/*
-    public function  searchLivreurs(Request $request)
-    {
-
-
-        $name_Livreur = $request->input('Livreur_name');
-        $category = $request->input('type');
-        $commune = $request->input('commune');
-        $stars = $request->input('rating');
-
-        $query = Livreur::query();
-
-        if ($name_Livreur) {
-            $query->where('nom_Livreur', 'like', '%' .$name_Livreur . '%');
-        }
-
-       else if ($category) {
-            $query->where('catégorie', $category);
-        }
-
-        else if ($commune) {
-            $query->where('commune', $commune);
-        }
-
-       else if ($stars) {
-        $query->leftJoin('evaluations', 'Livreurs.id_Livreur', '=', 'evaluations.id_Livreur')
-        ->where('evaluations.Note', $stars);
-        }
-
-        $livreurs = $query->get();
-
-
-       return view('front_office/home/testimonial', ['Livreurs' => $livreurs]);
-
-    }
-
-    public function ProfilLivreur(Request $request)
-    {
-        $param = $request->input('Livreur');
-        $livreur = Livreur::with('evaluations.consommateur')->where('nom_Livreur', $param)->first();
-        Session::put('id_Livreur',$livreur->id_Livreur);
-        $livreur->load('evaluations.consommateur','produits');
-        return view('front_office/home/Livreurprof', ['Livreur'=> $livreur]);
-    }
-*/
-
-    /**
-     * Display a listing of the resource.
-     */
 
     public function index()
     {
         //
 
                 $nom = Session::get('Livreur')->nom_livreur;
-                $id_Livreur = Session::get('Livreur')->id_Livreur;
+                $id_Livreur = Session::get('Livreur')->Id_Livreur;
+
         return view('backoffice.Livreurs.index',['id'=>$id_Livreur,'nom'=>$nom,'products' => Produit::all()->count()]);
     }
 
@@ -125,10 +77,7 @@ class LivreurController extends Controller
         return  redirect()->route('livreur.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+   public function destroy(string $id)
     {
         //
     }
