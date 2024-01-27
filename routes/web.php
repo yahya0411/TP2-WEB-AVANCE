@@ -85,6 +85,9 @@ Route::resource('productt', ProductController::class);
 Route::resource('mycommand', CommandeController::class);
 
 Route::get('/command_artisan',[CommandeController::class,'commandsArtisan'])->name('command_artisan');
+Route::get('/command_livreur',[CommandeController::class,'commandsLivreur'])->name('command_livreur');
+Route::get('/editli',[CommandeController::class,'editli'])->name('editli');
+
 //Route::get('/command_artisan_detail',[CommandeController::class,'edit'])->name('command_artisan_detail');
 
 Route::get('/register', [AuthController::class ,'register'])->name('register');

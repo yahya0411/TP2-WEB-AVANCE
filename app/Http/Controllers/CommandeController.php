@@ -76,9 +76,25 @@ class CommandeController extends Controller
         $products = Produit::all();
         $quantite_produits = Quantite_produits::all();
       //  dd($commands->Id_Consommateur);
-        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $nom = Session::get('artisan')->nom_artisan;
 
-        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','consumers','products','nom_artisan','artisan','commands','quantite_produits'));
+        return view('backoffice.Artisans.CommandsArtisan.index',compact('id','consumers','products','nom','artisan','commands','quantite_produits'));
+    }
+    public function commandsLivreur()
+    {
+
+        $id = Session::get('Livreur')->Id_Livreur;
+      //  dd(Session::get('Livreur'));
+     $livreur = Livreur::findOrFail($id);
+        $commands = Commande::where('Id_Livreur','=',$id)->get();
+
+        $consumers = Consommateur::all();
+        $products = Produit::all();
+        $quantite_produits = Quantite_produits::all();
+      //  dd($commands->Id_Consommateur);
+        $nom = Session::get('Livreur')->nom_Livreur;
+
+        return view('backoffice.Livreurs.CommandsLivreur.index',compact('id','consumers','products','nom','commands','quantite_produits'));
     }
     public function edit(string $Id_Commande)
     {           $products = Produit::all();
@@ -88,7 +104,17 @@ class CommandeController extends Controller
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $idp = Session::get('artisan')->id_artisan;
 
-         return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom_artisan'=>$nom_artisan]);
+         return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom_artisan]);
+    }
+    public function editli(string $Id_Commande)
+    {           $products = Produit::all();
+        $quantite_produits = Quantite_produits::all();
+        $comm = Commande::findOrFail($Id_Commande);
+       // $Livreurs = Livreur::all();
+     //   $nom_artisan = Session::get('artisan')->nom_artisan;
+        $idp = Session::get('Livreur')->Id_Livreur;
+
+         return view('backoffice.Livreurs.CommandsLivreur.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom_artisan]);
     }
     public function update(Request $request, string $id)
     {
