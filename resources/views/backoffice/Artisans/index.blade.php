@@ -140,10 +140,70 @@
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['January', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
+        labels: ['January', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun','July','Aug','Sep','Oct','Nov','Dec'],
         datasets: [{
-          label: '# of Command',
-          data: [12, 19, 3, 5, 2, 3],
+          label: 'Number of Commands',
+          data: [
+           @php
+           $cmd = DB::table('commandes')->whereMonth('created_at', '=', '01')->get();
+           echo $cmd->count();
+           @endphp
+
+          ,
+          @php
+           $cmd2 = DB::table('commandes')->whereMonth('created_at', '=', '02')->get();
+           echo $cmd2->count();
+           @endphp
+
+
+          ,
+          @php
+           $cmd3 = DB::table('commandes')->whereMonth('created_at', '=', '03')->get();
+           echo $cmd3->count();
+           @endphp
+
+          ,
+          @php
+           $cmd4 = DB::table('commandes')->whereMonth('created_at', '=', '04')->get();
+           echo $cmd4->count();
+           @endphp
+
+
+          ,
+          @php
+           $cmd5 = DB::table('commandes')->whereMonth('created_at', '=', '05')->get();
+           echo $cmd5->count();
+           @endphp
+          ,
+          @php
+           $cmd6 = DB::table('commandes')->whereMonth('created_at', '=', '06')->get();
+           echo $cmd6->count();
+           @endphp,
+           @php
+           $cmd7 = DB::table('commandes')->whereMonth('created_at', '=', '07')->get();
+           echo $cmd7->count();
+           @endphp,
+           @php
+           $cmd8 = DB::table('commandes')->whereMonth('created_at', '=', '08')->get();
+           echo $cmd8->count();
+           @endphp,
+           @php
+           $cmd9 = DB::table('commandes')->whereMonth('created_at', '=', '09')->get();
+           echo $cmd9->count();
+           @endphp,
+           @php
+           $cmd10 = DB::table('commandes')->whereMonth('created_at', '=', '10')->get();
+           echo $cmd10->count();
+           @endphp,
+           @php
+           $cmd11 = DB::table('commandes')->whereMonth('created_at', '=', '11')->get();
+           echo $cmd11->count();
+           @endphp,
+           @php
+           $cmd12 = DB::table('commandes')->whereMonth('created_at', '=', '12')->get();
+           echo $cmd12->count();
+           @endphp
+        ],
           borderWidth: 1
         }]
       },
@@ -160,17 +220,23 @@
         type: 'doughnut',
   data: {
     labels: [
-    'Red',
-    'Blue',
-    'Yellow'
+    'Sweety',
+    'Salty',
+
   ],
   datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
+    label: 'Number of products',
+
+    data: [@php
+
+    $pr = App\Models\Produit::where('Type_produit', 'sucre')->get();echo $pr->count();
+    @endphp, @php
+
+$pr = App\Models\Produit::where('Type_produit', 'Salty')->get();echo $pr->count();
+@endphp],
     backgroundColor: [
       'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
+      'rgb(54, 162, 235)'
     ],
     hoverOffset: 4
   }]

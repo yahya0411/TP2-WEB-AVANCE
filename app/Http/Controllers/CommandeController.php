@@ -101,10 +101,22 @@ class CommandeController extends Controller
         $quantite_produits = Quantite_produits::all();
         $comm = Commande::findOrFail($Id_Commande);
         $Livreurs = Livreur::all();
-        $nom_artisan = Session::get('artisan')->nom_artisan;
-        $idp = Session::get('artisan')->id_artisan;
+        $idp = 0;
+        $nom = " ";
+        if(Session::has('artisan'))
+         {
+            $idp = Session::get('artisan')->id_artisan;
+            $nom = Session::get('artisan')->nom_artisan;
+            return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
 
-         return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom_artisan]);
+
+         }else if(Session::has('artisan')) {
+            $idp = Session::get('livreur')->Id_Livreur;
+            $nom = Session::get('livreur')->nom_livreur;
+            return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
+
+         }
+
     }
     public function editli(string $Id_Commande)
     {           $products = Produit::all();

@@ -1,28 +1,36 @@
 .containeraa {
-    display: flex;
-    justify-content: space-between;
-    width: 25%; 
     background: #fff;
     margin-top:12%;
-    
-    /* margin-right: auto;
-    margin-left: auto; */
+    overflow: hidden;
+    height: fit-content;
+
+
 }
 
+.containeraa div{
+float: left;
+width: calc(100%-12%/2);
+margin-left: 6%;
+margin-right: 6%;
+margin-top: 2%;
 
+}
+.clear{
+    clear: both;
+}
 
   .content,.conten2,.content3{
     text-align:center;
-    
-    }
-
-
-    .containeraa img{
-        width: 580px;
 
     }
 
-.containeraa  h2{
+
+    .containeraa div div img{
+        width: 100%;
+
+    }
+
+.containeraa  div div h2{
 
     margin-left: auto;
 margin-right: auto;
@@ -33,20 +41,20 @@ margin-right: auto;
 
 
 
-.containeraa  p {
+.containeraa  div div p {
     max-width: 85%;
     color: #333;
     font-size: 15px;
 }
 
-.containeraa  h3 {
+.containeraa div div h3 {
     margin: 0;
     padding: 0;
     font-size: 2.5em;
     color: #a2a2a2;
     float: left;
 }
-.containeraa button {
+.containeraa div div button {
     background: #000;
     color: #fff;
     border: none;
@@ -113,5 +121,3 @@ input[type="range"] {
   margin-bottom: 0; /* Remove bottom margin */
   padding-bottom: 0; /* Remove bottom padding */
 }
-
-
