@@ -57,9 +57,7 @@
                               #
                           </td>
                           <td>
-                              <a>
-                                
-                              </a>
+                            {{$command->consommateur->nom_consommateur}} {{$command->consommateur->prénom_consommateur}}
                               <br/>
                               <small>
                                   Created {{$command->date_commande}}
@@ -71,7 +69,7 @@
                           </td>
 
                           <td>
-                            @foreach ($products as $product)
+                            @foreach ($command->produits as $product)
                             @foreach ($quantite_produits as $quantite_produit)
 
                                     @if ($product->Id_Produit == $quantite_produit->Id_Produit)

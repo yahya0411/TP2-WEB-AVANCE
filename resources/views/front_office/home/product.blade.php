@@ -152,7 +152,7 @@
 
                     <div class="content">
 
-                    <img src="{{ asset('img/' . $product->image->URL) }}">
+                    <img src="{{ asset('img/' . $product->images[0]->URL) }}">
                         <h2>{{ $product->nom_produit }}  <br> </h2>
                           <br>
 
@@ -178,6 +178,7 @@
                         <h2>{{ $product->prix_par_piéce }} DA</h3>
                         <a href="{{ route('product_consult', ['produit' => $product->Id_Produit]) }}"><button onclick="window.location='{{ route('product_consult') }}'">See Product</button></a>
                     </div>
+                    <span class="clear"></span>
                 </div>
                 @endforeach
             </div>

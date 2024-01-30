@@ -18,8 +18,9 @@ class ProductController extends Controller
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $id = Session::get('artisan')->id_artisan;
         $product = Produit::where('id_artisan' ,'=', $id)->get();
+
         //dd($id);
-        return view('backoffice.Products.index',['id'=>$id,'nom_artisan' => $nom_artisan,'products'=> $product]);
+        return view('backoffice.Products.index',['id'=>$id,'nom' => $nom_artisan,'products'=> $product]);
     }
 
     /**
@@ -27,9 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $nom_artisan = Session::get('artisan')->nom_artisan;
+        $nom = Session::get('artisan')->nom_artisan;
         $id = Session::get('artisan')->id_artisan;
-        return view('backoffice.Products.create',compact('id','nom_artisan'));
+        return view('backoffice.Products.create',compact('id','nom'));
     }
 
     /**
@@ -76,13 +77,13 @@ class ProductController extends Controller
 
     {           $product = Produit::findOrFail($Id_Produit);
                 $images = $product->images;
-                $nom_artisan = Session::get('artisan')->nom_artisan;
+                $nom = Session::get('artisan')->nom_artisan;
                 $id = Session::get('artisan')->id_artisan;
                 $Quantite_produits = Quantite_produits::where('id_produit','=',$Id_Produit)->get();
-            
+
                 $commands = Commande::all();
 
-        return view('backoffice.Products.show',compact('product','images','id','nom_artisan','Quantite_produits','commands'));
+        return view('backoffice.Products.show',compact('product','images','id','nom','Quantite_produits','commands'));
     }
 
     /**
@@ -128,4 +129,6 @@ class ProductController extends Controller
     {
         $product = Produit::findOrFail($Id_Produit);
     }
+
+
 }

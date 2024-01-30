@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <head>
-    
+
     <title>Booking History</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="{{asset('css/order_history.css')}}" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
@@ -66,7 +66,7 @@
       <table class="table table-striped" style="margin:20px;">
   <thead>
     <tr>
-      
+
       <th scope="col">Order ID</th>
           <th scope="col">Artisan's Name</th>
           <th scope="col" >Delivery's Name</th>
@@ -80,10 +80,6 @@
     </tr>
   </thead>
 
-  
-  
-   
-  
 
 
 
@@ -94,15 +90,25 @@
 
 
 
-    
- 
+
+
+
+
+
+
       <tbody>
-		
+
 	  @foreach ($orders as $order)
     <tr>
     <th scope="row">{{ $order->Id_Commande }}</th>
     <td>{{ strtoupper($order->artisan->nom_artisan) }} </td>
+    @if (isset($order->livreur))
+        <td>{{ strtoupper($order->livreur->nom_livreur) }}</td>
+    @else
     <td>Not Selected By Artisan</td>
+
+    @endif
+
     <td>
 	@php
          $totalPrice = 0;
@@ -112,7 +118,7 @@
           @endphp
             {{ $totalPrice }} DA
 	</td>
-    <td>{{ $order->date_commande }}</td>  
+    <td>{{ $order->date_commande }}</td>
       <td>
 	  @php
          $totalQuantity = 0;
@@ -130,23 +136,23 @@
 
     </tr>
 	  @endforeach
-    
-   
+
+
   </tbody>
 
 
   </table>
 
-  
-      
+
+
     </div>
 
 
 
       <div class="container">
-  
-	
-  
+
+
+
 	<!-- modal -->
 	<!-- modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -216,9 +222,9 @@
                  </button>
                </a>
 
-          
+
             </div>
-          
+
 
         </div>
     </div>

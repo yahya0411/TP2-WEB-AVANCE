@@ -28,7 +28,7 @@
                           </th>
 
                           <th>
-                            Adresse
+                            Delivred Addres
                           </th>
                           <th>
                             Product
@@ -57,9 +57,8 @@
                               #
                           </td>
                           <td>
-                              <a>
+                            {{$command->consommateur->nom_consommateur}} {{$command->consommateur->prénom_consommateur}}
 
-                              </a>
                               <br/>
                               <small>
                                   Created {{$command->date_commande}}
@@ -71,7 +70,7 @@
                           </td>
 
                           <td>
-                            @foreach ($products as $product)
+                            @foreach ($command->produits as $product)
                             @foreach ($quantite_produits as $quantite_produit)
 
                                     @if ($product->Id_Produit == $quantite_produit->Id_Produit)
@@ -80,7 +79,6 @@
                                     @endif
                                  @endforeach
                         @endforeach
-
                           </td>
                           <td>
                             @foreach ($quantite_produits as $quantite_produit)
@@ -95,7 +93,7 @@
                           <span class="badge @if($command->état_commande == 'Refuse') badge-danger @elseif ($command->état_commande == 'Acceptée') badge-success @elseif ($command->état_commande == 'Affecter') badge-primary @elseif ($command->état_commande == 'Livrer') badge-info @else badge-secondary @endif ">{{$command->état_commande}}</span>
                       </td>
                         <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="editli/{{$command->Id_Commande}}">
+                          <a class="btn btn-info btn-sm" href="mycommand/{{$command->Id_Commande}}/edit">
                           <i class="fas fa-eye">
                           </i>
                           Edit

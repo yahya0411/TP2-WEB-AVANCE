@@ -63,11 +63,11 @@
                 <div class="card-header">
                 <h3 class="card-title">Consummers </h3>
                 </div>
-
                 <div class="card-body p-0">
                 <table class="table table-striped">
                 <thead>
                 <tr>
+                <th>Consumer name</th>
                 <th>Command date</th>
                 <th>Etat</th>
                 <th>Address</th>
@@ -79,6 +79,7 @@
 
                 @if($command->Id_Commande == $Quantite_produit->Id_Commande)
                 {
+                    <td>{{$command->consommateur->nom_consommateur}} {{$command->consommateur->prénom_consommateur}}</td>
                     <td>{{$command->date_commande}}</td>
                     <td>{{$command->adresse_livraison}}</td>
                     <td> <span class="badge @if($command->état_commande == 'Refuse') badge-danger @elseif ($command->état_commande == 'Acceptée') badge-success @elseif ($command->état_commande == 'Affecter') badge-primary @elseif ($command->état_commande == 'Livrer') badge-info @else badge-secondary @endif ">{{$command->état_commande}}</span></td>
