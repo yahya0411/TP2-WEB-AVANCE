@@ -1,0 +1,117 @@
+.containeraa {
+    display: flex;
+    justify-content: space-between;
+    width: 25%; 
+    background: #fff;
+    margin-top:12%;
+    
+    /* margin-right: auto;
+    margin-left: auto; */
+}
+
+
+
+  .content,.conten2,.content3{
+    text-align:center;
+    
+    }
+
+
+    .containeraa img{
+        width: 580px;
+
+    }
+
+.containeraa  h2{
+
+    margin-left: auto;
+margin-right: auto;
+    font-size: 2.4em;
+    line-height: 1em;
+    color: #444;
+}
+
+
+
+.containeraa  p {
+    max-width: 85%;
+    color: #333;
+    font-size: 15px;
+}
+
+.containeraa  h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 2.5em;
+    color: #a2a2a2;
+    float: left;
+}
+.containeraa button {
+    background: #000;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 15px 20px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 40px;
+    float: both;
+}
+
+.checked {
+    color: orange;
+  }
+
+.black {
+    background: #000;
+}
+
+.red {
+    background: #D5212E;
+}
+
+.orange {
+    background: #F18557;
+}
+
+.product-colors .active:after{
+    content: "";
+    width: 36px;
+    height: 36px;
+    border: 2px solid #000;
+    position: absolute;
+    border-radius: 50%;
+    box-sizing: border-box;
+    left: -5px;
+    top: -5px;
+}
+
+
+
+.card {
+  width: 300px;
+  padding: 20px;
+  background-color:rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  color:#999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.dropdown-item {
+    font-size: 20px; /* Set the desired font size */
+}
+
+.container-fluid.page-header {
+  margin-bottom: 0; /* Remove bottom margin */
+  padding-bottom: 0; /* Remove bottom padding */
+}
+
+
