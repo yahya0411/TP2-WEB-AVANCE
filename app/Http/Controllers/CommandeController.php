@@ -92,7 +92,7 @@ class CommandeController extends Controller
         $products = Produit::all();
         $quantite_produits = Quantite_produits::all();
       //  dd($commands->Id_Consommateur);
-        $nom = Session::get('Livreur')->nom_Livreur;
+        $nom = Session::get('Livreur')->nom_livreur;
 
         return view('backoffice.Livreurs.CommandsLivreur.index',compact('id','consumers','products','nom','commands','quantite_produits'));
     }

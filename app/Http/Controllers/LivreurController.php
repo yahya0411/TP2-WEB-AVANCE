@@ -70,8 +70,10 @@ class LivreurController extends Controller
         $user = User::findOrFail($livreur->ID_User);
       $livreur->nom_Livreur = $request->input('nom_livreur');
         $livreur->Email = $request->input('Email');
+        $livreur->Disponibilité = $request->input('dispo');
         $user->Email = $request->input('Email');
         $user->mdps = $request->input('mdps');
+
         $livreur->save();
         $user->save();
         return  redirect()->route('livreur.index');

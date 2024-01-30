@@ -34,7 +34,17 @@
                 <span class="fas fa-lock"></span>
               </div>
             </div>
+
           </div>
+            <div class="form-group mb-3">
+                <label for="dispo">Disponiblité</label>
+                <select class="form-control" id="select1" name="dispo">
+                    <option value="" default disabled>Disponiblité</option>
+                    <option value="oui">Oui</option>
+                    <option value="non">Non</option>
+
+                </select>
+              </div>
 
           <div class="row">
             <div class="col-8">

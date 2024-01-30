@@ -95,7 +95,7 @@
                           <span class="badge @if($command->état_commande == 'Refuse') badge-danger @elseif ($command->état_commande == 'Acceptée') badge-success @elseif ($command->état_commande == 'Affecter') badge-primary @elseif ($command->état_commande == 'Livrer') badge-info @else badge-secondary @endif ">{{$command->état_commande}}</span>
                       </td>
                         <td class="project-actions text-right">
-                          <a class="btn btn-info btn-sm" href="mycommand/{{$command->Id_Commande}}/edit">
+                          <a class="btn btn-info btn-sm" href="editli/{{$command->Id_Commande}}">
                           <i class="fas fa-eye">
                           </i>
                           Edit

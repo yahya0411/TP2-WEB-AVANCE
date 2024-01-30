@@ -152,7 +152,7 @@
 
                     <div class="content">
 
-                    <img src="{{ asset('img/' . $product->images[0]->URL) }}">
+                    <img src="{{ asset('img/' . $product->image->URL) }}">
                         <h2>{{ $product->nom_produit }}  <br> </h2>
                           <br>
 
