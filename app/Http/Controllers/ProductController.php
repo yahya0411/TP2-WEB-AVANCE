@@ -94,7 +94,7 @@ class ProductController extends Controller
         $nom_artisan = Session::get('artisan')->nom_artisan;
         $id = Session::get('artisan')->id_artisan;
 
-         return view('backoffice.Products.edit', ['product' => Produit::findOrFail($idp),'id'=>$id,'nom_artisan'=>$nom_artisan]);
+         return view('backoffice.Products.edit', ['product' => Produit::findOrFail($idp),'id'=>$id,'nom'=>$nom_artisan]);
     }
 
     /**
