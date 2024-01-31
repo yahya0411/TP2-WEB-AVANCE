@@ -54,7 +54,7 @@ class ProductController extends Controller
          {
             foreach($request->file('images') as $image)
             {
-                $imageName = $product->nom_produit . '.'. $image->extension();
+                $imageName = $product->nom_produit . time() .rand(1,1000) . '.'. $image->extension();
                 $image->move(public_path('img'),$imageName);
 
                 Image::create([

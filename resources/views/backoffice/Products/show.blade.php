@@ -43,14 +43,18 @@
                     {{$product->nom_produit}}
                     </h3>
               <div class="rating">
-                  <div class="stars">
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star checked"></span>
-                      <span class="fa fa-star"></span>
-                      <span class="fa fa-star"></span>
-                  </div>
-                  <span class="review-no">41 reviews</span>
+              @php
+             $totalRating = 0;
+            $numberOfEvaluations = count($product->evaluations);
+            foreach ($product->evaluations as $evaluation)
+                {  $totalRating += $evaluation->Note; }
+            $averageRating = $numberOfEvaluations > 0 ? $totalRating / $numberOfEvaluations : 0;
+            @endphp
+
+                              @for ($i = 1; $i <= 5; $i++)
+                         <span class="fa fa-star{{ $i <= $averageRating ? ' checked' : '' }}"></span>
+                        @endfor
+                <span > {{count($product->evaluations)}} Reviews</span>
               </div>
               <p class="product-description">{{$product->description}}.</p>
               <h4 class="price"> unite price: <span>DZ {{$product->prix_par_piéce}}</span></h4>

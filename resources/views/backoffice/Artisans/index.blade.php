@@ -139,6 +139,12 @@
 
         <!-- /.row (main row) -->
 
+
+
+
+
+        
+
 @section('script')
 <script>
     const ctx = document.getElementById('myChart');
@@ -251,13 +257,44 @@ $pr = App\Models\Produit::where('Type_produit', 'salle')->get();echo $pr->count(
 
 
     });
+
+
+
     new Chart(ctx3, {
         type: 'bar',
         data: {
         labels: ['January', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun'],
+        
         datasets: [{
           label: '# dz',
-          data: [12, 19, 3, 5, 2, 3],
+          @php
+    $totalSum = 0; 
+    $orders = App\Models\Commande::where('id_artisan','=', $id)
+    ->get();
+@endphp
+
+
+
+
+
+@foreach ($orders as $order)
+  
+        
+
+        
+            @php
+                $totalPrice = 0;
+                foreach ($order->produits as $produit) {
+                    $totalPrice += $produit->quantité_demande * $produit->prix_par_piéce;
+                }
+                $totalSum += $totalPrice; 
+                // @dd($order->produits);
+            @endphp
+           
+        
+    
+@endforeach
+          data: [  @php echo $$order->produits  @endphp , 19, 3, 5, 2, 3],
           backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',

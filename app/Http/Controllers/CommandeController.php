@@ -125,13 +125,14 @@ class CommandeController extends Controller
 
     public function update(Request $request, string $id)
     { $ida;
+      $comm = Commande::findOrFail($id);
+
         if(Session::has('artisan'))
         {
             $ida = Session::get('artisan')->id_artisan;
             $comm->id_artisan = $ida;
             $comm->Id_Livreur = $request->input('livreur');
         }
-        $comm = Commande::findOrFail($id);
    //     $user = User::findOrFail($artisan->ID_User);
         $comm->état_commande = $request->input('etatc');
         $comm->save();

@@ -135,7 +135,6 @@
 </button></td>
 
     </tr>
-	  @endforeach
 
 
   </tbody>
@@ -216,11 +215,22 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" style=" color:white;">Close
                 </button>
-                <a href="{{ route('set_review_id', ['id_livreur' => 4]) }}">
-                  <button class="btn btn-primary" style="background-color: #e45c27; color:white; margin-left:10px;">
+                @if (isset($order->livreur))  
+                <a href="{{ route('set_review_id', ['id_livreur' => $order->livreur->Id_Livreur]) }}">
+                  <button class="btn btn-primary"                
+                    style="background-color: #e45c27; color:white; margin-left:10px;"
+                    >
                    Review Delivery
                  </button>
                </a>
+               @else   <button disabled class="btn btn-primary"                
+                    style="background-color: #e45c27; color:white; margin-left:10px;"
+                    >
+                   Review Delivery
+                 </button>
+               @endif
+               
+               @endforeach
 
 
             </div>

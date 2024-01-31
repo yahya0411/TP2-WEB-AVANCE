@@ -1,32 +1,18 @@
-<li class="nav-item">
-    <a href="{{route('livreur.index')}}" class="nav-link">
-        <i class="nav-icon fas fa-tachometer-alt"></i>
-        <p>
-            Dashboard
-        </p>
-    </a>
-</li>
+
 <li class="nav-item">
     <a href="{{route('command_livreur')}}" class="nav-link">
         <i class="nav-icon fas fa-book"></i>
         <p>
-            Commands
+            My Commands
         </p>
     </a>
 </li>
-<li class="nav-item">
-    <a href="{{route('productt.index')}}" class="nav-link">
-        <i class="nav-icon fas fa-book"></i>
-        <p>
-            Consummers
-        </p>
-    </a>
-</li>
+
 <li class="nav-item">
     <a href="#" class="nav-link active">
     <i class="nav-icon fas fa-user"></i>
     <p>
-    Session
+     My Profile
     <i class="right fas fa-angle-left"></i>
     </p>
     </a>

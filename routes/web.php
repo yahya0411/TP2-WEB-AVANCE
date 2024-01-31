@@ -137,10 +137,9 @@ Route::get('/product', function () {
 
 Route::get('/product', [ProduitController::class, 'index'])->name('products');
 
-/*Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
+Route::get('/product',[ProduitController::class, 'searchProducts'])->name('products');
 
-Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');*/
-
+Route::get('/product/{sortType?}',[ProduitController::class, 'sortProducts'])->name('products');
 
 /*Route::get('/Testimonial', function () {
     return view('front_office/home/testimonial');
