@@ -239,7 +239,7 @@
     $pr = App\Models\Produit::where('Type_produit', 'sucre')->get();echo $pr->count();
     @endphp, @php
 
-$pr = App\Models\Produit::where('Type_produit', 'Salty')->get();echo $pr->count();
+$pr = App\Models\Produit::where('Type_produit', 'salle')->get();echo $pr->count();
 @endphp],
     backgroundColor: [
       'rgb(255, 99, 132)',

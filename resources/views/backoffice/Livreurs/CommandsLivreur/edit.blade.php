@@ -21,7 +21,15 @@
             @csrf
             @method('PUT')
            <div class="row">
-            <h4 class="col-md-6">Consumer : <b>Yahia Mekki</b></h4>
+                <h4 class="col-md-6">Consumer :
+                    <b>
+                       @foreach ($commands as $command )
+                       {{$command->consommateur->nom_consommateur}} {{$command->consommateur->prénom_consommateur}}            </b></h4>
+               @break
+               @endforeach
+
+
+            </b></h4>
             <h4 class="col-md-6">Date : <b>{{$commandsArtisan->date_commande}}</b></h4>
            </div>
            <div class="row">
@@ -50,31 +58,19 @@
             <h4 class="col-md-6">Status : <b class=" @if($commandsArtisan->état_commande == 'Refuse') text-danger @elseif ($commandsArtisan->état_commande == 'Acceptée') text-success @elseif ($commandsArtisan->état_commande == 'Affecter') text-primary @elseif ($commandsArtisan->état_commande == 'Livrer') text-info @else text-secondary @endif">{{$commandsArtisan->état_commande}}</b></h4>
         </div>
             <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <label for=""></label>
                     <div class="form-group">
                         <select class="form-control" id="select1" name="etatc">
                             <option value="" disabled>status</option>
-                            <option value="Acceptée">Acceptée</option>
-                            <option value="Refuse">Refuse</option>
                             <option value="Affecter">Affecter a un livreur</option>
+                            <option value="Refuse">Refuse</option>
+
 
                         </select>
                       </div>
             </div>
-            <div class="col-md-6">
-                <label for=""></label>
-                <div class="form-group">
 
-                    <select class="form-control" id="select1" name="livreur">
-                        <option value="" disabled>Livreur</option>
-                        <option value="0">non</option>
-                        @foreach ($livreurs as $livreur)
-                        <option value="{{old('livreur',optional(optional($livreur ?? null))->Id_Livreur)}}">{{$livreur->nom_livreur}}</option>
-                        @endforeach
-                    </select>
-                  </div>
-        </div>
         </div>
 
 

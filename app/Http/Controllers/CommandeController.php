@@ -100,44 +100,42 @@ class CommandeController extends Controller
     {           $products = Produit::all();
         $quantite_produits = Quantite_produits::all();
         $comm = Commande::findOrFail($Id_Commande);
+
         $Livreurs = Livreur::where('Disponibilité','=','oui')->get();
         $idp = 0;
         $nom = " ";
         if(Session::has('artisan'))
          {
+
             $idp = Session::get('artisan')->id_artisan;
             $nom = Session::get('artisan')->nom_artisan;
-            return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
+            $commands = Commande::where('id_artisan','=',$idp)->get();
+            return view('backoffice.Artisans.CommandsArtisan.edit', ['commands'=>$commands,'products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
 
 
-         }else if(Session::has('artisan')) {
-            $idp = Session::get('livreur')->Id_Livreur;
-            $nom = Session::get('livreur')->nom_livreur;
-            return view('backoffice.Artisans.CommandsArtisan.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
+         }else {
+            $idp = Session::get('Livreur')->Id_Livreur;
+            $nom = Session::get('Livreur')->nom_livreur;
+            $commands = Commande::where('Id_Livreur','=',$idp)->get();
+            return view('backoffice.Livreurs.CommandsLivreur.edit', ['commands'=>$commands,'products' =>$products,'quantite_produits'=> $quantite_produits,'livreurs' => $Livreurs,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom]);
 
          }
 
     }
-    public function editli(string $Id_Commande)
-    {           $products = Produit::all();
-        $quantite_produits = Quantite_produits::all();
-        $comm = Commande::findOrFail($Id_Commande);
-       // $Livreurs = Livreur::all();
-     //   $nom_artisan = Session::get('artisan')->nom_artisan;
-        $idp = Session::get('Livreur')->Id_Livreur;
 
-         return view('backoffice.Livreurs.CommandsLivreur.edit', ['products' =>$products,'quantite_produits'=> $quantite_produits,'commandsArtisan' => $comm,'id'=>$idp,'nom'=>$nom_artisan]);
-    }
     public function update(Request $request, string $id)
-    {
-        $ida = Session::get('artisan')->id_artisan;
+    { $ida;
+        if(Session::has('artisan'))
+        {
+            $ida = Session::get('artisan')->id_artisan;
+            $comm->id_artisan = $ida;
+            $comm->Id_Livreur = $request->input('livreur');
+        }
         $comm = Commande::findOrFail($id);
    //     $user = User::findOrFail($artisan->ID_User);
-        $comm->id_artisan = $ida;
-        $comm->Id_Livreur = $request->input('livreur');
         $comm->état_commande = $request->input('etatc');
         $comm->save();
-        return  redirect()->route('command_artisan');
+        return  redirect()->back();
     }
     public function store(Request $request ,string $id)
     {

@@ -21,7 +21,13 @@
             @csrf
             @method('PUT')
            <div class="row">
-            <h4 class="col-md-6">Consumer : <b>Yahia Mekki</b></h4>
+
+            <h4 class="col-md-6">Consumer :
+                 <b>
+                    @foreach ($commands as $command )
+                    {{$command->consommateur->nom_consommateur}} {{$command->consommateur->prénom_consommateur}}            </b></h4>
+            @break
+            @endforeach
             <h4 class="col-md-6">Date : <b>{{$commandsArtisan->date_commande}}</b></h4>
            </div>
            <div class="row">
