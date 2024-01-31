@@ -2,11 +2,19 @@
 @section('content')
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>{{$products}}</h3>
+                        <h3>
+                            @php
+
+                            $pr = App\Models\Produit::where('id_artisan', Session('artisan')->id_artisan)->get();echo $pr->count();
+                            @endphp
+
+
+
+                        </h3>
 
                         <p>Product</p>
                     </div>
@@ -17,28 +25,22 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                        <p>Type of product</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-stats-bars"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>
+                            @php
 
-                        <p>The orders</p>
+                            $pr = App\Models\Livreur::all();echo $pr->count();
+                            @endphp
+
+
+                        </h3>
+
+                        <p>Delivery</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -47,11 +49,16 @@
                 </div>
             </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>
+                            @php
+
+    $pr = App\Models\Commande::where('id_artisan', Session('artisan')->id_artisan)->get();echo $pr->count();
+    @endphp
+                        </h3>
 
                         <p>Consumers commands</p>
                     </div>

@@ -55,7 +55,6 @@
                     <div class="form-group">
                         <select class="form-control" id="select1" name="etatc">
                             <option value="" disabled>status</option>
-                            <option value="Non traite">Non traite</option>
                             <option value="Acceptée">Acceptée</option>
                             <option value="Refuse">Refuse</option>
                             <option value="Affecter">Affecter a un livreur</option>

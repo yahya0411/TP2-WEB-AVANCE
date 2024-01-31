@@ -61,7 +61,7 @@
         <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
             <div class="card">
                 <div class="card-header">
-                <h3 class="card-title">Consummers </h3>
+   
                 </div>
                 <div class="card-body p-0">
                 <table class="table table-striped">

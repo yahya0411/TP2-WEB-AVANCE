@@ -100,7 +100,7 @@ class CommandeController extends Controller
     {           $products = Produit::all();
         $quantite_produits = Quantite_produits::all();
         $comm = Commande::findOrFail($Id_Commande);
-        $Livreurs = Livreur::all();
+        $Livreurs = Livreur::where('Disponibilité','=','oui')->get();
         $idp = 0;
         $nom = " ";
         if(Session::has('artisan'))
