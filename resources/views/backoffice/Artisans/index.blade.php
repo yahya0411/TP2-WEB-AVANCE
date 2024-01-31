@@ -294,7 +294,7 @@ $pr = App\Models\Produit::where('Type_produit', 'salle')->get();echo $pr->count(
         
     
 @endforeach
-          data: [  @php echo $$order->produits  @endphp , 19, 3, 5, 2, 3],
+          data: [  @php echo  @endphp , 19, 3, 5, 2, 3],
           backgroundColor: [
       'rgba(255, 99, 132, 0.2)',
       'rgba(255, 159, 64, 0.2)',
