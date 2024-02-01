@@ -136,6 +136,7 @@
 
     </tr>
 
+    @endforeach
 
   </tbody>
 
@@ -230,7 +231,6 @@
                  </button>
                @endif
                
-               @endforeach
 
 
             </div>
